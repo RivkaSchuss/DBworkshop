@@ -9,6 +9,6 @@ namespace Moodify.Model
 {
     interface IMyPlaylistsModel : INotifyPropertyChanged
     {
-        string PlaylistName;
+        string PlaylistName { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moodify.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,16 +11,25 @@ namespace Moodify.ViewModel
 {
 	class HomeScreenViewModel : IHomeScreenVM
 	{
-		public string VM_UserName { get; }
+        private IHomeScreenModel model;
+
+		public string VM_UserName
+        {
+            get
+            {
+                return this.model.UserName;
+            }
+        }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propName)
         {
-            if (PropertyChanged != null)
+            this.model = new HomeScreenModel();
+            this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
             {
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-            }
+                this.NotifyPropertyChanged("VM_" + e.PropertyName);
+            };
         }
 
     }
