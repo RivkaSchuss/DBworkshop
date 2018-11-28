@@ -62,6 +62,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\ExploreViewModel.cs" />
+    <Compile Include="ViewModel\IExploreVM.cs" />
+    <Compile Include="ViewModel\IHomeScreenVM.cs" />
+    <Compile Include="ViewModel\IMyPlaylistsVM.cs" />
     <Compile Include="ViewModel\MyPlaylistsViewModel.cs" />
     <Compile Include="View\ExploreView.xaml.cs">
       <DependentUpon>ExploreView.xaml</DependentUpon>

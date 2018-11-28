@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-	class MyPlaylistsViewModel : INotifyPropertyChanged
+	class MyPlaylistsViewModel : INotifyPropertyChanged, IMyPlaylistsVM
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 	}

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-	class ExploreViewModel : INotifyPropertyChanged, IExploreVM
+	interface IHomeScreenVM
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
+		string VM_UserName { get; }
+		
 	}
 }

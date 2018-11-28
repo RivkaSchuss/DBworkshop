@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-	class HomeScreenViewModel : INotifyPropertyChanged
+	class HomeScreenViewModel : INotifyPropertyChanged, IHomeScreenVM
 	{
+		public string VM_UserName { get; }
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
