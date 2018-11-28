@@ -61,6 +61,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ExploreModel.cs" />
+    <Compile Include="Model\IExploreModel.cs" />
+    <Compile Include="Model\IHomeScreenModel.cs" />
+    <Compile Include="Model\IMyPlaylistsModel.cs" />
+    <Compile Include="Model\MyPlaylistsModel.cs" />
     <Compile Include="ViewModel\ExploreViewModel.cs" />
     <Compile Include="ViewModel\IExploreVM.cs" />
     <Compile Include="ViewModel\IHomeScreenVM.cs" />

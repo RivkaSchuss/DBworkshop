@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Moodify.ViewModel
+namespace Moodify.Model
 {
-	interface IExploreVM : INotifyPropertyChanged
-	{
-	}
+    interface IExploreModel : INotifyPropertyChanged
+    {
+    }
 }

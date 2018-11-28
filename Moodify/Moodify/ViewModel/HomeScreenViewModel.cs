@@ -8,16 +8,19 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-	class HomeScreenViewModel : INotifyPropertyChanged, IHomeScreenVM
+	class HomeScreenViewModel : IHomeScreenVM
 	{
 		public string VM_UserName { get; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+            {
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+            }
+        }
 
-	}
+    }
 }
