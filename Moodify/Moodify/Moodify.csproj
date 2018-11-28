@@ -61,9 +61,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\ExploreViewModel.cs" />
+    <Compile Include="ViewModel\MyPlaylistsViewModel.cs" />
+    <Compile Include="View\ExploreView.xaml.cs">
+      <DependentUpon>ExploreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyPlaylists.xaml.cs">
+      <DependentUpon>MyPlaylists.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserLoginWindowView.xaml.cs">
       <DependentUpon>UserLoginWindowView.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\ExploreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HomeScreenView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +90,10 @@
       <DependentUpon>HomeScreenView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\MyPlaylists.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserLoginWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

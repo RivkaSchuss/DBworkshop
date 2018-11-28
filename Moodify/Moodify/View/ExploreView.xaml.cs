@@ -1,5 +1,4 @@
-﻿using Moodify.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Moodify.View
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Interaction logic for ExploreView.xaml
 	/// </summary>
-	public partial class HomeScreenView : Window
+	public partial class ExploreView : UserControl
 	{
-		public HomeScreenView()
+		public ExploreView()
 		{
 			InitializeComponent();
-			this.DataContext = new HomeScreenViewModel();
 		}
 	}
 }
