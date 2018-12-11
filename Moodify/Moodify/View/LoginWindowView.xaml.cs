@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Moodify.View
 {
 	/// <summary>
-	/// Interaction logic for UserLoginWindowView.xaml
+	/// Interaction logic for LoginWindowView.xaml
 	/// </summary>
-	public partial class UserLoginWindowView : Window
+	public partial class LoginWindowView : UserControl
 	{
-		public UserLoginWindowView()
+		public LoginWindowView()
 		{
 			InitializeComponent();
 		}
