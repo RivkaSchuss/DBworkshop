@@ -25,6 +25,23 @@ namespace Moodify.View
 		{
 			InitializeComponent();
 			this.DataContext = new HomeScreenViewModel();
+
+			LoginWindowView loginWindow = new LoginWindowView();
+			//loginWindow.
+		}
+
+		public void OnRegister(object sender, RoutedEventArgs e)
+		{
+			LoginWindowView loginWindow = new LoginWindowView();
+			loginWindow.Show();
+		}
+
+		public void OnSignIn(object sender, RoutedEventArgs e)
+		{
+			//LoginWindowView loginWindow = new LoginWindowView();
+			//loginWindow.Show();
+			SignInView signInView = new SignInView();
+			signInView.Show();
 		}
 	}
 }

@@ -14,6 +14,22 @@ namespace Moodify.ViewModel
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
+		public string VM_UserName
+		{
+			get
+			{
+				return this.model.UserName;
+			}
+		}
+
+		public string VM_Password
+		{
+			get
+			{
+				return this.model.Password;
+			}
+		}
+
 		public void NotifyPropertyChanged(string propName)
 		{
 			this.model = new LoginWindowModel();
