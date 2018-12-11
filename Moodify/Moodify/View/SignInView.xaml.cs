@@ -30,18 +30,20 @@ namespace Moodify.View
 
 		}
 
-		public void Login_Click(object sender, RoutedEventArgs e)
+		//public void Login_Click(object sender, RoutedEventArgs e)
+		//{
+
+		//}
+
+		public void Cancel_Click(object sender, RoutedEventArgs e)
 		{
-
+			this.Close();
+			//Window current = (Window)sender;
+			//current.Close();
 		}
+		//public void Reset_Click(object sender, RoutedEventArgs e)
+		//{
 
-		public void button2_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-		public void button3_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
+		//}
 	}
 }
