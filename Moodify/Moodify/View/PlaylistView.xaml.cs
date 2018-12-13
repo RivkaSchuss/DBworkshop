@@ -20,10 +20,10 @@ namespace Moodify.View
     /// </summary>
     public partial class PlaylistView : Window
     {
-        public PlaylistView(IMyPlaylistsVM viewModel)
+        public PlaylistView(int playlistId)
         {
             InitializeComponent();
-            this.DataContext = viewModel;
+            //this.DataContext = viewModel;
         }
     }
 }

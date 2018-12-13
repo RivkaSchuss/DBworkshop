@@ -20,10 +20,22 @@ namespace Moodify.View
 	/// </summary>
 	public partial class MyPlaylists : UserControl
 	{
+        public IMyPlaylistsVM viewModel;
+        public ICommand openPlaylist;
+
 		public MyPlaylists()
 		{
 			InitializeComponent();
-            this.DataContext = new MyPlaylistsViewModel();
+            this.viewModel = new MyPlaylistsViewModel();
+            this.DataContext = this.viewModel;
 		}
-	}
+
+        //private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        //{
+          //  PlaylistView playlistView = new PlaylistView(this.viewModel);
+            //playlistView.Show();
+        //}
+
+        //public
+    }
 }

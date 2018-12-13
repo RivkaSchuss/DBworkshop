@@ -13,7 +13,11 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding PlaylistName}"/>
+                        <Button Text="{Binding PlaylistName}">
+                            <TextBlock.InputBindings>
+                                <MouseBinding Command="{Binding OpenPlaylist}" CommandParameter="{Binding PlaylistId}" MouseAction="LeftDoubleClick"/>
+                            </TextBlock.InputBindings>
+                        </Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
