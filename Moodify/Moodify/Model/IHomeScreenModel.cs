@@ -10,6 +10,6 @@ namespace Moodify.Model
     interface IHomeScreenModel : INotifyPropertyChanged
     {
         //ObservableCollection<>
-        string UserName { get; set; }
+        
     }
 }

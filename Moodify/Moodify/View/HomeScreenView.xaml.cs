@@ -29,22 +29,10 @@ namespace Moodify.View
 			this.homeScreenVM = new HomeScreenViewModel();
 			this.DataContext = this.homeScreenVM;
 
-			LoginWindowView loginWindow = new LoginWindowView();
+			//LoginWindowView loginWindow = new LoginWindowView();
 			//loginWindow.
 		}
 
-		public void OnRegister(object sender, RoutedEventArgs e)
-		{
-			LoginWindowView loginWindow = new LoginWindowView();
-			loginWindow.Show();
-		}
-
-		public void OnSignIn(object sender, RoutedEventArgs e)
-		{
-			//LoginWindowView loginWindow = new LoginWindowView();
-			//loginWindow.Show();
-			SignInView signInView = new SignInView(this.homeScreenVM);
-			signInView.Show();
-		}
+		
 	}
 }

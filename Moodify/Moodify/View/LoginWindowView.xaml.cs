@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moodify.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace Moodify.View
 	/// </summary>
 	public partial class LoginWindowView : Window
 	{
-		public LoginWindowView()
+		public LoginWindowView(IWelcomeScreenVM welcomeScreenVM)
 		{
 			InitializeComponent();
+			this.DataContext = welcomeScreenVM;
 		}
 
 		public void Submit_Click(object sender, RoutedEventArgs e)
@@ -30,16 +32,11 @@ namespace Moodify.View
 
 		}
 
-		public void Login_Click(object sender, RoutedEventArgs e)
-		{
+		//public void button2_Click(object sender, RoutedEventArgs e)
+		//{
 
-		}
-
-		public void button2_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-		public void button3_Click(object sender, RoutedEventArgs e)
+		//}
+		public void Cancel_Click(object sender, RoutedEventArgs e)
 		{
 
 		}

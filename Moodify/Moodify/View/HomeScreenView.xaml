@@ -21,6 +21,9 @@
 			</Button.Style>
 		</Button>
 		<TabControl TabStripPlacement="Top" VerticalAlignment="Stretch">
+			<TabItem Header="Welcome" Height="Auto">
+				<local:WelcomeScreen/>
+			</TabItem>
 			<TabItem Header="Explore" Height="Auto">
 				<local:ExploreView/>
 			</TabItem>
@@ -28,8 +31,8 @@
 				<local:MyPlaylists/>
 			</TabItem>
 		</TabControl>
-		<Button Content="Sign in" Height="23" HorizontalAlignment="Center" Margin="183,204,0,0" Name="SignIn" VerticalAlignment="Top" Width="70" Click="OnSignIn"/>
-		<Button Content="Register" Height="23" HorizontalAlignment="Center" Margin="-50,204,0,0" Name="Register" VerticalAlignment="Top" Width="70" Click="OnRegister"/>
+		<!--<Button Content="Sign in" Height="23" HorizontalAlignment="Center" Margin="183,204,0,0" Name="SignIn" VerticalAlignment="Top" Width="70" Click="OnSignIn"/>
+		<Button Content="Register" Height="23" HorizontalAlignment="Center" Margin="-50,204,0,0" Name="Register" VerticalAlignment="Top" Width="70" Click="OnRegister"/>-->
 
 	</Grid>
 </Window>
