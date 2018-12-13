@@ -18,10 +18,26 @@ namespace Moodify.Model
         public MyPlaylistsModel()
         {
             this.playlistsDic = new Dictionary<int, Playlist>();
-            this.playlists = new ObservableCollection<Playlist>();
+           
+            addPlaylist();
+
         }
 
-
+        public void addPlaylist()
+        {
+            ObservableCollection<Playlist> testing = new ObservableCollection<Playlist>();
+            Playlist test = new Playlist();
+            test.PlaylistName = "Rivka's playlist";
+            Song song1 = new Song();
+            song1.SongName = "lalala";
+            Song song2 = new Song();
+            song2.SongName = "jdjdjd";
+            test.Songs = new ObservableCollection<Song>();
+            test.Songs.Add(song1);
+            test.Songs.Add(song2);
+            testing.Add(test);
+            this.Playlists = testing;
+        }
 
         public void NotifyPropertyChanged(string propName)
         {

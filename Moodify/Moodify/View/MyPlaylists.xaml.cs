@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moodify.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Moodify.View
 		public MyPlaylists()
 		{
 			InitializeComponent();
+            this.DataContext = new MyPlaylistsViewModel();
 		}
 	}
 }

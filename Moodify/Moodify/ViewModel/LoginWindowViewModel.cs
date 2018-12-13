@@ -12,6 +12,7 @@ namespace Moodify.ViewModel
 	{
 		private ILoginWindowModel model;
 
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		public string VM_UserName
