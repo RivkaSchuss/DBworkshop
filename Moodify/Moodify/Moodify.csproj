@@ -62,8 +62,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\Artist.cs" />
+    <Compile Include="Helpers\ConnectionStatus.cs" />
     <Compile Include="Helpers\Genre.cs" />
     <Compile Include="Helpers\Song.cs" />
+    <Compile Include="Helpers\User.cs" />
     <Compile Include="Model\ExploreModel.cs" />
     <Compile Include="Model\IExploreModel.cs" />
     <Compile Include="Model\IHomeScreenModel.cs" />

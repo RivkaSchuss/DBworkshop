@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Moodify.View"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		mc:Ignorable="d"
-        Title="MainWindow" Height="360" Width="640">
+        Title="Moodify" Height="360" Width="640">
 	<Grid>
-		<Button>
+		<!--<Button>
 			<Button.Style>
 				<Style TargetType="Button">
 					<Setter Property="Background" Value="White"/>
@@ -19,7 +19,7 @@
 					</Style.Triggers>
 				</Style>
 			</Button.Style>
-		</Button>
+		</Button>-->
 		<TabControl TabStripPlacement="Top" VerticalAlignment="Stretch">
 			<TabItem Header="Welcome" Height="Auto">
 				<local:WelcomeScreen/>

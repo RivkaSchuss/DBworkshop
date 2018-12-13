@@ -28,9 +28,6 @@ namespace Moodify.View
 			InitializeComponent();
 			this.homeScreenVM = new HomeScreenViewModel();
 			this.DataContext = this.homeScreenVM;
-
-			//LoginWindowView loginWindow = new LoginWindowView();
-			//loginWindow.
 		}
 
 		

@@ -4,38 +4,16 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         Title="Registration" Height="387" Width="528" Background="Black">
 	<Grid  Height="350" Width="525" Background="LightBlue">
 		<TextBlock Height="23" HorizontalAlignment="Left" Margin="10,5,0,0" Name="textBlockHeading" Text="Registration:" VerticalAlignment="Top" Width="110"  FontSize="17" FontStretch="ExtraCondensed"/>
-		<!--Button as a Link button using style-->
-		<!--<Button Margin="451,5,12,288" Content="Login" Cursor="Hand" Click="Login_Click">
-			<Button.Template>
-				<ControlTemplate TargetType="Button">
-					<TextBlock TextDecorations="Underline">  
-                    <ContentPresenter />
-					</TextBlock>
-				</ControlTemplate>
-			</Button.Template>
-			<Button.Style>
-				<Style TargetType="Button">
-					<Setter Property="Foreground" Value="Navy" />
-					<Style.Triggers>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter Property="Foreground" Value="Red" />
-						</Trigger>
-					</Style.Triggers>
-				</Style>
-			</Button.Style>
-		</Button>-->
-		<!--end Button as a Link button using style-->
 		<Grid Margin="31,0,29,23" Background="White" Height="264" VerticalAlignment="Bottom">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="252*" />
-				<!--   <RowDefinition Height="12*" />-->
 			</Grid.RowDefinitions>
 			<TextBlock Height="20" HorizontalAlignment="Left" Margin="67,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
-			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,20,0,0" Name="textBlockFirstname" Text="User Name:" VerticalAlignment="Top" Width="110" />
+			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,20,0,0" Name="textBlockUserName" Text="User Name:" VerticalAlignment="Top" Width="110" />
 			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,50,0,0" Name="textBlockEmailId" Text="Email:" VerticalAlignment="Top" Width="110" />
 			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,80,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110"  />
 			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,107,0,0" Name="textBlockConfirmPwd" Text="ConfirmPassword:" VerticalAlignment="Top" Width="110" Grid.RowSpan="2" />
-			<TextBox Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
+			<TextBox Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="textBoxUserName" VerticalAlignment="Top" Width="222" />
 			<TextBox Height="23" HorizontalAlignment="Left" Margin="183,50,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="222" />
 			<PasswordBox Height="23" HorizontalAlignment="Left" Margin="183,80,0,0" Name="passwordBox1" VerticalAlignment="Top" Width="222" />
 			<PasswordBox Height="23" HorizontalAlignment="Left" Margin="183,107,0,0" Name="passwordBoxConfirm" VerticalAlignment="Top" Width="222" />
