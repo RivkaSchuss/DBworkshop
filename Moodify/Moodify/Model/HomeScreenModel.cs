@@ -11,7 +11,6 @@ namespace Moodify.Model
     class HomeScreenModel : IHomeScreenModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string username = "asd";
 
         public void NotifyPropertyChanged(string propName)
         {
@@ -21,17 +20,6 @@ namespace Moodify.Model
             }
         }
 
-        public string UserName
-        {
-            set
-            {
-                this.username = value;
-                this.NotifyPropertyChanged("UserName");
-            }
-            get
-            {
-                return this.username;
-            }
-        }
+
     }
 }

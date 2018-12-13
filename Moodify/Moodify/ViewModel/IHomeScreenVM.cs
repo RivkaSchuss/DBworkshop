@@ -9,7 +9,7 @@ namespace Moodify.ViewModel
 {
 	public interface IHomeScreenVM : INotifyPropertyChanged
 	{
-		string VM_UserName { get; }
+		
 		
 	}
 }

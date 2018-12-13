@@ -69,16 +69,20 @@
     <Compile Include="Model\IHomeScreenModel.cs" />
     <Compile Include="Model\ILoginWindowModel.cs" />
     <Compile Include="Model\IMyPlaylistsModel.cs" />
+    <Compile Include="Model\IWelcomeScreenModel.cs" />
     <Compile Include="Model\LoginWindowModel.cs" />
     <Compile Include="Model\MyPlaylistsModel.cs" />
+    <Compile Include="Model\WelcomeScreenModel.cs" />
     <Compile Include="Helpers\Playlist.cs" />
     <Compile Include="ViewModel\ExploreViewModel.cs" />
     <Compile Include="ViewModel\IExploreVM.cs" />
     <Compile Include="ViewModel\IHomeScreenVM.cs" />
     <Compile Include="ViewModel\ILoginWindowViewModel.cs" />
     <Compile Include="ViewModel\IMyPlaylistsVM.cs" />
+    <Compile Include="ViewModel\IWelcomeScreenVM.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MyPlaylistsViewModel.cs" />
+    <Compile Include="ViewModel\WelcomeScreenViewModel.cs" />
     <Compile Include="View\ExploreView.xaml.cs">
       <DependentUpon>ExploreView.xaml</DependentUpon>
     </Compile>
@@ -93,6 +97,9 @@
     </Compile>
     <Compile Include="View\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WelcomeScreen.xaml.cs">
+      <DependentUpon>WelcomeScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="View\ExploreView.xaml">
       <SubType>Designer</SubType>
@@ -125,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SignInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WelcomeScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

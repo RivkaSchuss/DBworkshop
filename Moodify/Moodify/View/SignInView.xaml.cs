@@ -20,32 +20,29 @@ namespace Moodify.View
 	/// </summary>
 	public partial class SignInView : Window
 	{
-		public SignInView(IHomeScreenVM homeScreenVM)
+		private string userName;
+		private IWelcomeScreenVM welcomeScreenVM;
+		private WelcomeScreen welcomeScreen;
+
+		public SignInView(WelcomeScreen welcomeScreen)
 		{
 			InitializeComponent();
-			this.DataContext = homeScreenVM;
+			this.welcomeScreen = welcomeScreen;
+			//this.welcomeScreenVM = welcomeScreenVM;
+			this.DataContext = welcomeScreen;
+			//this.DataContext = welcomeScreenVM;
 		}
 
 
 		public void Submit_Click(object sender, RoutedEventArgs e)
 		{
-
+			this.welcomeScreen.TrySignIn();
 		}
 
-		//public void Login_Click(object sender, RoutedEventArgs e)
-		//{
-
-		//}
 
 		public void Cancel_Click(object sender, RoutedEventArgs e)
 		{
 			this.Close();
-			//Window current = (Window)sender;
-			//current.Close();
-		}
-		public void Reset_Click(object sender, RoutedEventArgs e)
-		{
-
 		}
 	}
 }

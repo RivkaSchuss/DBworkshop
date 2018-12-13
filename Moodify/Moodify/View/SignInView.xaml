@@ -12,8 +12,8 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			<TextBlock Height="20" HorizontalAlignment="Left" Margin="67,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
 			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,20,0,0" Name="textBlockUserName" Text="User Name:" VerticalAlignment="Top" Width="110" />
 			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,50,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110" />
-			<TextBox Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="texBoxUserName" VerticalAlignment="Top" Width="222" /> <!--Text="{Binding VM_UserName}"-->
-			<PasswordBox Height="23" HorizontalAlignment="Left" Margin="183,50,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="222" />
+			<TextBox Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="texBoxUserName" VerticalAlignment="Top" Width="222" Text="{Binding userName}"/> <!--Text="{Binding VM_UserName}"-->
+			<TextBox Height="23" HorizontalAlignment="Left" Margin="183,50,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="222" Text="{Binding password}"/>
 			<Button Content="Submit" Height="23" HorizontalAlignment="Left" Margin="183,80,0,0" Name="Submit" VerticalAlignment="Top" Width="70" Click="Submit_Click" /> 
 			<!--<Button Content="Reset" Height="23" HorizontalAlignment="Left" Margin="259,80,0,0" Name="Reset" VerticalAlignment="Top" Width="70" Click="Reset_Click" />-->
 			<Button Content="Cancel" Height="23" HorizontalAlignment="Right" Margin="0,80,60,0" Name="Cancel" VerticalAlignment="Top" Width="70" Click="Cancel_Click" />
