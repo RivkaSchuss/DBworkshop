@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-	class MyPlaylistsViewModel : IMyPlaylistsVM
+	public class MyPlaylistsViewModel : IMyPlaylistsVM
 	{
         private IMyPlaylistsModel model;
 

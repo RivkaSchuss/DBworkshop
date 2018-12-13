@@ -36,6 +36,18 @@ namespace Moodify.Model
             test.Songs.Add(song1);
             test.Songs.Add(song2);
             testing.Add(test);
+
+            Playlist test2 = new Playlist();
+            test2.PlaylistName = "Avihay's playlist";
+            Song song3 = new Song();
+            song3.SongName = "lalala";
+            Song song4 = new Song();
+            song4.SongName = "jdjdjd";
+            test2.Songs = new ObservableCollection<Song>();
+            test2.Songs.Add(song3);
+            test2.Songs.Add(song4);
+            testing.Add(test2);
+
             this.Playlists = testing;
         }
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-	interface IMyPlaylistsVM : INotifyPropertyChanged
+	public interface IMyPlaylistsVM : INotifyPropertyChanged
 	{
         Dictionary<int, Playlist> VM_PlaylistsDic { get; }
         ObservableCollection<Playlist> VM_Playlists { get; }
