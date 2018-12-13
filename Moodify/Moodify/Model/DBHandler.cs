@@ -74,14 +74,10 @@ namespace Moodify.Model
                     return false;
                 }
                 this.CloseConnection();
-                if (status < 1)
-                {
-                    // no rows were affected, error.
-                    return false;
-                }
+                return status > 0; // returns true if any row was affected by the query, false o.w.
             }
-            // successful query
-            return true;
+            // connection failed.
+            return false;
         }
 
         /// <summary>
