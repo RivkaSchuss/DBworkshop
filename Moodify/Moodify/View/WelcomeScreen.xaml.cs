@@ -1,4 +1,5 @@
-﻿using Moodify.ViewModel;
+﻿using Moodify.Helpers;
+using Moodify.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +24,15 @@ namespace Moodify.View
     {
 		private IWelcomeScreenVM viewModel;
 
-		public string userName = "";
-		public string password = "";
+		private ConnectionStatus connection = ConnectionStatus.Instance;
 
-        public WelcomeScreen()
+		public string UserName { get; set; } = "";
+
+		public string Password { get; set; } = "";
+
+		//public bool IsConnected { get; set; } = false;
+
+		public WelcomeScreen()
         {
             InitializeComponent();
 			viewModel = new WelcomeScreenViewModel();
@@ -51,7 +57,11 @@ namespace Moodify.View
 
 		public void TrySignIn()
 		{
-			this.viewModel.TrySignIn(this.userName, this.password);
+			bool result = this.viewModel.TrySignIn(this.UserName, this.Password);
+			if (!result)
+			{
+				//connection.IsConnected = true;
+			}
 		}
 	}
 }
