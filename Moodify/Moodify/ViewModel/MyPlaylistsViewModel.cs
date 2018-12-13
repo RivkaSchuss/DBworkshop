@@ -1,6 +1,8 @@
-﻿using Moodify.Model;
+﻿using Moodify.Helpers;
+using Moodify.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,14 @@ namespace Moodify.ViewModel
 	{
         private IMyPlaylistsModel model;
 
-        public string VM_PlaylistName
+        public Dictionary<int, Playlist> VM_PlaylistsDic
         {
-            get { return this.model.PlaylistName; }
+            get { return this.model.PlaylistsDic; }
+        }
+
+        public ObservableCollection<Playlist> VM_Playlists
+        {
+            get { return this.model.Playlists; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

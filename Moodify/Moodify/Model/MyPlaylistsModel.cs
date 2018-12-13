@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Moodify.Helpers;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -10,12 +12,16 @@ namespace Moodify.Model
     class MyPlaylistsModel : IMyPlaylistsModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string playlistName;
+        private Dictionary<int, Playlist> playlistsDic;
+        private ObservableCollection<Playlist> playlists;
 
         public MyPlaylistsModel()
         {
-
+            this.playlistsDic = new Dictionary<int, Playlist>();
+            this.playlists = new ObservableCollection<Playlist>();
         }
+
+
 
         public void NotifyPropertyChanged(string propName)
         {
@@ -25,16 +31,29 @@ namespace Moodify.Model
             }
         }
 
-        public string PlaylistName
+        public ObservableCollection<Playlist> Playlists
         {
             set
             {
-                this.playlistName = value;
-                this.NotifyPropertyChanged("PlaylistName");
+                this.playlists = value;
+                this.NotifyPropertyChanged("Playlists");
             }
             get
             {
-                return this.playlistName;
+                return this.playlists;
+            }
+        }
+
+        public Dictionary<int, Playlist> PlaylistsDic
+        {
+            set
+            {
+                this.playlistsDic = value;
+                this.NotifyPropertyChanged("PlaylistsDic");
+            }
+            get
+            {
+                return this.playlistsDic;
             }
         }
     }
