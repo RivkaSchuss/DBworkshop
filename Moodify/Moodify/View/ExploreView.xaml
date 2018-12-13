@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d">
 	<!--Title="ExploreView" Height="450" Width="800">-->
-    <Grid>
-		
-	</Grid>
+    <StackPanel>
+        <Label HorizontalAlignment="Left" Content="Create your playlist:" FontSize="25" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <ComboBox ItemsSource="{Binding VM_MoodOptions}">
+        </ComboBox>
+    </StackPanel>
 </UserControl>
