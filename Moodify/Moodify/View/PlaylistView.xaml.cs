@@ -1,4 +1,5 @@
-﻿using Moodify.ViewModel;
+﻿using Moodify.Helpers;
+using Moodify.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,11 @@ namespace Moodify.View
     /// </summary>
     public partial class PlaylistView : Window
     {
-        public PlaylistView(IMyPlaylistsVM viewModel)
+        public PlaylistView(Dictionary<int, Playlist> playlists, int playlistId)
         {
             InitializeComponent();
-            this.DataContext = viewModel;
+            Playlist currentPlaylist = playlists[playlistId];
+            this.DataContext = new PlaylistViewModel(currentPlaylist);
         }
     }
 }

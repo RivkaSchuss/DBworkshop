@@ -9,11 +9,12 @@
 	<!--Title="MyPlaylists" Height="450" Width="800">-->
     <StackPanel>
         <Label HorizontalAlignment="Center" Content="My Playlists" FontSize="25" FontWeight="Bold" Foreground="Blue" Padding="10"/>
-        <ListBox ItemsSource="{Binding VM_Playlists}" ScrollViewer.CanContentScroll="True" Width="Auto" Height="Auto">
+        <ListBox ItemsSource="{Binding VM_PlaylistsDic}" ScrollViewer.CanContentScroll="True" Width="Auto" Height="Auto">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="{Binding PlaylistName}" Click="OpenPlaylist_Click" >
+                    <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                        <TextBlock Text="{Binding Path=Key}" Margin="10, 10, 10, 10"/>
+                        <Button Content="{Binding Path=Value.PlaylistName}" CommandParameter="{Binding Path=Key}" Click="OpenPlaylist_Click" >
                         </Button>
                     </StackPanel>
                 </DataTemplate>

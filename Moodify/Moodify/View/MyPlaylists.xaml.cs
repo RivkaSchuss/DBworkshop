@@ -21,19 +21,19 @@ namespace Moodify.View
 	public partial class MyPlaylists : UserControl
 	{
         public IMyPlaylistsVM viewModel;
-        public ICommand openPlaylist;
 
 		public MyPlaylists()
 		{
 			InitializeComponent();
             this.viewModel = new MyPlaylistsViewModel();
             this.DataContext = this.viewModel;
-		}
+        }
 
         private void OpenPlaylist_Click(object sender, RoutedEventArgs e)
         {
-            string playlistName = sender.ToString();
-            PlaylistView playlistView = new PlaylistView(this.viewModel);
+            Button button = (Button)sender;
+            int playlistId = (int) button.CommandParameter;
+            PlaylistView playlistView = new PlaylistView(this.viewModel.VM_PlaylistsDic, playlistId);
             playlistView.Show();
         }
 

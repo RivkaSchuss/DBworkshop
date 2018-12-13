@@ -72,6 +72,7 @@
     <Compile Include="Model\IWelcomeScreenModel.cs" />
     <Compile Include="Model\LoginWindowModel.cs" />
     <Compile Include="Model\MyPlaylistsModel.cs" />
+    <Compile Include="Model\PlaylistModel.cs" />
     <Compile Include="Model\WelcomeScreenModel.cs" />
     <Compile Include="Helpers\Playlist.cs" />
     <Compile Include="ViewModel\ExploreViewModel.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="ViewModel\IWelcomeScreenVM.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MyPlaylistsViewModel.cs" />
+    <Compile Include="ViewModel\PlaylistViewModel.cs" />
     <Compile Include="ViewModel\WelcomeScreenViewModel.cs" />
     <Compile Include="View\ExploreView.xaml.cs">
       <DependentUpon>ExploreView.xaml</DependentUpon>

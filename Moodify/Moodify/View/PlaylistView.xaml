@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d"
-        Title="PlaylistView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Playlist" Height="450" Width="800">
+    <StackPanel>
+        <Label HorizontalAlignment="Center" Content="{Binding VM_Playlist.PlaylistName}" FontSize="25" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <ListBox ItemsSource="{Binding VM_Playlist.Songs}" ScrollViewer.CanContentScroll="True" Width="Auto" Height="Auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                        <TextBlock Text="{Binding SongName}" Margin="10, 10, 10, 10"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </StackPanel>
 </Window>
