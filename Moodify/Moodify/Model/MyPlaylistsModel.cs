@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Moodify.Helpers;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -10,11 +12,43 @@ namespace Moodify.Model
     class MyPlaylistsModel : IMyPlaylistsModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string playlistName;
+        private Dictionary<int, Playlist> playlistsDic;
+        private ObservableCollection<Playlist> playlists;
 
         public MyPlaylistsModel()
         {
+            this.playlistsDic = new Dictionary<int, Playlist>();
+           
+            addPlaylist();
 
+        }
+
+        public void addPlaylist()
+        {
+            ObservableCollection<Playlist> testing = new ObservableCollection<Playlist>();
+            Playlist test = new Playlist();
+            test.PlaylistName = "Rivka's playlist";
+            Song song1 = new Song();
+            song1.SongName = "lalala";
+            Song song2 = new Song();
+            song2.SongName = "jdjdjd";
+            test.Songs = new ObservableCollection<Song>();
+            test.Songs.Add(song1);
+            test.Songs.Add(song2);
+            testing.Add(test);
+
+            Playlist test2 = new Playlist();
+            test2.PlaylistName = "Avihay's playlist";
+            Song song3 = new Song();
+            song3.SongName = "lalala";
+            Song song4 = new Song();
+            song4.SongName = "jdjdjd";
+            test2.Songs = new ObservableCollection<Song>();
+            test2.Songs.Add(song3);
+            test2.Songs.Add(song4);
+            testing.Add(test2);
+
+            this.Playlists = testing;
         }
 
         public void NotifyPropertyChanged(string propName)
@@ -25,16 +59,29 @@ namespace Moodify.Model
             }
         }
 
-        public string PlaylistName
+        public ObservableCollection<Playlist> Playlists
         {
             set
             {
-                this.playlistName = value;
-                this.NotifyPropertyChanged("PlaylistName");
+                this.playlists = value;
+                this.NotifyPropertyChanged("Playlists");
             }
             get
             {
-                return this.playlistName;
+                return this.playlists;
+            }
+        }
+
+        public Dictionary<int, Playlist> PlaylistsDic
+        {
+            set
+            {
+                this.playlistsDic = value;
+                this.NotifyPropertyChanged("PlaylistsDic");
+            }
+            get
+            {
+                return this.playlistsDic;
             }
         }
     }
