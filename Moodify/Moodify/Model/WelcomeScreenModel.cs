@@ -1,4 +1,5 @@
 ﻿using Moodify.Helpers;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,19 +57,11 @@ namespace Moodify.Model
 
 		public bool TrySignIn(string userName, string password)
 		{
-			foreach (User user in userList)
-			{
-				if (user.UserName == userName)
-				{
-					if (user.Password == password)
-					{
-						connection.IsConnected = true;
-						connection.UserDetails = user;
-						return true;
-					}
-				}
-			}
-			return false;
+            DBHandler handler = DBHandler.Instance;
+            string query = $"SELECT user_id from users" +
+                $" where binary username = '{userName}' and binary password = '{password}'";
+            JArray result = handler.ExecuteWithResults(query);
+            return result != null && result.Count == 1; // true if the user exists in the DB.
 		}
 
 	}
