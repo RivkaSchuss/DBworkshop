@@ -63,7 +63,6 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\Artist.cs" />
     <Compile Include="Helpers\Genre.cs" />
-    <Compile Include="Helpers\OpenPlaylist.cs" />
     <Compile Include="Helpers\Song.cs" />
     <Compile Include="Model\ExploreModel.cs" />
     <Compile Include="Model\IExploreModel.cs" />

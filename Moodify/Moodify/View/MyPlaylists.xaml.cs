@@ -30,12 +30,12 @@ namespace Moodify.View
             this.DataContext = this.viewModel;
 		}
 
-        //private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        //{
-          //  PlaylistView playlistView = new PlaylistView(this.viewModel);
-            //playlistView.Show();
-        //}
+        private void OpenPlaylist_Click(object sender, RoutedEventArgs e)
+        {
+            string playlistName = sender.ToString();
+            PlaylistView playlistView = new PlaylistView(this.viewModel);
+            playlistView.Show();
+        }
 
-        //public
     }
 }
