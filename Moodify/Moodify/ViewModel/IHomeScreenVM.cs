@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-	interface IHomeScreenVM : INotifyPropertyChanged
+	public interface IHomeScreenVM : INotifyPropertyChanged
 	{
 		string VM_UserName { get; }
 		

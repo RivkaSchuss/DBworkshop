@@ -21,10 +21,13 @@ namespace Moodify.View
 	/// </summary>
 	public partial class HomeScreenView : Window
 	{
+		public IHomeScreenVM homeScreenVM;
+
 		public HomeScreenView()
 		{
 			InitializeComponent();
-			this.DataContext = new HomeScreenViewModel();
+			this.homeScreenVM = new HomeScreenViewModel();
+			this.DataContext = this.homeScreenVM;
 
 			LoginWindowView loginWindow = new LoginWindowView();
 			//loginWindow.
@@ -40,7 +43,7 @@ namespace Moodify.View
 		{
 			//LoginWindowView loginWindow = new LoginWindowView();
 			//loginWindow.Show();
-			SignInView signInView = new SignInView();
+			SignInView signInView = new SignInView(this.homeScreenVM);
 			signInView.Show();
 		}
 	}

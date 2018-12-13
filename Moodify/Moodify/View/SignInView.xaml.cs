@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moodify.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,10 @@ namespace Moodify.View
 	/// </summary>
 	public partial class SignInView : Window
 	{
-		public SignInView()
+		public SignInView(IHomeScreenVM homeScreenVM)
 		{
 			InitializeComponent();
+			this.DataContext = homeScreenVM;
 		}
 
 
@@ -41,9 +43,9 @@ namespace Moodify.View
 			//Window current = (Window)sender;
 			//current.Close();
 		}
-		//public void Reset_Click(object sender, RoutedEventArgs e)
-		//{
+		public void Reset_Click(object sender, RoutedEventArgs e)
+		{
 
-		//}
+		}
 	}
 }
