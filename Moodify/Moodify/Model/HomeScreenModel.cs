@@ -12,6 +12,8 @@ namespace Moodify.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+		public bool UserConnected { get; set; }
+
         public void NotifyPropertyChanged(string propName)
         {
             if (PropertyChanged != null)

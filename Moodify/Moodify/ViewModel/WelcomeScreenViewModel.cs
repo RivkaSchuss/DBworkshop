@@ -19,17 +19,17 @@ namespace Moodify.ViewModel
 			this.model = new WelcomeScreenModel();
 		}
 
-		public string VM_UserName
-		{
-			get
-			{
-				return this.model.UserName;
-			}
-			set
-			{
-				this.model.UserName = value;
-			}
-		}
+		//public string VM_UserName
+		//{
+		//	get
+		//	{
+		//		return this.model.UserName;
+		//	}
+		//	set
+		//	{
+		//		this.model.UserName = value;
+		//	}
+		//}
 
 		public void NotifyPropertyChanged(string propName)
 		{

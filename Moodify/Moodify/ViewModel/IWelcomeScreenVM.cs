@@ -9,7 +9,7 @@ namespace Moodify.ViewModel
 {
     public interface IWelcomeScreenVM : INotifyPropertyChanged
 	{
-		string VM_UserName { get; }
+		//string VM_UserName { get; }
 		bool TryAddUser(string userName, string Email, string Password);
 		bool TrySignIn(string userName, string password);
 	}
