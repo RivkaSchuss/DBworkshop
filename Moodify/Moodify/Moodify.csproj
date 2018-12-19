@@ -83,6 +83,7 @@
     <Compile Include="Helpers\Genre.cs" />
     <Compile Include="Helpers\Mood.cs" />
     <Compile Include="Helpers\Song.cs" />
+    <Compile Include="Model\CreatePlaylistModel.cs" />
     <Compile Include="Model\DBHandler.cs" />
     <Compile Include="Helpers\User.cs" />
     <Compile Include="Model\ExploreModel.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Model\PlaylistModel.cs" />
     <Compile Include="Model\WelcomeScreenModel.cs" />
     <Compile Include="Helpers\Playlist.cs" />
+    <Compile Include="ViewModel\CreatePlaylistVM.cs" />
     <Compile Include="ViewModel\ExploreViewModel.cs" />
     <Compile Include="ViewModel\IExploreVM.cs" />
     <Compile Include="ViewModel\IHomeScreenVM.cs" />
@@ -104,6 +106,9 @@
     <Compile Include="ViewModel\MyPlaylistsViewModel.cs" />
     <Compile Include="ViewModel\PlaylistViewModel.cs" />
     <Compile Include="ViewModel\WelcomeScreenViewModel.cs" />
+    <Compile Include="View\CreatePlaylistView.xaml.cs">
+      <DependentUpon>CreatePlaylistView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ExploreView.xaml.cs">
       <DependentUpon>ExploreView.xaml</DependentUpon>
     </Compile>
@@ -122,6 +127,10 @@
     <Compile Include="View\WelcomeScreen.xaml.cs">
       <DependentUpon>WelcomeScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\CreatePlaylistView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ExploreView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

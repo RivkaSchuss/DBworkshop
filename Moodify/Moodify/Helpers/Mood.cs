@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,45 +9,38 @@ namespace Moodify.Helpers
 {
     public class Mood
     {
-        private Genre genre;
-        private float tempo;
-        private string moodName;
 
+        public Mood(string moodName, Genre genre, float tempo)
+        {
+            this.MoodName = moodName;
+            this.Genre = genre;
+            this.Tempo = tempo;
+        }
 
         public Genre Genre
         {
-            get
-            {
-                return this.genre;
-            }
-            set
-            {
-                this.genre = value;
-            }
+            get;
+            set;
         }
+
 
         public float Tempo
         {
-            get
-            {
-                return this.tempo;
-            }
-            set
-            {
-                this.tempo = value;
-            }
+            get;
+            set;
+
+        }
+
+        public ObservableCollection<Song> Songs
+        {
+            get;
+            set;
         }
 
         public string MoodName
         {
-            get
-            {
-                return this.moodName;
-            }
-            set
-            {
-                this.moodName = value;
-            }
+            get;
+            set;
         }
     }
 }

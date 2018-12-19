@@ -29,19 +29,23 @@ namespace Moodify.ViewModel
             };
         }
 
-        public Mood VM_MoodChosen
+        public string VM_MoodChosen
         {
             get
             {
                 return this.model.MoodChosen;
             }
+            set
+            {
+                this.model.MoodChosen = value;
+            }
         }
 
-        public ObservableCollection<Mood> VM_MoodOptions
+        public ObservableCollection<string> VM_MoodNames
         {
             get
             {
-                return this.model.MoodOptions;
+                return this.model.MoodNames;
             }
         }
     }

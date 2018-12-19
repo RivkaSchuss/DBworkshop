@@ -14,9 +14,16 @@ namespace Moodify.ViewModel
 	{
         private IMyPlaylistsModel model;
 
-        public MyPlaylistsViewModel()
+
+        public MyPlaylistsViewModel(int userId)
         {
-            this.model = new MyPlaylistsModel();
+            this.model = new MyPlaylistsModel(userId);
+        }
+
+        public int VM_UserId
+        {
+            get;
+            set;
         }
 
         public Dictionary<int, Playlist> VM_PlaylistsDic

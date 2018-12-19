@@ -20,10 +20,18 @@ namespace Moodify.View
 	/// </summary>
 	public partial class ExploreView : UserControl
 	{
+        private IExploreVM viewModel;
 		public ExploreView()
 		{
 			InitializeComponent();
-            this.DataContext = new ExploreViewModel();
+            this.viewModel = new ExploreViewModel();
+            this.DataContext = viewModel;
 		}
-	}
+
+        private void Custom_Button_Click(object sender, RoutedEventArgs e)
+        {
+            CreatePlaylistView view = new CreatePlaylistView();
+            view.Show();
+        }
+    }
 }

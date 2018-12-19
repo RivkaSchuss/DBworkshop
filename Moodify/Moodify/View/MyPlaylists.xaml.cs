@@ -21,11 +21,13 @@ namespace Moodify.View
 	public partial class MyPlaylists : UserControl
 	{
         public IMyPlaylistsVM viewModel;
+        private int userId;
 
 		public MyPlaylists()
 		{
 			InitializeComponent();
-            this.viewModel = new MyPlaylistsViewModel();
+            this.userId = 0;
+            this.viewModel = new MyPlaylistsViewModel(userId);
             this.DataContext = this.viewModel;
         }
 

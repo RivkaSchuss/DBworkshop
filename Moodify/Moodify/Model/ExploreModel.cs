@@ -12,13 +12,43 @@ namespace Moodify.Model
     class ExploreModel : IExploreModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private Mood mood;
+        private string mood;
         private ObservableCollection<Mood> moodOptions;
+
 
         public ExploreModel()
         {
-            addGenericMoods();
+            this.MoodOptions = AddGenericMoods();
+            this.MoodNames = new ObservableCollection<string>();
+            foreach (Mood name in this.moodOptions)
+            {
+                this.MoodNames.Add(name.MoodName);
+            }
+            
         }
+
+        public Playlist PlaylistChosen
+        {
+            get;
+            set;
+        }
+
+        public void AddToUserPlaylist(string moodName)
+        {
+            Mood moodChosen = null;
+            foreach (Mood mood in this.moodOptions)
+            {
+                if (moodName.Equals(mood.MoodName))
+                {
+                    moodChosen = mood;
+                    break;
+                }
+            }
+            Playlist playlist = new Playlist();
+            playlist.Songs = moodChosen.Songs;
+
+        }
+        
 
         public void NotifyPropertyChanged(string propName)
         {
@@ -28,16 +58,23 @@ namespace Moodify.Model
             }
         }
 
-        public Mood MoodChosen
+        public string MoodChosen
         {
             set
             {
                 this.mood = value;
+                AddToUserPlaylist(this.mood);
             }
             get
             {
                 return this.mood;
             }
+        }
+
+        public ObservableCollection<string> MoodNames
+        {
+            get;
+            set;
         }
 
         public ObservableCollection<Mood> MoodOptions
@@ -52,22 +89,18 @@ namespace Moodify.Model
             }
         }
 
-        public void addGenericMoods()
+        public ObservableCollection<Mood> AddGenericMoods()
         {
             ObservableCollection<Mood> generics = new ObservableCollection<Mood>();
-            Mood mood1 = new Mood();
-            Mood mood2 = new Mood();
-            Mood mood3 = new Mood();
-            Mood mood4 = new Mood();
-            mood1.MoodName = "Fun";
-            mood2.MoodName = "Chilled";
-            mood3.MoodName = "Party";
-            mood4.MoodName = "Romantic";
-            generics.Add(mood1);
-            generics.Add(mood2);
-            generics.Add(mood3);
-            generics.Add(mood4);
-            this.MoodOptions = generics;
+            int lowTempo = 40;
+            int mediumTempo = 100;
+            int highTempo = 140;
+            generics.Add(new Mood("Fun", new Genre(), highTempo));
+            generics.Add(new Mood("Chill", new Genre(), lowTempo));
+            generics.Add(new Mood("Party", new Genre(), highTempo));
+            generics.Add(new Mood("Romantic", new Genre(), mediumTempo));
+            generics.Add(new Mood("Sad", new Genre(), lowTempo));
+            return generics;
 
         }
     }

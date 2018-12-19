@@ -8,6 +8,9 @@
 	<!--Title="ExploreView" Height="450" Width="800">-->
     <StackPanel>
         <Label HorizontalAlignment="Left" Content="Create your playlist:" FontSize="25" FontWeight="Bold" Foreground="Blue" Padding="10"/>
-        <ComboBox ItemsSource="{Binding VM_MoodOptions}" />
+        <ComboBox ItemsSource="{Binding VM_MoodNames}" 
+                  SelectedValue="{Binding VM_MoodChosen}"
+                  />
+        <Button Content="Custom Playlist" Click="Custom_Button_Click" Width="95" HorizontalAlignment="Left"></Button>
     </StackPanel>
 </UserControl>

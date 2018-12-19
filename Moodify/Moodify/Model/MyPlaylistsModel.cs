@@ -14,18 +14,31 @@ namespace Moodify.Model
         public event PropertyChangedEventHandler PropertyChanged;
         private Dictionary<int, Playlist> playlistsDic;
         private ObservableCollection<Playlist> playlists;
+        private int userId;
 
-        public MyPlaylistsModel()
+        public MyPlaylistsModel(int userId)
         {
-            this.playlistsDic = new Dictionary<int, Playlist>();
+            this.UserId = userId;
+            this.playlistsDic = AddPlaylist();
            
-            addPlaylist();
-
         }
 
-        public void addPlaylist()
+        public int UserId
         {
-            Dictionary<int, Playlist> testing = new Dictionary<int, Playlist>();
+            get
+            {
+                return this.userId;
+            }
+            set
+            {
+                this.userId = value;
+            }
+        }
+        public Dictionary<int, Playlist> AddPlaylist()
+        {
+            int id = this.UserId; 
+
+            Dictionary<int, Playlist> playlists = new Dictionary<int, Playlist>();
 
             Playlist test = new Playlist();
             test.PlaylistName = "Rivka's playlist";
@@ -36,7 +49,7 @@ namespace Moodify.Model
             test.Songs = new ObservableCollection<Song>();
             test.Songs.Add(song1);
             test.Songs.Add(song2);
-            testing[1] = test;
+            playlists[1] = test;
 
             Playlist test2 = new Playlist();
             test2.PlaylistName = "Avihay's playlist";
@@ -47,9 +60,9 @@ namespace Moodify.Model
             test2.Songs = new ObservableCollection<Song>();
             test2.Songs.Add(song3);
             test2.Songs.Add(song4);
-            testing[2] = test2;
+            playlists[2] = test2;
 
-            this.PlaylistsDic = testing;
+            return playlists;
         }
 
         public void NotifyPropertyChanged(string propName)
