@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d"
         Title="CreatePlaylist" Height="450" Width="800">
-    <Grid>
+    <Grid Background="LightBlue">
         
     </Grid>
 </Window>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Moodify.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background ="LightBlue">
 		<Button Content="Sign in" Height="50" HorizontalAlignment="Center" Margin="120,120,0,0" Name="SignIn" VerticalAlignment="Top" Width="80" Click="OnSignIn"/>
 		<Button Content="Register" Height="50" HorizontalAlignment="Center" Margin="-130,120,0,0" Name="Register" VerticalAlignment="Top" Width="80" Click="OnRegister"/>
 	</Grid>

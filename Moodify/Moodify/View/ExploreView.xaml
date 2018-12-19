@@ -6,11 +6,13 @@
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d">
 	<!--Title="ExploreView" Height="450" Width="800">-->
-    <StackPanel>
-        <Label HorizontalAlignment="Left" Content="Create your playlist:" FontSize="25" FontWeight="Bold" Foreground="Blue" Padding="10"/>
-        <ComboBox ItemsSource="{Binding VM_MoodNames}" 
+    <StackPanel Background="LightBlue">
+        <Label HorizontalAlignment="Left" Content="Choose a built in playlist:" FontSize="20" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <ComboBox Margin ="10, 10, 10, 10" ItemsSource="{Binding VM_MoodNames}" 
                   SelectedValue="{Binding VM_MoodChosen}"
+                  
                   />
-        <Button Content="Custom Playlist" Click="Custom_Button_Click" Width="95" HorizontalAlignment="Left"></Button>
+        <Label HorizontalAlignment="Left" Content="Or create your own:" FontSize="20" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <Button Margin ="10, 10, 10, 10" Content="Custom" Click="Custom_Button_Click" Width="95" HorizontalAlignment="Left"></Button>
     </StackPanel>
 </UserControl>
