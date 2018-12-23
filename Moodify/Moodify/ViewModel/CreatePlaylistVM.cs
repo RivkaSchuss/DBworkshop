@@ -39,5 +39,17 @@ namespace Moodify.ViewModel
                 this.model.PlaylistOptions = value;
             }
         }
+
+        public Boolean VM_PlaylistSelected
+        {
+            get
+            {
+                return this.model.PlaylistSelected;
+            }
+            set
+            {
+                this.model.PlaylistSelected = value;
+            }
+        }
     }
 }

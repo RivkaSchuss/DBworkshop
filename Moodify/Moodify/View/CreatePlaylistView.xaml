@@ -8,8 +8,23 @@
         Title="Create Playlist" Height="450" Width="800">
     <StackPanel Background="LightBlue">
         <Label HorizontalAlignment="Left" Content="Let's figure out your mood!" FontSize="30" FontWeight="Bold" Foreground="Blue" Padding="10"/>
-        <DataGrid ItemsSource="{Binding VM_PlaylistOptions}">
-            
+        <DataGrid ItemsSource="{Binding VM_PlaylistOptions}" SelectionMode="Single" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Playlist Name" Width="Auto" Binding="{Binding PlaylistName}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Songs" Width="Auto" IsReadOnly="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Songs}"></ComboBox>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowHeaderTemplate>
+                <DataTemplate>
+                    <CheckBox IsChecked="{Binding VM_PlaylistSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}"/>
+                </DataTemplate>
+            </DataGrid.RowHeaderTemplate>
         </DataGrid>
     </StackPanel>
 </Window>

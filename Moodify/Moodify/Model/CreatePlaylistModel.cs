@@ -31,6 +31,11 @@ namespace Moodify.Model
             get; set;
         }
 
+        public Boolean PlaylistSelected
+        {
+            get; set;
+        }
+
         public ObservableCollection<Playlist> AddExamplePlaylists()
         {
             ObservableCollection<Playlist> playlists = new ObservableCollection<Playlist>();

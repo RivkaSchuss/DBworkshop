@@ -11,9 +11,10 @@ namespace Moodify.Model
 {
     interface IExploreModel : INotifyPropertyChanged
     {
-        string MoodChosen { get; set; }
-        ObservableCollection<Mood> MoodOptions { get; set; }
-        ObservableCollection<string> MoodNames { get; set; }
+        Mood MoodChosen { get; set; }
+        Playlist PlaylistSelected { get; set; }
+        Dictionary<Mood, ObservableCollection<Playlist>> MoodDictionary { get; set; }
+        ObservableCollection<Playlist> PlaylistOptions { get; set; }
     }
 }
 

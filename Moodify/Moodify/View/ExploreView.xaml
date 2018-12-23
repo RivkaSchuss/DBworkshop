@@ -8,10 +8,19 @@
 	<!--Title="ExploreView" Height="450" Width="800">-->
     <StackPanel Background="LightBlue">
         <Label HorizontalAlignment="Left" Content="Choose a built in playlist:" FontSize="20" FontWeight="Bold" Foreground="Blue" Padding="10"/>
-        <ComboBox Margin ="10, 10, 10, 10" ItemsSource="{Binding VM_MoodNames}" 
-                  SelectedValue="{Binding VM_MoodChosen}">
-           
+        <ComboBox Text="Mood" Margin ="10, 10, 10, 10" ItemsSource="{Binding VM_MoodDictionary}" SelectedValuePath="Key"
+                  SelectedValue="{Binding VM_MoodChosen, Mode=TwoWay}" DisplayMemberPath="Key.MoodName">
         </ComboBox>
+        <DataGrid ItemsSource="{Binding VM_PlaylistOptions}" SelectionMode="Single" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Playlist Name" Width="Auto" Binding="{Binding PlaylistName}" IsReadOnly="True"></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowHeaderTemplate>
+                <DataTemplate>
+                    <CheckBox IsChecked="{Binding VM_PlaylistSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}"/>
+                </DataTemplate>
+            </DataGrid.RowHeaderTemplate>
+        </DataGrid>
                   
     
         <Label HorizontalAlignment="Left" Content="Or create your own:" FontSize="20" FontWeight="Bold" Foreground="Blue" Padding="10"/>

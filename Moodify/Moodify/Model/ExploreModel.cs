@@ -12,19 +12,11 @@ namespace Moodify.Model
     class ExploreModel : IExploreModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string mood;
-        private ObservableCollection<Mood> moodOptions;
-
+        private Mood mood;
 
         public ExploreModel()
         {
-            this.MoodOptions = AddGenericMoods();
-            this.MoodNames = new ObservableCollection<string>();
-            foreach (Mood name in this.moodOptions)
-            {
-                this.MoodNames.Add(name.MoodName);
-            }
-            
+            this.MoodDictionary = CreateDictionary();
         }
 
         public Playlist PlaylistChosen
@@ -33,19 +25,35 @@ namespace Moodify.Model
             set;
         }
 
-        public void AddToUserPlaylist(string moodName)
+        public Dictionary<Mood, ObservableCollection<Playlist>> MoodDictionary
         {
-            Mood moodChosen = null;
-            foreach (Mood mood in this.moodOptions)
-            {
-                if (moodName.Equals(mood.MoodName))
-                {
-                    moodChosen = mood;
-                    break;
-                }
-            }
-            Playlist playlist = new Playlist();
-            playlist.Songs = moodChosen.Songs;
+            get; set;
+        }
+
+        public Dictionary<Mood, ObservableCollection<Playlist>> CreateDictionary()
+        {
+            Dictionary<Mood, ObservableCollection<Playlist>> dic = new Dictionary<Mood, ObservableCollection<Playlist>>();
+            ObservableCollection<Mood> generics = new ObservableCollection<Mood>();
+            int lowTempo = 40;
+            int mediumTempo = 100;
+            int highTempo = 140;
+            Mood fun = new Mood("Fun", new Genre(), highTempo);
+            Mood chill = new Mood("Chill", new Genre(), lowTempo);
+            Mood party = new Mood("Party", new Genre(), highTempo);
+            Mood romantic = new Mood("Romantic", new Genre(), mediumTempo);
+            Mood sad = new Mood("Sad", new Genre(), lowTempo);
+            dic[fun] = AddExamplePlaylists();
+            dic[chill] = new ObservableCollection<Playlist>();
+            dic[party] = new ObservableCollection<Playlist>();
+            dic[romantic] = new ObservableCollection<Playlist>();
+            dic[sad] = new ObservableCollection<Playlist>();
+
+            return dic;
+        }
+
+        public void SetPlaylists(Mood moodName)
+        {
+            this.PlaylistOptions = this.MoodDictionary[this.mood];
         }
         
 
@@ -57,12 +65,12 @@ namespace Moodify.Model
             }
         }
 
-        public string MoodChosen
+        public Mood MoodChosen
         {
             set
             {
                 this.mood = value;
-                AddToUserPlaylist(this.mood);
+                SetPlaylists(this.mood);
             }
             get
             {
@@ -76,31 +84,44 @@ namespace Moodify.Model
             set;
         }
 
-        public ObservableCollection<Mood> MoodOptions
+        public ObservableCollection<Playlist> PlaylistOptions
         {
-            get
-            {
-                return this.moodOptions;
-            }
-            set
-            {
-                this.moodOptions = value;
-            }
+            get;
+            set;
         }
 
-        public ObservableCollection<Mood> AddGenericMoods()
+        public Playlist PlaylistSelected
         {
-            ObservableCollection<Mood> generics = new ObservableCollection<Mood>();
-            int lowTempo = 40;
-            int mediumTempo = 100;
-            int highTempo = 140;
-            generics.Add(new Mood("Fun", new Genre(), highTempo));
-            generics.Add(new Mood("Chill", new Genre(), lowTempo));
-            generics.Add(new Mood("Party", new Genre(), highTempo));
-            generics.Add(new Mood("Romantic", new Genre(), mediumTempo));
-            generics.Add(new Mood("Sad", new Genre(), lowTempo));
-            return generics;
+            get;set;
+        }
 
+        public ObservableCollection<Playlist> AddExamplePlaylists()
+        {
+            ObservableCollection<Playlist> playlists = new ObservableCollection<Playlist>();
+
+            Playlist test = new Playlist();
+            test.PlaylistName = "Rivka's playlist";
+            Song song1 = new Song();
+            song1.SongName = "lalala";
+            Song song2 = new Song();
+            song2.SongName = "jdjdjd";
+            test.Songs = new ObservableCollection<Song>();
+            test.Songs.Add(song1);
+            test.Songs.Add(song2);
+            playlists.Add(test);
+
+            Playlist test2 = new Playlist();
+            test2.PlaylistName = "Avihay's playlist";
+            Song song3 = new Song();
+            song3.SongName = "lalala";
+            Song song4 = new Song();
+            song4.SongName = "jdjdjd";
+            test2.Songs = new ObservableCollection<Song>();
+            test2.Songs.Add(song3);
+            test2.Songs.Add(song4);
+            playlists.Add(test2);
+
+            return playlists;
         }
     }
 }

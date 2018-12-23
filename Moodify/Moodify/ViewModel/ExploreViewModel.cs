@@ -29,7 +29,24 @@ namespace Moodify.ViewModel
             };
         }
 
-        public string VM_MoodChosen
+        public ObservableCollection<Playlist> VM_PlaylistOptions
+        {
+            get
+            {
+                return this.model.PlaylistOptions;
+            }
+        }
+
+        public Dictionary<Mood, ObservableCollection<Playlist>> VM_MoodDictionary
+        {
+            get
+            {
+                return this.model.MoodDictionary;
+            }
+
+        }
+
+        public Mood VM_MoodChosen
         {
             get
             {
@@ -41,11 +58,15 @@ namespace Moodify.ViewModel
             }
         }
 
-        public ObservableCollection<string> VM_MoodNames
+        public Playlist VM_PlaylistSelected
         {
             get
             {
-                return this.model.MoodNames;
+                return this.model.PlaylistSelected;
+            }
+            set
+            {
+                this.model.PlaylistSelected = value;
             }
         }
     }
