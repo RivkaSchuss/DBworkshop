@@ -46,7 +46,6 @@ namespace Moodify.Model
             }
             Playlist playlist = new Playlist();
             playlist.Songs = moodChosen.Songs;
-
         }
         
 

@@ -1,6 +1,8 @@
-﻿using Moodify.Model;
+﻿using Moodify.Helpers;
+using Moodify.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -24,6 +26,18 @@ namespace Moodify.ViewModel
             {
                 this.NotifyPropertyChanged("VM_" + e.PropertyName);
             };
+        }
+
+        public ObservableCollection<Playlist> VM_PlaylistOptions
+        {
+            get
+            {
+                return this.model.PlaylistOptions;
+            }
+            set
+            {
+                this.model.PlaylistOptions = value;
+            }
         }
     }
 }

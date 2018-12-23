@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d"
-        Title="CreatePlaylist" Height="450" Width="800">
-    <Grid Background="LightBlue">
-        
-    </Grid>
+        Title="Create Playlist" Height="450" Width="800">
+    <StackPanel Background="LightBlue">
+        <Label HorizontalAlignment="Left" Content="Let's figure out your mood!" FontSize="30" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <DataGrid ItemsSource="{Binding VM_PlaylistOptions}">
+            
+        </DataGrid>
+    </StackPanel>
 </Window>
