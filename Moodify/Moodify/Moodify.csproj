@@ -82,6 +82,7 @@
     <Compile Include="Helpers\ConnectionStatus.cs" />
     <Compile Include="Helpers\Genre.cs" />
     <Compile Include="Helpers\Mood.cs" />
+    <Compile Include="Helpers\NullVisibilityConverter.cs" />
     <Compile Include="Helpers\Song.cs" />
     <Compile Include="Model\CreatePlaylistModel.cs" />
     <Compile Include="Model\DBHandler.cs" />
