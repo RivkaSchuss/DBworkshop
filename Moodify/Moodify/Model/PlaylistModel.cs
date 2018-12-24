@@ -22,6 +22,7 @@ namespace Moodify.Model
             set
             {
                 this.playlist = value;
+                this.NotifyPropertyChanged("Playlist");
             }
         }
 

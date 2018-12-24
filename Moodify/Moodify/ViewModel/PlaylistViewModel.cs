@@ -18,6 +18,10 @@ namespace Moodify.ViewModel
         public PlaylistViewModel(Playlist playlist)
         {
             this.model = new PlaylistModel(playlist);
+            this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            {
+                this.NotifyPropertyChanged("VM_" + e.PropertyName);
+            };
         }
 
         public Playlist VM_Playlist
@@ -30,10 +34,7 @@ namespace Moodify.ViewModel
 
         public void NotifyPropertyChanged(string propName)
         {
-            this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
-            {
-                this.NotifyPropertyChanged("VM_" + e.PropertyName);
-            };
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
     }
 }

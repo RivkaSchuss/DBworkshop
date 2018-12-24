@@ -35,5 +35,10 @@ namespace Moodify.Helpers
                 return this.songs;
             }
         }
+
+        public int PlaylistId
+        {
+            get; set;
+        }
     }
 }

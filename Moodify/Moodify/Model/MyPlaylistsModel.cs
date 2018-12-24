@@ -32,8 +32,10 @@ namespace Moodify.Model
             set
             {
                 this.userId = value;
+                this.NotifyPropertyChanged("UserId");
             }
         }
+
         public Dictionary<int, Playlist> AddPlaylist()
         {
             int id = this.UserId; 

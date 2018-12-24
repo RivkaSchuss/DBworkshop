@@ -33,5 +33,18 @@ namespace Moodify.View
             CreatePlaylistView view = new CreatePlaylistView();
             view.Show();
         }
+
+        private void Add_Playlists(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Show_Songs(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int playlistId = (int)button.CommandParameter;
+            ShowSongsView view = new ShowSongsView(playlistId);
+            view.Show();
+        }
     }
 }

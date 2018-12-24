@@ -13,22 +13,20 @@ namespace Moodify.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private Mood mood;
+        private ObservableCollection<Playlist> playlistOptions;
+        private Playlist playlistSelected;
 
         public ExploreModel()
         {
             this.MoodDictionary = CreateDictionary();
         }
 
-        public Playlist PlaylistChosen
-        {
-            get;
-            set;
-        }
-
         public Dictionary<Mood, ObservableCollection<Playlist>> MoodDictionary
         {
             get; set;
         }
+
+ 
 
         public Dictionary<Mood, ObservableCollection<Playlist>> CreateDictionary()
         {
@@ -71,6 +69,7 @@ namespace Moodify.Model
             {
                 this.mood = value;
                 SetPlaylists(this.mood);
+                this.NotifyPropertyChanged("MoodChosen");
             }
             get
             {
@@ -78,21 +77,30 @@ namespace Moodify.Model
             }
         }
 
-        public ObservableCollection<string> MoodNames
-        {
-            get;
-            set;
-        }
-
         public ObservableCollection<Playlist> PlaylistOptions
         {
-            get;
-            set;
+            get
+            {
+                return this.playlistOptions;
+            }
+            set
+            {
+                this.playlistOptions = value;
+                this.NotifyPropertyChanged("PlaylistOptions");
+            }
         }
 
         public Playlist PlaylistSelected
         {
-            get;set;
+            get
+            {
+                return this.playlistSelected;
+            }
+            set
+            {
+                this.playlistSelected = value;
+                this.NotifyPropertyChanged("PlaylistSelected");
+            }
         }
 
         public ObservableCollection<Playlist> AddExamplePlaylists()
@@ -101,6 +109,7 @@ namespace Moodify.Model
 
             Playlist test = new Playlist();
             test.PlaylistName = "Rivka's playlist";
+            test.PlaylistId = 12;
             Song song1 = new Song();
             song1.SongName = "lalala";
             Song song2 = new Song();
@@ -112,6 +121,7 @@ namespace Moodify.Model
 
             Playlist test2 = new Playlist();
             test2.PlaylistName = "Avihay's playlist";
+            test2.PlaylistId = 15;
             Song song3 = new Song();
             song3.SongName = "lalala";
             Song song4 = new Song();

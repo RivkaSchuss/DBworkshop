@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-    class CreatePlaylistVM : INotifyPropertyChanged
+    public class ShowSongsViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private CreatePlaylistModel model;
+        private ShowSongsModel model;
 
-        public CreatePlaylistVM()
+        public ShowSongsViewModel(int playlistId)
         {
-            this.model = new CreatePlaylistModel();
+            this.model = new ShowSongsModel(playlistId);
             this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
             {
                 this.NotifyPropertyChanged("VM_" + e.PropertyName);
@@ -29,27 +29,27 @@ namespace Moodify.ViewModel
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
-        public ObservableCollection<Playlist> VM_PlaylistOptions
+        public ObservableCollection<Song> VM_SongList
         {
             get
             {
-                return this.model.PlaylistOptions;
+                return this.model.SongList;
             }
             set
             {
-                this.model.PlaylistOptions = value;
+                this.model.SongList = value;
             }
         }
 
-        public Boolean VM_PlaylistSelected
+        public string VM_PlaylistName
         {
             get
             {
-                return this.model.PlaylistSelected;
+                return this.model.PlaylistName;
             }
             set
             {
-                this.model.PlaylistSelected = value;
+                this.model.PlaylistName = value;
             }
         }
     }

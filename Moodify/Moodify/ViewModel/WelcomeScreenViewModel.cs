@@ -17,7 +17,11 @@ namespace Moodify.ViewModel
 		public WelcomeScreenViewModel()
 		{
 			this.model = new WelcomeScreenModel();
-		}
+            this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            {
+                this.NotifyPropertyChanged("VM_" + e.PropertyName);
+            };
+        }
 
 		//public string VM_UserName
 		//{
@@ -33,12 +37,8 @@ namespace Moodify.ViewModel
 
 		public void NotifyPropertyChanged(string propName)
 		{
-			//this.model = new HomeScreenModel();
-			this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
-			{
-				this.NotifyPropertyChanged("VM_" + e.PropertyName);
-			};
-		}
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
 
 		public bool TryAddUser(string userName, string email, string Password)
 		{

@@ -19,8 +19,13 @@ namespace Moodify.ViewModel
         public ExploreViewModel()
         {
             this.model = new ExploreModel();
+            this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            {
+                this.NotifyPropertyChanged("VM_" + e.PropertyName);
+            };
         }
 
+        /*
         public void NotifyPropertyChanged(string propName)
         {
             this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
@@ -28,12 +33,22 @@ namespace Moodify.ViewModel
                 this.NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
+        */
+
+        public void NotifyPropertyChanged(string propName)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
 
         public ObservableCollection<Playlist> VM_PlaylistOptions
         {
             get
             {
                 return this.model.PlaylistOptions;
+            } 
+            set
+            {
+                this.model.PlaylistOptions = value;
             }
         }
 

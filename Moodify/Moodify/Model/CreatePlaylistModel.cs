@@ -15,7 +15,7 @@ namespace Moodify.Model
 
         public CreatePlaylistModel()
         {
-            this.PlaylistOptions = AddExamplePlaylists();
+            //this.PlaylistOptions = AddExamplePlaylists();
         }
 
         public void NotifyPropertyChanged(string propName)

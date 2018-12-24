@@ -95,6 +95,7 @@
     <Compile Include="Model\IWelcomeScreenModel.cs" />
     <Compile Include="Model\MyPlaylistsModel.cs" />
     <Compile Include="Model\PlaylistModel.cs" />
+    <Compile Include="Model\ShowSongsModel.cs" />
     <Compile Include="Model\WelcomeScreenModel.cs" />
     <Compile Include="Helpers\Playlist.cs" />
     <Compile Include="ViewModel\CreatePlaylistVM.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="ViewModel\IWelcomeScreenVM.cs" />
     <Compile Include="ViewModel\MyPlaylistsViewModel.cs" />
     <Compile Include="ViewModel\PlaylistViewModel.cs" />
+    <Compile Include="ViewModel\ShowSongsViewModel.cs" />
     <Compile Include="ViewModel\WelcomeScreenViewModel.cs" />
     <Compile Include="View\CreatePlaylistView.xaml.cs">
       <DependentUpon>CreatePlaylistView.xaml</DependentUpon>
@@ -121,6 +123,9 @@
     </Compile>
     <Compile Include="View\PlaylistView.xaml.cs">
       <DependentUpon>PlaylistView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowSongsView.xaml.cs">
+      <DependentUpon>ShowSongsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>
@@ -159,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PlaylistView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowSongsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
