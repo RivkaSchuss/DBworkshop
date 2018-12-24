@@ -46,5 +46,10 @@ namespace Moodify.View
             ShowSongsView view = new ShowSongsView(playlistId);
             view.Show();
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

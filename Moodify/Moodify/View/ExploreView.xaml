@@ -11,11 +11,11 @@
     </UserControl.Resources>
 	<!--Title="ExploreView" Height="450" Width="800">-->
     <StackPanel Background="LightBlue">
-        <Label HorizontalAlignment="Left" Content="Choose a built in playlist:" FontSize="20" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <Label HorizontalAlignment="Left" Content="Choose a built in playlist:" FontSize="20" FontWeight="Thin" Foreground="Blue" Padding="10"/>
         <ComboBox Text="Mood" Margin ="10, 10, 10, 10" ItemsSource="{Binding VM_MoodDictionary}" SelectedValuePath="Key"
                   SelectedValue="{Binding VM_MoodChosen, Mode=TwoWay}" DisplayMemberPath="Key.MoodName">
         </ComboBox>
-        <DataGrid ItemsSource="{Binding VM_PlaylistOptions, Mode=TwoWay}" SelectionMode="Single" AutoGenerateColumns="False"
+        <DataGrid ItemsSource="{Binding VM_PlaylistOptions}" SelectionMode="Single" AutoGenerateColumns="False"
                   Visibility="{Binding VM_PlaylistOptions, Converter={StaticResource NullToVisibilityConverter}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Playlist Name" Width="Auto" Binding="{Binding PlaylistName}" IsReadOnly="True"></DataGridTextColumn>
@@ -37,7 +37,7 @@
                 Visibility="{Binding VM_PlaylistOptions, Converter={StaticResource NullToVisibilityConverter}}"></Button>
                   
     
-        <Label HorizontalAlignment="Left" Content="Or create your own:" FontSize="20" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <Label HorizontalAlignment="Left" Content="Or create your own:" FontSize="20" FontWeight="Thin" Foreground="Blue" Padding="10"/>
         <Button Margin ="10, 10, 10, 10" Content="Custom" Click="Custom_Button_Click" Width="95" HorizontalAlignment="Left"></Button>
     </StackPanel>
 </UserControl>

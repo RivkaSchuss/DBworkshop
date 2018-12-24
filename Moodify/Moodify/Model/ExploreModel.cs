@@ -26,8 +26,6 @@ namespace Moodify.Model
             get; set;
         }
 
- 
-
         public Dictionary<Mood, ObservableCollection<Playlist>> CreateDictionary()
         {
             Dictionary<Mood, ObservableCollection<Playlist>> dic = new Dictionary<Mood, ObservableCollection<Playlist>>();

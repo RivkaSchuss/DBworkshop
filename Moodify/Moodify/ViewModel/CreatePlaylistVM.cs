@@ -29,27 +29,15 @@ namespace Moodify.ViewModel
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
-        public ObservableCollection<Playlist> VM_PlaylistOptions
+        public int VM_NumOfSongs
         {
             get
             {
-                return this.model.PlaylistOptions;
+                return this.model.NumOfSongs;
             }
             set
             {
-                this.model.PlaylistOptions = value;
-            }
-        }
-
-        public Boolean VM_PlaylistSelected
-        {
-            get
-            {
-                return this.model.PlaylistSelected;
-            }
-            set
-            {
-                this.model.PlaylistSelected = value;
+                this.model.NumOfSongs = value;
             }
         }
     }

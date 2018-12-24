@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Playlist" Height="450" Width="800">
     <StackPanel Background ="LightBlue">
-        <Label HorizontalAlignment="Center" Content="{Binding VM_Playlist.PlaylistName}" FontSize="25" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <Label HorizontalAlignment="Center" Content="{Binding VM_Playlist.PlaylistName}" FontSize="25" FontWeight="Thin" Foreground="Blue" Padding="10"/>
         <DataGrid ItemsSource="{Binding VM_Playlist.Songs}" AutoGenerateColumns="False" CanUserAddRows="False" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Width="Auto" Height="Auto">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="#" Width="Auto" IsReadOnly="True" Binding="{Binding SongId}"/>
