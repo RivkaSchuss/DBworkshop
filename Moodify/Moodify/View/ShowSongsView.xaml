@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moodify.View"
+        xmlns:Helpers="clr-namespace:Moodify.Helpers"
         mc:Ignorable="d"
         Title="Show Songs" Height="450" Width="800">
+    <Window.Resources>
+        <Helpers:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <Helpers:BoolConverter x:Key="BoolToConvert"/>
+    </Window.Resources>
     <StackPanel Background="LightBlue">
         <TextBlock HorizontalAlignment="Left" Text="{Binding VM_PlaylistName, StringFormat='Here are the songs from the playlist: {0}'}" FontSize="20" FontWeight="Thin" Foreground="Blue" Padding="10"/>
         <DataGrid ItemsSource="{Binding VM_SongList}" AutoGenerateColumns="False">
@@ -17,5 +22,6 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Margin ="10, 10, 10, 10" Content="Add To My Playlists" CommandParameter="{Binding VM_PlaylistID}" Click="AddPlaylists" Width="120" HorizontalAlignment="Left"></Button>
+        <TextBlock Text="{Binding VM_AddingSuccesful, Converter={StaticResource BoolToConvert}}"></TextBlock>
     </StackPanel>
 </Window>

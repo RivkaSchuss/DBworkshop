@@ -65,5 +65,17 @@ namespace Moodify.ViewModel
                 this.model.PlaylistID = value;
             }
         }
+
+        public bool VM_AddingSuccesful
+        {
+            get
+            {
+                return this.model.AddingSuccesful;
+            }
+            set
+            {
+                this.model.AddingSuccesful = value;
+            }
+        }
     }
 }

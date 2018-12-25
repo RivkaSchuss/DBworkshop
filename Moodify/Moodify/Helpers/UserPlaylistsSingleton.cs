@@ -43,6 +43,7 @@ namespace Moodify.Helpers
         public void AddToPlaylists(Playlist playlist)
         {
             this.playlists.Add(playlist.PlaylistId, playlist);
+
         }
     }
 }
