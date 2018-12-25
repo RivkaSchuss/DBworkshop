@@ -13,13 +13,39 @@ namespace Moodify.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ObservableCollection<Song> songList;
+        private Playlist playlist;
         private string playlistName;
+        private int playlistID;
+        
 
         public ShowSongsModel(int playlistId)
         {
-            //TODO:
-            //SET THE SONGSLIST PROPERTY USING THE PLAYLIST ID
-            //GET THE NAME OF THE PLAYLIST AND SET THE PLAYLIST NAME
+            this.playlistID = playlistId;
+            this.playlist = FindPlaylist();
+            
+        }
+
+        public void SetSongs()
+        {
+            this.PlaylistName = this.playlist.PlaylistName;
+            this.SongList = this.playlist.Songs;
+        }
+
+        public Playlist FindPlaylist()
+        {
+            BuiltInPlaylistsSingleton builtInPlaylists = BuiltInPlaylistsSingleton.Instance;
+            this.MoodDictionary = builtInPlaylists.PlaylistDictionary;
+            foreach (ObservableCollection<Playlist> collec in this.MoodDictionary.Values)
+            {
+                foreach(Playlist playlist in collec)
+                {
+                    if (playlist.PlaylistId == this.playlistID)
+                    {
+                        return playlist;
+                    }
+                }
+            }
+            return null;
         }
 
         public void NotifyPropertyChanged(string propName)
@@ -28,6 +54,12 @@ namespace Moodify.Model
             {
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
             }
+        }
+
+        Dictionary<Mood, ObservableCollection<Playlist>> MoodDictionary
+        {
+            get;
+            set;
         }
 
         public ObservableCollection<Song> SongList

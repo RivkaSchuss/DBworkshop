@@ -22,6 +22,7 @@ namespace Moodify.ViewModel
             {
                 this.NotifyPropertyChanged("VM_" + e.PropertyName);
             };
+            this.model.SetSongs();
         }
 
         public void NotifyPropertyChanged(string propName)

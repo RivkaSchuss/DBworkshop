@@ -79,6 +79,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\Artist.cs" />
+    <Compile Include="Helpers\BuiltInPlaylistsSingleton.cs" />
     <Compile Include="Helpers\ConnectionStatus.cs" />
     <Compile Include="Helpers\Genre.cs" />
     <Compile Include="Helpers\Mood.cs" />
