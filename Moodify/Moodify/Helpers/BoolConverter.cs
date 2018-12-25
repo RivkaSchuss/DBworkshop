@@ -13,14 +13,19 @@ namespace Moodify.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value.Equals(true))
+            if (value != null)
             {
-                return "Playlist added succesfully!";
+                string type = value.ToString();
+                if (type.Equals("SUCCESS"))
+                {
+                    return "Playlist added succesfully!";
+                }
+                else if (type.Equals("FAIL"))
+                {
+                    return "There was an error adding this playlist.";
+                }
             }
-            else if (value.Equals(false))
-            {
-                return "There was an error adding this playlist.";
-            }
+           
             return null;
         }
 

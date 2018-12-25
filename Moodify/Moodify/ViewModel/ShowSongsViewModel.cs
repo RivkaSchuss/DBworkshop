@@ -66,7 +66,7 @@ namespace Moodify.ViewModel
             }
         }
 
-        public bool VM_AddingSuccesful
+        public string VM_AddingSuccesful
         {
             get
             {

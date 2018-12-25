@@ -22,6 +22,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Margin ="10, 10, 10, 10" Content="Add To My Playlists" CommandParameter="{Binding VM_PlaylistID}" Click="AddPlaylists" Width="120" HorizontalAlignment="Left"></Button>
-        <TextBlock Text="{Binding VM_AddingSuccesful, Converter={StaticResource BoolToConvert}}"></TextBlock>
+        <TextBlock Text="{Binding VM_AddingSuccesful, Converter={StaticResource BoolToConvert}}" 
+                   Visibility="{Binding VM_AddingSuccesful, Converter={StaticResource NullToVisibilityConverter}}"></TextBlock>
     </StackPanel>
 </Window>

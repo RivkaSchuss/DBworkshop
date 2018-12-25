@@ -16,7 +16,7 @@ namespace Moodify.Model
         private Playlist playlist;
         private string playlistName;
         private int playlistID;
-        private bool addSuccess;
+        private string addSuccess = null;
         
 
         public ShowSongsModel(int playlistId)
@@ -80,10 +80,10 @@ namespace Moodify.Model
         {
             UserPlaylistsSingleton userPlaylists = UserPlaylistsSingleton.Instance;
             userPlaylists.AddToPlaylists(this.playlist);
-            this.AddingSuccesful = true;
+            this.AddingSuccesful = "SUCCESS";
         }
 
-        public bool AddingSuccesful
+        public string AddingSuccesful
         {
             get
             {
