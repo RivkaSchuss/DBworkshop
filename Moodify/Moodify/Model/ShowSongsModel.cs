@@ -62,6 +62,25 @@ namespace Moodify.Model
             set;
         }
 
+        public int PlaylistID
+        {
+            get
+            {
+                return this.playlistID;
+            }
+            set
+            {
+                this.playlistID = value;
+                AddToUserPlaylists();
+            }
+        }
+
+        public void AddToUserPlaylists()
+        {
+            UserPlaylistsSingleton userPlaylists = UserPlaylistsSingleton.Instance;
+            userPlaylists.AddToPlaylists(this.playlist);
+        }
+
         public ObservableCollection<Song> SongList
         {
             get
@@ -74,6 +93,7 @@ namespace Moodify.Model
                 this.NotifyPropertyChanged("SongList");
             }
         }
+
 
         public string PlaylistName
         {

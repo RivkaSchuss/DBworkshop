@@ -10,7 +10,6 @@ namespace Moodify.Helpers
     public class BuiltInPlaylistsSingleton
     {
         private static BuiltInPlaylistsSingleton instance = null;
-        private Dictionary<Mood, ObservableCollection<Playlist>> dic;
 
         public static BuiltInPlaylistsSingleton Instance
         {

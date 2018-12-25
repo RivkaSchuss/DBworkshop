@@ -19,8 +19,8 @@ namespace Moodify.Model
         public MyPlaylistsModel(int userId)
         {
             this.UserId = userId;
-            this.playlistsDic = AddPlaylist();
-           
+            UserPlaylistsSingleton userPlaylists = UserPlaylistsSingleton.Instance;
+            this.playlistsDic = userPlaylists.UserPlaylists;
         }
 
         public int UserId
@@ -34,37 +34,6 @@ namespace Moodify.Model
                 this.userId = value;
                 this.NotifyPropertyChanged("UserId");
             }
-        }
-
-        public Dictionary<int, Playlist> AddPlaylist()
-        {
-            int id = this.UserId; 
-
-            Dictionary<int, Playlist> playlists = new Dictionary<int, Playlist>();
-
-            Playlist test = new Playlist();
-            test.PlaylistName = "Rivka's playlist";
-            Song song1 = new Song();
-            song1.SongName = "lalala";
-            Song song2 = new Song();
-            song2.SongName = "jdjdjd";
-            test.Songs = new ObservableCollection<Song>();
-            test.Songs.Add(song1);
-            test.Songs.Add(song2);
-            playlists[1] = test;
-
-            Playlist test2 = new Playlist();
-            test2.PlaylistName = "Avihay's playlist";
-            Song song3 = new Song();
-            song3.SongName = "lalala";
-            Song song4 = new Song();
-            song4.SongName = "jdjdjd";
-            test2.Songs = new ObservableCollection<Song>();
-            test2.Songs.Add(song3);
-            test2.Songs.Add(song4);
-            playlists[2] = test2;
-
-            return playlists;
         }
 
         public void NotifyPropertyChanged(string propName)

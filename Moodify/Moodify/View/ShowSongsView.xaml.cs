@@ -29,5 +29,11 @@ namespace Moodify.View
             this.DataContext = this.viewModel;
             
         }
+
+        private void AddPlaylists(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            this.viewModel.VM_PlaylistID = (int)button.CommandParameter;
+        }
     }
 }

@@ -13,12 +13,9 @@
                 <DataGridTextColumn Header="Song" Width="Auto" Binding="{Binding SongName}" IsReadOnly="True"></DataGridTextColumn>
                 <DataGridTextColumn Header="Artist" Width="Auto" Binding="{Binding SongArtist}" IsReadOnly="True"></DataGridTextColumn>
                 <DataGridTextColumn Header="Album" Width="Auto" Binding="{Binding AlbumName}" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tempo" Width="Auto" Binding="{Binding Tempo}" IsReadOnly="True"></DataGridTextColumn>
                 <DataGridTextColumn Header="Duration" Width="Auto" Binding="{Binding Duration}" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="Loudness" Width="Auto" Binding="{Binding Loudness}" IsReadOnly="True"></DataGridTextColumn>
-                
             </DataGrid.Columns>
-            
         </DataGrid>
+        <Button Margin ="10, 10, 10, 10" Content="Add To My Playlists" CommandParameter="{Binding VM_PlaylistID}" Click="AddPlaylists" Width="120" HorizontalAlignment="Left"></Button>
     </StackPanel>
 </Window>

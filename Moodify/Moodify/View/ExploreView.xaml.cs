@@ -34,11 +34,6 @@ namespace Moodify.View
             view.Show();
         }
 
-        private void Add_Playlists(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Show_Songs(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;

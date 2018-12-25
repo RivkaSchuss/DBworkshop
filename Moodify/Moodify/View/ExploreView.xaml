@@ -27,14 +27,9 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-            <DataGrid.RowHeaderTemplate>
-                <DataTemplate>
-                    <CheckBox IsChecked="{Binding VM_PlaylistSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}"/>
-                </DataTemplate>
-            </DataGrid.RowHeaderTemplate>
+            
         </DataGrid>
-        <Button Margin ="10, 10, 10, 10" Content="Add Playlists" Click="Add_Playlists" Width="95" HorizontalAlignment="Left"
-                Visibility="{Binding VM_PlaylistOptions, Converter={StaticResource NullToVisibilityConverter}}"></Button>
+        
                   
     
         <Label HorizontalAlignment="Left" Content="Or create your own:" FontSize="20" FontWeight="Thin" Foreground="Blue" Padding="10"/>
