@@ -23,6 +23,18 @@ namespace Moodify.ViewModel
             };
         }
 
+		public bool VM_IsConnected
+		{
+			get
+			{
+				return this.model.IsConnected;
+			}
+			set
+			{
+				this.model.IsConnected = value;
+			}
+		}
+
 		//public string VM_UserName
 		//{
 		//	get
@@ -49,6 +61,8 @@ namespace Moodify.ViewModel
 		{
 			return model.TrySignIn(userName, password);
 		}
+
+
 
 	}
 }

@@ -86,6 +86,7 @@
     <Compile Include="Helpers\Mood.cs" />
     <Compile Include="Helpers\NullVisibilityConverter.cs" />
     <Compile Include="Helpers\Song.cs" />
+    <Compile Include="Helpers\BoolVisibilityConverter.cs" />
     <Compile Include="Helpers\UserPlaylistsSingleton.cs" />
     <Compile Include="Model\CreatePlaylistModel.cs" />
     <Compile Include="Model\DBHandler.cs" />

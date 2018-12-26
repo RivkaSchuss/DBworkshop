@@ -30,7 +30,12 @@ namespace Moodify.View
 
 		public string Password { get; set; } = "";
 
-		//public bool IsConnected { get; set; } = false;
+		public bool IsConnectionFailed {
+			get
+			{
+				this.vi
+			}
+				set; }
 
 		public WelcomeScreen()
         {
@@ -41,6 +46,7 @@ namespace Moodify.View
 
 		public void OnRegister(object sender, RoutedEventArgs e)
 		{
+			IsConnectionFailed = false;
 			LoginWindowView loginWindow = new LoginWindowView(this.viewModel);
 			//loginWindow.DataContext = this.DataContext;
 			loginWindow.Show();
@@ -48,6 +54,7 @@ namespace Moodify.View
 
 		public void OnSignIn(object sender, RoutedEventArgs e)
 		{
+			//IsConnectionFailed = false;
 			//LoginWindowView loginWindow = new LoginWindowView();
 			//loginWindow.Show();
 			SignInView signInView = new SignInView(this);
@@ -60,6 +67,7 @@ namespace Moodify.View
 			bool result = this.viewModel.TrySignIn(this.UserName, this.Password);
 			if (!result)
 			{
+				IsConnectionFailed = true;
 				//connection.IsConnected = true;
 			}
 		}

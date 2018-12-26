@@ -15,11 +15,38 @@ namespace Moodify.Model
 
 		private IList<User> userList;
 		private ConnectionStatus connection = ConnectionStatus.Instance;
+		//private bool connectionFailed;
+
+		public bool IsConnected
+		{
+			get
+			{
+				return this.connection.IsConnected;
+			}
+			set
+			{
+				this.connection.IsConnected = value;
+			}
+		}
+
+		//public bool ConnectionFailed
+		//{
+		//	get
+		//	{
+		//		return this.connectionFailed;
+		//	}
+		//	set
+		//	{
+		//		this.connectionFailed = value;
+		//	}
+		//}
+
 
 		public WelcomeScreenModel()
 		{
 			userList = new List<User>();
 			AddUsers();
+			//this.connectionFailed = false;
 		}
 
 		private void AddUsers()
