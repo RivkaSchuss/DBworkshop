@@ -9,9 +9,10 @@ namespace Moodify.Model
 {
     interface IWelcomeScreenModel : INotifyPropertyChanged
 	{
-		//string UserName { get; set; }
+		string UserName { get; set; }
+		bool ConnectionFailed { get; set; }
 		bool IsConnected { get; set; }
-		bool TryAddUser(string userName, string email, string Password);
+		bool TryRegister(string userName, string email, string Password);
 		bool TrySignIn(string userName, string password);
 	}
 }

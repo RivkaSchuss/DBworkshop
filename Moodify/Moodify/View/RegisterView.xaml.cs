@@ -1,4 +1,5 @@
-﻿using Moodify.ViewModel;
+﻿using Moodify.Helpers;
+using Moodify.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,28 +18,32 @@ using System.Windows.Shapes;
 namespace Moodify.View
 {
 	/// <summary>
-	/// Interaction logic for LoginWindowView.xaml
+	/// Interaction logic for RegisterWindowView.xaml
 	/// </summary>
-	public partial class LoginWindowView : Window
+	public partial class RegisterView : Window
 	{
-		public LoginWindowView(IWelcomeScreenVM welcomeScreenVM)
+		private WelcomeScreen welcomeScreen;
+
+		public RegisterView(WelcomeScreen welcomeScreen)
 		{
 			InitializeComponent();
-			this.DataContext = welcomeScreenVM;
+			this.welcomeScreen = welcomeScreen;
+			this.DataContext = welcomeScreen.DataContext;
 		}
 
 		public void Submit_Click(object sender, RoutedEventArgs e)
 		{
-
+			this.welcomeScreen.TryRegister();
+			ConnectionStatus connection = ConnectionStatus.Instance;
+			if (connection.IsConnected)
+			{
+				this.Close();
+			}
 		}
 
-		//public void button2_Click(object sender, RoutedEventArgs e)
-		//{
-
-		//}
 		public void Cancel_Click(object sender, RoutedEventArgs e)
 		{
-
+			this.Close();
 		}
 	}
 }

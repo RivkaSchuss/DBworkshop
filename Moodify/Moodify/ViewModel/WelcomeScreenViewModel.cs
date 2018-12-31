@@ -1,4 +1,5 @@
-﻿using Moodify.Model;
+﻿using Moodify.Helpers;
+using Moodify.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,24 @@ namespace Moodify.ViewModel
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		private IWelcomeScreenModel model;
+		private ConnectionStatus connection = ConnectionStatus.Instance;
+		
+
+		public string VM_UserName
+		{
+			get
+			{
+				return this.model.UserName;
+			}
+			set
+			{
+				this.model.UserName = value;
+				this.NotifyPropertyChanged("VM_UserName");
+			}
+		}
+		public string VM_Password { get; set; } = "";
+
+		public string VM_Email { get; set; } = "";
 
 		public WelcomeScreenViewModel()
 		{
@@ -32,29 +51,31 @@ namespace Moodify.ViewModel
 			set
 			{
 				this.model.IsConnected = value;
+				NotifyPropertyChanged("VM_IsConnected");
 			}
 		}
 
-		//public string VM_UserName
-		//{
-		//	get
-		//	{
-		//		return this.model.UserName;
-		//	}
-		//	set
-		//	{
-		//		this.model.UserName = value;
-		//	}
-		//}
+		public bool VM_IsConnectionFailed
+		{
+			get
+			{
+				return this.model.ConnectionFailed;
+			}
+			set
+			{
+				this.model.ConnectionFailed = value;
+				NotifyPropertyChanged("VM_IsConnectionFailed");
+			}
+		}
 
 		public void NotifyPropertyChanged(string propName)
 		{
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
-		public bool TryAddUser(string userName, string email, string Password)
+		public bool TryRegister(string userName, string email, string Password)
 		{
-			return model.TryAddUser(userName, email, Password);
+			return model.TryRegister(userName, email, Password);
 		}
 
 		public bool TrySignIn(string userName, string password)

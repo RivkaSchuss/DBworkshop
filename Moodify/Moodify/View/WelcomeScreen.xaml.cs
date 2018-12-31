@@ -17,49 +17,90 @@ using System.Windows.Shapes;
 
 namespace Moodify.View
 {
-    /// <summary>
-    /// Interaction logic for WelcomeScreen.xaml
-    /// </summary>
-    public partial class WelcomeScreen : UserControl
-    {
+	/// <summary>
+	/// Interaction logic for WelcomeScreen.xaml
+	/// </summary>
+	public partial class WelcomeScreen : UserControl
+	{
 		private IWelcomeScreenVM viewModel;
 
 		private ConnectionStatus connection = ConnectionStatus.Instance;
 
-		public string UserName { get; set; } = "";
-
-		public string Password { get; set; } = "";
-
-		public bool IsConnectionFailed {
+		public string UserName
+		{
 			get
 			{
-				this.vi
+				return this.viewModel.VM_UserName;
 			}
-				set; }
+			set
+			{
+				this.viewModel.VM_UserName = value;
+			}
+		}
+
+		public string Password
+		{
+			get
+			{
+				return this.viewModel.VM_Password;
+			}
+			set
+			{
+				this.viewModel.VM_Password = value;
+			}
+		}
+
+		public string Email
+		{
+			get
+			{
+				return this.viewModel.VM_Email;
+			}
+			set
+			{
+				this.viewModel.VM_Email = value;
+			}
+		}
+
+		public bool IsConnectionFailed
+		{
+			get
+			{
+				return this.viewModel.VM_IsConnectionFailed;
+			}
+			set
+			{
+				this.viewModel.VM_IsConnectionFailed = value;
+			}
+		}
 
 		public WelcomeScreen()
-        {
-            InitializeComponent();
+		{
+			InitializeComponent();
 			viewModel = new WelcomeScreenViewModel();
 			this.DataContext = this.viewModel;
-        }
+		}
 
 		public void OnRegister(object sender, RoutedEventArgs e)
 		{
 			IsConnectionFailed = false;
-			LoginWindowView loginWindow = new LoginWindowView(this.viewModel);
-			//loginWindow.DataContext = this.DataContext;
-			loginWindow.Show();
+			RegisterView RegisterWindow = new RegisterView(this);
+			RegisterWindow.Show();
 		}
 
 		public void OnSignIn(object sender, RoutedEventArgs e)
 		{
-			//IsConnectionFailed = false;
-			//LoginWindowView loginWindow = new LoginWindowView();
-			//loginWindow.Show();
 			SignInView signInView = new SignInView(this);
-			//SignIn.DataContext = this.DataContext;
 			signInView.Show();
+		}
+
+		public void OnLogOff(object sender, RoutedEventArgs e)
+		{
+			this.UserName = "";
+			this.Password = "";
+			this.connection.IsConnected = false;
+			this.viewModel.VM_IsConnectionFailed = false;
+			this.viewModel.VM_IsConnected = false;
 		}
 
 		public void TrySignIn()
@@ -68,7 +109,15 @@ namespace Moodify.View
 			if (!result)
 			{
 				IsConnectionFailed = true;
-				//connection.IsConnected = true;
+			}
+		}
+
+		public void TryRegister()
+		{
+			bool result = this.viewModel.TryRegister(this.UserName, this.Password, this.Email);
+			if (!result)
+			{
+				IsConnectionFailed = true;
 			}
 		}
 	}

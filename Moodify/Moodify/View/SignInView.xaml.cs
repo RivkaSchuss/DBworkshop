@@ -1,4 +1,5 @@
-﻿using Moodify.ViewModel;
+﻿using Moodify.Helpers;
+using Moodify.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,23 +21,24 @@ namespace Moodify.View
 	/// </summary>
 	public partial class SignInView : Window
 	{
-		private string userName;
-		private IWelcomeScreenVM welcomeScreenVM;
 		private WelcomeScreen welcomeScreen;
 
 		public SignInView(WelcomeScreen welcomeScreen)
 		{
 			InitializeComponent();
 			this.welcomeScreen = welcomeScreen;
-			//this.welcomeScreenVM = welcomeScreenVM;
-			this.DataContext = welcomeScreen;
-			//this.DataContext = welcomeScreenVM;
+			this.DataContext = welcomeScreen.DataContext;
 		}
 
 
 		public void Submit_Click(object sender, RoutedEventArgs e)
 		{
 			this.welcomeScreen.TrySignIn();
+			ConnectionStatus connection = ConnectionStatus.Instance;
+			if(connection.IsConnected)
+			{
+				this.Close();
+			}
 		}
 
 

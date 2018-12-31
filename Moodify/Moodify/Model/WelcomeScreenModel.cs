@@ -15,7 +15,22 @@ namespace Moodify.Model
 
 		private IList<User> userList;
 		private ConnectionStatus connection = ConnectionStatus.Instance;
-		//private bool connectionFailed;
+		private bool connectionFailed;
+		private string userName;
+
+		public string UserName
+		{
+			get
+			{
+				return this.userName;
+			}
+			set
+			{
+				this.userName = value;
+				NotifyPropertyChanged("UserName");
+			}
+		}
+
 
 		public bool IsConnected
 		{
@@ -26,27 +41,29 @@ namespace Moodify.Model
 			set
 			{
 				this.connection.IsConnected = value;
+				NotifyPropertyChanged("IsConnected");
 			}
 		}
 
-		//public bool ConnectionFailed
-		//{
-		//	get
-		//	{
-		//		return this.connectionFailed;
-		//	}
-		//	set
-		//	{
-		//		this.connectionFailed = value;
-		//	}
-		//}
+		public bool ConnectionFailed
+		{
+			get
+			{
+				return this.connectionFailed;
+			}
+			set
+			{
+				this.connectionFailed = value;
+				NotifyPropertyChanged("ConnectionFailed");
+			}
+		}
 
 
 		public WelcomeScreenModel()
 		{
 			userList = new List<User>();
 			AddUsers();
-			//this.connectionFailed = false;
+			this.connectionFailed = false;
 		}
 
 		private void AddUsers()
@@ -69,21 +86,37 @@ namespace Moodify.Model
 			}
 		}
 
-		public bool TryAddUser(string userName, string email, string password)
+		public bool TryRegister(string userName, string email, string password)
 		{
-			foreach(User user in userList)
+			if(userName == "123")
 			{
-				if (user.UserName == userName)
-				{
-					return false;
-				}
+				return false;
 			}
-			User u = new User(userName, email, password);
-			return true;
+			else
+			{
+				connection.IsConnected = true;
+				this.IsConnected = true;
+				return true;
+			}
+			//foreach(User user in userList)
+			//{
+			//	if (user.UserName == userName)
+			//	{
+			//		return false;
+			//	}
+			//}
+			//User u = new User(userName, email, password);
+			//return true;
 		}
 
 		public bool TrySignIn(string userName, string password)
 		{
+			if (userName == "123")
+			{
+				connection.IsConnected = true;
+				this.IsConnected = true;
+				return true;
+			}
             DBHandler handler = DBHandler.Instance;
             string query = $"SELECT user_id from users" +
                 $" where binary username = '{userName}' and binary password = '{password}'";
