@@ -9,7 +9,6 @@ namespace Moodify.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private IList<User> userList;
         private ConnectionStatus connection = ConnectionStatus.Instance;
         private bool connectionFailed;
         private string userName;
@@ -57,21 +56,7 @@ namespace Moodify.Model
 
         public WelcomeScreenModel()
         {
-            userList = new List<User>();
-            AddUsers();
             this.connectionFailed = false;
-        }
-
-        private void AddUsers()
-        {
-            User avihay = new User("arzuan", "avihay@dfg.com", "123456");
-            User dan = new User("tepli", "tepli@dfg.com", "123456");
-            User barak = new User("talmor", "talmor@dfg.com", "123456");
-            User rivka = new User("schuss", "schuss@dfg.com", "123456");
-            userList.Add(avihay);
-            userList.Add(dan);
-            userList.Add(barak);
-            userList.Add(rivka);
         }
 
         public void NotifyPropertyChanged(string propName)
@@ -85,11 +70,6 @@ namespace Moodify.Model
         public bool TryRegister(string userName, string email, string password)
         {
             DBHandler handler = DBHandler.Instance;
-
-            // Remove after
-            userName = "a";
-            email = "b";
-            password = "c";
 
             string query = $"INSERT into users (username, email, password) VALUES ('{userName}', '{email}', '{password}')";
             bool result = handler.ExecuteNoResult(query);
