@@ -85,19 +85,20 @@ namespace Moodify.View
 		{
 			IsConnectionFailed = false;
 			RegisterView RegisterWindow = new RegisterView(this);
-			RegisterWindow.Show();
+			RegisterWindow.ShowDialog();
 		}
 
 		public void OnSignIn(object sender, RoutedEventArgs e)
 		{
 			SignInView signInView = new SignInView(this);
-			signInView.Show();
+			signInView.ShowDialog();
 		}
 
 		public void OnLogOff(object sender, RoutedEventArgs e)
 		{
 			this.UserName = "";
 			this.Password = "";
+			this.Email = "";
 			this.connection.IsConnected = false;
 			this.viewModel.VM_IsConnectionFailed = false;
 			this.viewModel.VM_IsConnected = false;
@@ -114,7 +115,7 @@ namespace Moodify.View
 
 		public void TryRegister()
 		{
-			bool result = this.viewModel.TryRegister(this.UserName, this.Password, this.Email);
+			bool result = this.viewModel.TryRegister(this.UserName, this.Email, this.Password);
 			if (!result)
 			{
 				IsConnectionFailed = true;

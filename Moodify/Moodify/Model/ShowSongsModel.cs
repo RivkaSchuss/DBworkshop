@@ -79,9 +79,16 @@ namespace Moodify.Model
         public void AddToUserPlaylists()
         {
             UserPlaylistsSingleton userPlaylists = UserPlaylistsSingleton.Instance;
-            userPlaylists.AddToPlaylists(this.playlist);
-            this.AddingSuccesful = "SUCCESS";
-        }
+            bool result = userPlaylists.AddToPlaylists(this.playlist);
+			if (result)
+			{
+			this.AddingSuccesful = "SUCCESS";
+			}
+			else
+			{
+				this.AddingSuccesful = "FAIL";
+			}
+		}
 
         public string AddingSuccesful
         {

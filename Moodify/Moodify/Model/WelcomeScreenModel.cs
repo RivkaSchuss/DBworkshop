@@ -16,7 +16,9 @@ namespace Moodify.Model
 		private IList<User> userList;
 		private ConnectionStatus connection = ConnectionStatus.Instance;
 		private bool connectionFailed;
-		private string userName;
+		private string userName = "";
+		private string password = "";
+		private string email ="";
 
 		public string UserName
 		{
@@ -28,6 +30,30 @@ namespace Moodify.Model
 			{
 				this.userName = value;
 				NotifyPropertyChanged("UserName");
+			}
+		}
+		public string Password
+		{
+			get
+			{
+				return this.password;
+			}
+			set
+			{
+				this.password = value;
+				NotifyPropertyChanged("Password");
+			}
+		}
+		public string Email
+		{
+			get
+			{
+				return this.email;
+			}
+			set
+			{
+				this.email = value;
+				NotifyPropertyChanged("Email");
 			}
 		}
 
