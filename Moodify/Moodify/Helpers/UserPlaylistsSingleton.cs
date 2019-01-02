@@ -60,7 +60,7 @@ namespace Moodify.Helpers
             int b = 5;
         }
 
-        public void AddToPlaylists(Playlist playlist)
+        public bool AddToPlaylists(Playlist playlist)
         {
 			try
 			{
