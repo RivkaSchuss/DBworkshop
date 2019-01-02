@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Moodify.View.AboutUs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Moodify.View"
+			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+	<Grid Background="AliceBlue">
+		<materialDesign:Chip Content="Avihay Arzuan" Icon="A" Click="AvihayClick" Margin="100,-100,0,0"/>
+		<materialDesign:Chip Content="Barak Obama" Icon="B" Click="BarakClick" Margin="100,100,0,0"/>
+		<materialDesign:Chip Content="Dan Teplizki" Icon="D" Click="DanClick" Margin="350,-100,0,0"/>
+		<materialDesign:Chip Content="Rivka Schuss" Icon="R" Click="RivkaClick" Margin="350,100,0,0"/>
+		<materialDesign:Chip Content="Project GitHub Site" Icon="P" Click="ProjectClick" Margin="200,-250,0,0"/>
+		<TextBlock TextWrapping="Wrap" MinWidth="280" TextAlignment="Center"
+					Height="80" Margin="0,300,0,0"	FontWeight="DemiBold" FontSize="20">
+			This project was written by the authors above in Data Base Workshop course Bar-Ilan University.
+		</TextBlock>
+	</Grid>
+</UserControl>
