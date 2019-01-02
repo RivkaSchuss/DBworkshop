@@ -43,6 +43,9 @@ namespace Moodify.View
 
 		public void Cancel_Click(object sender, RoutedEventArgs e)
 		{
+			this.welcomeScreen.UserName = "";
+			this.welcomeScreen.Password = "";
+			this.welcomeScreen.Email = "";
 			this.Close();
 		}
 	}

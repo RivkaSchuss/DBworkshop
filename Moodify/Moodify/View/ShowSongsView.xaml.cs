@@ -35,5 +35,10 @@ namespace Moodify.View
             Button button = (Button)sender;
             this.viewModel.VM_PlaylistID = (int)button.CommandParameter;
         }
+
+		private void ClickReturn(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
     }
 }

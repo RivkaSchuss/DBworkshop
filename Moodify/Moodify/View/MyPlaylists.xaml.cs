@@ -36,7 +36,7 @@ namespace Moodify.View
             Button button = (Button)sender;
             int playlistId = (int) button.CommandParameter;
             PlaylistView playlistView = new PlaylistView(this.viewModel.VM_PlaylistsDic, playlistId);
-            playlistView.Show();
+            playlistView.ShowDialog();
         }
 
     }

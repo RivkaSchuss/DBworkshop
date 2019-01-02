@@ -9,10 +9,12 @@
         Title="Show Songs" Height="450" Width="800">
     <Window.Resources>
         <Helpers:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
+		<Helpers:NotNullVisibilityConverter x:Key="NotNullToVisibilityConverter"/>
         <Helpers:BoolConverter x:Key="BoolToConvert"/>
     </Window.Resources>
     <StackPanel Background="LightBlue">
-        <TextBlock HorizontalAlignment="Left" Text="{Binding VM_PlaylistName, StringFormat='Here are the songs from the playlist: {0}'}" FontSize="20" FontWeight="Thin" Foreground="Blue" Padding="10"/>
+        <TextBlock HorizontalAlignment="Left" Text="{Binding VM_PlaylistName, StringFormat='Here are the songs from the playlist: {0}'}" FontSize="20"
+				   FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
         <DataGrid ItemsSource="{Binding VM_SongList}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Song" Width="Auto" Binding="{Binding SongName}" IsReadOnly="True"></DataGridTextColumn>
@@ -21,8 +23,18 @@
                 <DataGridTextColumn Header="Duration" Width="Auto" Binding="{Binding Duration}" IsReadOnly="True"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Margin ="10, 10, 10, 10" Content="Add To My Playlists" CommandParameter="{Binding VM_PlaylistID}" Click="AddPlaylists" Width="120" HorizontalAlignment="Left"></Button>
-        <TextBlock Text="{Binding VM_AddingSuccesful, Converter={StaticResource BoolToConvert}}" 
-                   Visibility="{Binding VM_AddingSuccesful, Converter={StaticResource NullToVisibilityConverter}}"></TextBlock>
-    </StackPanel>
+        <Button Margin ="10, 10, 10, 10" Content="Add To My Playlists" CommandParameter="{Binding VM_PlaylistID}" Click="AddPlaylists"
+				Width="200" HorizontalAlignment="Left"></Button>
+		<Button Margin ="400, -43, 10, 10" Content="Return"
+				Width="100" HorizontalAlignment="Left" Click="ClickReturn"></Button>
+		<TextBlock Text="{Binding VM_AddingSuccesful, Converter={StaticResource BoolToConvert}}" 
+                   Visibility="{Binding VM_AddingSuccesful, Converter={StaticResource NullToVisibilityConverter}}"
+				   FontWeight="Bold" Padding="10" Foreground="BlueViolet">
+		</TextBlock>
+		<!--<TextBlock Text="Playlist with the same name exists in your Playlists!"-->
+		<TextBlock Text="{Binding VM_AddingSuccesful, Converter={StaticResource BoolToConvert}}" 
+                   Visibility="{Binding VM_AddingSuccesful, Converter={StaticResource NotNullToVisibilityConverter}}"
+				   FontWeight="Bold" Padding="10" Foreground="BlueViolet"
+				   />
+	</StackPanel>
 </Window>

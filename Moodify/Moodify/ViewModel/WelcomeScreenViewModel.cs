@@ -16,7 +16,6 @@ namespace Moodify.ViewModel
 		private IWelcomeScreenModel model;
 		private ConnectionStatus connection = ConnectionStatus.Instance;
 		
-
 		public string VM_UserName
 		{
 			get
@@ -29,9 +28,30 @@ namespace Moodify.ViewModel
 				this.NotifyPropertyChanged("VM_UserName");
 			}
 		}
-		public string VM_Password { get; set; } = "";
-
-		public string VM_Email { get; set; } = "";
+		public string VM_Password
+		{
+			get
+			{
+				return this.model.Password;
+			}
+			set
+			{
+				this.model.Password = value;
+				this.NotifyPropertyChanged("VM_Password");
+			}
+		}
+		public string VM_Email
+		{
+			get
+			{
+				return this.model.Email;
+			}
+			set
+			{
+				this.model.Email = value;
+				this.NotifyPropertyChanged("VM_Email");
+			}
+		}
 
 		public WelcomeScreenViewModel()
 		{

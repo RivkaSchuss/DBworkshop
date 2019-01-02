@@ -88,10 +88,18 @@ namespace Moodify.Helpers
             int b = 5;
         }
 
-        public void AddToPlaylists(Playlist playlist)
+        public bool AddToPlaylists(Playlist playlist)
         {
-            this.playlists.Add(playlist.PlaylistId, playlist);
-
+			try
+			{
+				this.playlists.Add(playlist.PlaylistId, playlist);
+				return true;
+			}
+			catch (ArgumentException e)
+			{
+				return false;
+			}
+			
         }
     }
 }

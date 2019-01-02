@@ -5,22 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moodify.View"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
 		mc:Ignorable="d"
-        Title="Moodify" Height="360" Width="640">
+		ResizeMode="NoResize"
+        Title="Moodify" Height="460" Width="640">
 	<Grid Background ="LightBlue">
-		<!--<Button>
-			<Button.Style>
-				<Style TargetType="Button">
-					<Setter Property="Background" Value="White"/>
-					<Style.Triggers>
-						<DataTrigger Binding="{Binding VM_IsConnected}" Value="False">
-							<Setter Property="Background" Value="Gray"/>
-						</DataTrigger>
-					</Style.Triggers>
-				</Style>
-			</Button.Style>
-		</Button>-->
-		<TabControl TabStripPlacement="Top" VerticalAlignment="Stretch">
+		<dragablz:TabablzControl FixedHeaderCount="4">
+			<dragablz:TabablzControl.InterTabController>
+				<dragablz:InterTabController/>
+			</dragablz:TabablzControl.InterTabController>
+			<TabItem Header="Welcome">
+				<local:WelcomeScreen/>
+			</TabItem>
+			<TabItem Header="Explore">
+				<local:ExploreView/>
+			</TabItem>
+			<TabItem Header="My Playlists">
+				<local:MyPlaylists/>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<materialDesign:PackIcon Kind="GithubCircle" Foreground="{DynamicResource PrimaryHueLightBrush}"/>
+				</TabItem.Header>
+				<TextBlock Text="our names" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</TabItem>
+		</dragablz:TabablzControl>
+		<!--<TabControl TabStripPlacement="Top" VerticalAlignment="Stretch">
 			<TabItem Header="Welcome" Height="Auto">
 				<local:WelcomeScreen/>
 			</TabItem>
@@ -30,7 +40,7 @@
 			<TabItem Header="My Playlists">
 				<local:MyPlaylists/>
 			</TabItem>
-		</TabControl>
+		</TabControl>-->
 		<!--<Button Content="Sign in" Height="23" HorizontalAlignment="Center" Margin="183,204,0,0" Name="SignIn" VerticalAlignment="Top" Width="70" Click="OnSignIn"/>
 		<Button Content="Register" Height="23" HorizontalAlignment="Center" Margin="-50,204,0,0" Name="Register" VerticalAlignment="Top" Width="70" Click="OnRegister"/>-->
 
