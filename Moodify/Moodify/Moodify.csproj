@@ -115,6 +115,9 @@
     <Compile Include="ViewModel\PlaylistViewModel.cs" />
     <Compile Include="ViewModel\ShowSongsViewModel.cs" />
     <Compile Include="ViewModel\WelcomeScreenViewModel.cs" />
+    <Compile Include="View\AboutUs.xaml.cs">
+      <DependentUpon>AboutUs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreatePlaylistView.xaml.cs">
       <DependentUpon>CreatePlaylistView.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
     <Compile Include="View\WelcomeScreen.xaml.cs">
       <DependentUpon>WelcomeScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AboutUs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CreatePlaylistView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,5 +221,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resource\mood.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

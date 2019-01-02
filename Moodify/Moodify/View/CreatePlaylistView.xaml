@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Create Playlist" Height="450" Width="800">
     <StackPanel Background="LightBlue">
-        <Label HorizontalAlignment="Left" Content="Let's create a playlist!" FontSize="30" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <Label HorizontalAlignment="Left" Content="Let's create a playlist!" FontSize="30" FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
         <Label HorizontalAlignment="Center" Content="First, choose how many songs you'd like in your playlist" FontSize="20" FontWeight="Thin"></Label>
         <Slider Name="a" HorizontalAlignment="Stretch" Maximum="12" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,10,10,10" Value="{Binding VM_NumOfSongs}"/>
 		<TextBlock FontSize="25" Margin="120,50,150,0" Text="{Binding VM_NumOfSongs, StringFormat=List length: {0}}"></TextBlock>

@@ -32,7 +32,7 @@ namespace Moodify.Helpers
         {
             get
             {
-                this.GetPlaylistsFromDB();
+                //this.GetPlaylistsFromDB();
                 return this.playlists;
             }
             set

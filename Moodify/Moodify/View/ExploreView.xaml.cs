@@ -31,7 +31,7 @@ namespace Moodify.View
         private void Custom_Button_Click(object sender, RoutedEventArgs e)
         {
             CreatePlaylistView view = new CreatePlaylistView();
-            view.Show();
+            view.ShowDialog();
         }
 
         private void Show_Songs(object sender, RoutedEventArgs e)
@@ -39,7 +39,7 @@ namespace Moodify.View
             Button button = (Button)sender;
             int playlistId = (int)button.CommandParameter;
             ShowSongsView view = new ShowSongsView(playlistId);
-            view.Show();
+            view.ShowDialog();
         }
 
     }
