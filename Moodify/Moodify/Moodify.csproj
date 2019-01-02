@@ -88,6 +88,7 @@
     <Compile Include="Helpers\Genre.cs" />
     <Compile Include="Helpers\Mood.cs" />
     <Compile Include="Helpers\NullVisibilityConverter.cs" />
+    <Compile Include="Helpers\PlaylistParser.cs" />
     <Compile Include="Helpers\Song.cs" />
     <Compile Include="Helpers\BoolVisibilityConverter.cs" />
     <Compile Include="Helpers\UserPlaylistsSingleton.cs" />

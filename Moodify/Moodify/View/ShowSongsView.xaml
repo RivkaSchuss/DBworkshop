@@ -17,9 +17,11 @@
 				   FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
         <DataGrid ItemsSource="{Binding VM_SongList}" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="#" Width="Auto" IsReadOnly="True" Binding="{Binding SongId}"/>
                 <DataGridTextColumn Header="Song" Width="Auto" Binding="{Binding SongName}" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="Artist" Width="Auto" Binding="{Binding SongArtist}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Artist" Width="Auto" Binding="{Binding SongArtist.ArtistName}" IsReadOnly="True"></DataGridTextColumn>
                 <DataGridTextColumn Header="Album" Width="Auto" Binding="{Binding AlbumName}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Genre" Width ="*" IsReadOnly="True" Binding ="{Binding Genre}"/>
                 <DataGridTextColumn Header="Duration" Width="Auto" Binding="{Binding Duration}" IsReadOnly="True"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

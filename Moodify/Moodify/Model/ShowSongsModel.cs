@@ -38,6 +38,10 @@ namespace Moodify.Model
             this.MoodDictionary = builtInPlaylists.PlaylistDictionary;
             foreach (ObservableCollection<Playlist> collec in this.MoodDictionary.Values)
             {
+                if (collec is null )
+                {
+                    continue;
+                }
                 foreach(Playlist playlist in collec)
                 {
                     if (playlist.PlaylistId == this.playlistID)
