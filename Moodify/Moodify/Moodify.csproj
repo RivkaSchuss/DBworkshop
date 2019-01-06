@@ -224,9 +224,17 @@
   <ItemGroup>
     <Resource Include="Resource\mood.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\SqlSignInQuery.txt" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\connectionString.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SqlRegisterQuery.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SqlGetUserPlaylistsQuery.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

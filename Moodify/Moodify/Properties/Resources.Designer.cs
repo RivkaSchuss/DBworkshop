@@ -68,5 +68,36 @@ namespace Moodify.Properties {
                 return ResourceManager.GetString("connectionString", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT playlist_affiliation.playlist_id as PlaylistId, playlist_name as PlaylistName, playlist_songs.song_id as SongId, title as SongName, artist_name as ArtisName, duration as Duration
+        ///                            from playlist_info, playlist_affiliation, playlist_songs, song_info, artists, song_analysis
+        ///                            where playlist_affiliation.user_id = &apos;{0}&apos; and playlist_affiliation.playlist_id = playlist_info.playlist_id
+        ///                             and playlist_info.playlist_id = playli [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string SqlGetUserPlaylistsQuery {
+            get {
+                return ResourceManager.GetString("SqlGetUserPlaylistsQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT into users (username, email, password) VALUES (&apos;{userName}&apos;, &apos;{email}&apos;, &apos;{password}&apos;).
+        /// </summary>
+        public static string SqlRegisterQuery {
+            get {
+                return ResourceManager.GetString("SqlRegisterQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT user_id from users
+        ///WHERE binary username = &apos;{userName}&apos; and binary password = &apos;{password}&apos;.
+        /// </summary>
+        public static string SqlSignInQuery {
+            get {
+                return ResourceManager.GetString("SqlSignInQuery", resourceCulture);
+            }
+        }
     }
 }
