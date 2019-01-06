@@ -12,7 +12,15 @@ namespace Moodify.Model
     class CreatePlaylistModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private int numOfSongs;
+        private int numOfSongs = 5;
+		private float tempoMax = 131;
+		private float tempoMin = 131;
+		//private float tempo;
+		private float popularityMax = 0.7F;
+		private float popularityMin = 0.7F;
+		private float loudnessMax = -25;
+		private float loudnessMin = -25;
+		private string playlistName = "Playlist name example";
 
         public CreatePlaylistModel()
         {
@@ -27,7 +35,20 @@ namespace Moodify.Model
             }
         }
 
-       public int NumOfSongs
+		public string PlaylistName
+		{
+			get
+			{
+				return this.playlistName;
+			}
+			set
+			{
+				this.playlistName = value;
+				this.NotifyPropertyChanged("PlaylistName");
+			}
+		}
+
+		public int NumOfSongs
         {
             get
             {
@@ -39,6 +60,84 @@ namespace Moodify.Model
                 this.NotifyPropertyChanged("NumOfSongs");
             }
         }
-        
-    }
+
+		public float TempoMax
+		{
+			get
+			{
+				return this.tempoMax;
+			}
+			set
+			{
+				this.TempoMax = value;
+				this.NotifyPropertyChanged("TempoMax");
+			}
+		}
+
+		public float TempoMin
+		{
+			get
+			{
+				return this.tempoMin;
+			}
+			set
+			{
+				this.tempoMin = value;
+				this.NotifyPropertyChanged("TempoMin");
+			}
+		}
+
+		public float PopularityMax
+		{
+			get
+			{
+				return this.popularityMax;
+			}
+			set
+			{
+				this.popularityMax = value;
+				this.NotifyPropertyChanged("PopularityMax");
+			}
+		}
+
+		public float PopularityMin
+		{
+			get
+			{
+				return this.popularityMin;
+			}
+			set
+			{
+				this.popularityMin = value;
+				this.NotifyPropertyChanged("PopularityMin");
+			}
+		}
+
+		public float LoudnessMax
+		{
+			get
+			{
+				return this.loudnessMax;
+			}
+			set
+			{
+				this.loudnessMax = value;
+				this.NotifyPropertyChanged("LoudnessMax");
+			}
+		}
+
+		public float LoudnessMin
+		{
+			get
+			{
+				return this.loudnessMin;
+			}
+			set
+			{
+				this.loudnessMin = value;
+				this.NotifyPropertyChanged("LoudnessMin");
+			}
+		}
+
+	}
 }

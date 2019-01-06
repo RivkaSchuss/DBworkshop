@@ -10,17 +10,19 @@
         <Helpers:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
     </UserControl.Resources>
 	<!--Title="ExploreView" Height="450" Width="800">-->
-	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="True"  ScrollViewer.HorizontalScrollBarVisibility="Auto">
 
-		<StackPanel Background="LightBlue">
+	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+				  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+		<StackPanel Background="LightBlue" ScrollViewer.CanContentScroll="False">
 			<Label HorizontalAlignment="Left" Content="Choose a built-in playlist:" FontSize="20"
 				   FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
 			<ComboBox Text="Mood" Margin ="10, 10, 10, 10" ItemsSource="{Binding VM_MoodDictionary}" SelectedValuePath="Key"
 					  SelectedValue="{Binding VM_MoodChosen, Mode=TwoWay}" DisplayMemberPath="Key.MoodName"
-					  FontWeight="Bold">
+					  FontWeight="Bold" >
 			</ComboBox>
 			<DataGrid ItemsSource="{Binding VM_PlaylistOptions}" SelectionMode="Single" AutoGenerateColumns="False"
-					  Visibility="{Binding VM_PlaylistOptions, Converter={StaticResource NullToVisibilityConverter}}">
+					  Visibility="{Binding VM_PlaylistOptions, Converter={StaticResource NullToVisibilityConverter}}"
+					  ScrollViewer.CanContentScroll="False" CanUserAddRows="False">
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Playlist Name" Width="Auto" Binding="{Binding PlaylistName}" IsReadOnly="True"></DataGridTextColumn>
 					<DataGridTemplateColumn>

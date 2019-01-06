@@ -95,7 +95,17 @@ namespace Moodify.Model
 
         public bool TryRegister(string userName, string email, string password)
         {
-            DBHandler handler = DBHandler.Instance;
+			if (userName == "123")
+			{
+				return false;
+			}
+			else
+			{
+				connection.IsConnected = true;
+				this.IsConnected = true;
+				return true;
+			}
+			DBHandler handler = DBHandler.Instance;
 
             string query = $"INSERT into users (username, email, password) VALUES ('{userName}', '{email}', '{password}')";
             bool result = handler.ExecuteNoResult(query);
@@ -107,16 +117,6 @@ namespace Moodify.Model
             }
             return result;
 
-            //         if (userName == "123")
-            //{
-            //	return false;
-            //}
-            //else
-            //{
-            //	connection.IsConnected = true;
-            //	this.IsConnected = true;
-            //	return true;
-            //}
         }
 
         public bool TrySignIn(string userName, string password)
