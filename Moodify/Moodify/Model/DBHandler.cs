@@ -1,7 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Data;
+using System.Globalization;
+using System.IO;
+using System.Reflection;
+using System.Resources;
 
 namespace Moodify.Model
 {
@@ -13,12 +18,30 @@ namespace Moodify.Model
         /// </summary>
         private DBHandler()
         {
-            // TODO: Place in AppConfig?
-            ConnectionString = "server=localhost; uid=root; pwd=123456; database=moodify_schema";
+            //ConnectionString = "server=localhost; uid=root; pwd=123456; database=moodify_schema";
+            //LoadConnectionString();
+            ConnectionString = Properties.Resources.ResourceManager.GetString("connectionString");
             ConnectionHandler = new MySqlConnection(ConnectionString);
         }
 
-        // TODO: Check Singleton.
+        private void LoadConnectionString()
+        {
+            string connectionString = string.Empty;
+
+            string namespacePart = "Moodify.Properties.Resources";
+            string fileName = "connectionString.txt";
+            string resourceName = namespacePart + "." + fileName;
+            var auxList= System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            using (Stream stm = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+            {
+                if (stm != null)
+                {
+                    connectionString = new StreamReader(stm).ReadToEnd();
+                }
+            }
+            ConnectionString = connectionString;
+        }
+
         public static DBHandler Instance { get; } = new DBHandler(); // Singleton
 
         private string ConnectionString { get; set; }
@@ -98,9 +121,10 @@ namespace Moodify.Model
                     while (reader.Read())
                     {
                         JObject row = new JObject();
-                        for (int i = 0; i < reader.FieldCount; ++i)
+                        for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            row[reader.GetName(i).ToString()] = reader[i].ToString();
+                            string entryName = reader.GetName(i).ToString();
+                            row[entryName] = reader[i].ToString();
                         }
                         results.Add(row);
                     }
