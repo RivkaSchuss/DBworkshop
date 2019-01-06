@@ -9,7 +9,6 @@ namespace Moodify.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-		private IList<User> userList;
 		private ConnectionStatus connection = ConnectionStatus.Instance;
 		private bool connectionFailed;
 		private string userName = "";
@@ -129,12 +128,13 @@ namespace Moodify.Model
                 return true;
             }
             DBHandler handler = DBHandler.Instance;
-            string query = $"SELECT user_id from users" +
+            string query = $"SELECT user_id, email from users" +
                 $" where binary username = '{userName}' and binary password = '{password}'";
             JArray result = handler.ExecuteWithResults(query);
             if (result != null && result.Count == 1)
             {
-                CreateUserDetails(userName, password, string.Empty);
+                string email = (string)result[0]["email"];
+                CreateUserDetails(userName, password, email);
                 connection.IsConnected = true;
                 this.IsConnected = true;
                 return true;
@@ -144,21 +144,9 @@ namespace Moodify.Model
 
         private void CreateUserDetails(string userName, string password, string email)
         {
-            if(email == string.Empty)
-            {
-                email = GetEmailUser(userName);
-            }
             User user = new User(userName, email, password);
             ConnectionStatus status = ConnectionStatus.Instance;
             status.UserDetails = user;
-        }
-
-        private string GetEmailUser(string userName)
-        {
-            DBHandler handler = DBHandler.Instance;
-            string query = $"SELECT email from users where username = '{userName}'";
-            JArray result = handler.ExecuteWithResults(query);
-            return (string)result[0]["email"];
         }
 
     }

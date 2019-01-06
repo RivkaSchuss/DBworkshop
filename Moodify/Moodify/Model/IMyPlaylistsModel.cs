@@ -11,7 +11,7 @@ namespace Moodify.Model
 {
     interface IMyPlaylistsModel : INotifyPropertyChanged
     {
-        Dictionary<int, Playlist> PlaylistsDic { get; set; }
+        IDictionary<int, Playlist> PlaylistsDic { get; set; }
         ObservableCollection<Playlist> Playlists {get; set;}
 
     }

@@ -28,7 +28,19 @@ namespace Moodify.Helpers
             this.UserPlaylists = new Dictionary<int, Playlist>();
         }
 
-        public Dictionary<int, Playlist> UserPlaylists { get; set; }
+        private IDictionary<int, Playlist> playlists;
+
+        public IDictionary<int, Playlist> UserPlaylists {
+            get
+            {
+                GetPlaylistsFromDB();
+                return this.playlists;
+            }
+            set
+            {
+                playlists = value;
+            }
+        }
 
         /// <summary>
         /// Gets the users playlists from database.
@@ -54,6 +66,7 @@ namespace Moodify.Helpers
         /// <param name="playlistsJson">The playlist json array.</param>
         private void ParseUserPlaylistsFromJSON(JArray playlistsJson)
         {
+            this.playlists = new Dictionary<int, Playlist>();
             foreach (var entry in playlistsJson)
             {
                 InsertPlaylistFromJSON(entry);
@@ -69,9 +82,9 @@ namespace Moodify.Helpers
             Song song = ParseSongFromJSON(token);
             int playlistId = int.Parse((string)token["PlaylistId"]);
             Playlist playlist = null;
-            if (this.UserPlaylists.ContainsKey(playlistId))
+            if (this.playlists.ContainsKey(playlistId))
             {
-                playlist = this.UserPlaylists[playlistId];
+                playlist = this.playlists[playlistId];
             }
             if (playlist == null)
             {
@@ -81,7 +94,7 @@ namespace Moodify.Helpers
                     PlaylistName = (string)token["PlaylistName"],
                     Songs = new ObservableCollection<Song>()
                 };
-                UserPlaylists[playlistId] = playlist;
+                this.playlists[playlistId] = playlist;
             }
             playlist.Songs.Add(song);
         }

@@ -30,7 +30,7 @@ namespace Moodify.ViewModel
             set;
         }
 
-        public Dictionary<int, Playlist> VM_PlaylistsDic
+        public IDictionary<int, Playlist> VM_PlaylistsDic
         {
             get { return this.model.PlaylistsDic; }
         }

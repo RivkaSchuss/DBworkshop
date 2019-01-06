@@ -21,7 +21,7 @@ namespace Moodify.View
     /// </summary>
     public partial class PlaylistView : Window
     {
-        public PlaylistView(Dictionary<int, Playlist> playlists, int playlistId)
+        public PlaylistView(IDictionary<int, Playlist> playlists, int playlistId)
         {
             InitializeComponent();
             Playlist currentPlaylist = playlists[playlistId];
