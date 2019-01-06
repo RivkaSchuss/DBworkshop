@@ -9,7 +9,6 @@ namespace Moodify.Helpers
     public class UserPlaylistsSingleton
     {
         private static UserPlaylistsSingleton instance = null;
-        private Dictionary<int, Playlist> playlists;
 
         public static UserPlaylistsSingleton Instance
         {
@@ -23,24 +22,16 @@ namespace Moodify.Helpers
             }
         }
 
-        public UserPlaylistsSingleton()
+        private UserPlaylistsSingleton()
         {
-            this.playlists = new Dictionary<int, Playlist>();
+            this.UserPlaylists = new Dictionary<int, Playlist>();
         }
 
-        public Dictionary<int, Playlist> UserPlaylists
-        {
-            get
-            {
-                //this.GetPlaylistsFromDB();
-                return this.playlists;
-            }
-            set
-            {
-                this.playlists = value;
-            }
-        }
+        public Dictionary<int, Playlist> UserPlaylists { get; set; }
 
+        /// <summary>
+        /// Gets the users playlists from database.
+        /// </summary>
         private void GetPlaylistsFromDB()
         {
             DBHandler handler = DBHandler.Instance;
@@ -53,47 +44,72 @@ namespace Moodify.Helpers
                              and song_info.artist_id = artists.artist_id
                              and song_analysis.song_id = song_info.song_id", userID);
             JArray result = handler.ExecuteWithResults(query);
-            this.playlists = new Dictionary<int, Playlist>();
-            // TODO: Parse JSON Array.
-            foreach (var entry in result)
+            ParseUserPlaylistsFromJSON(result);
+        }
+
+        /// <summary>
+        /// Parses the user playlists from the json array given.
+        /// </summary>
+        /// <param name="playlistsJson">The playlist json array.</param>
+        private void ParseUserPlaylistsFromJSON(JArray playlistsJson)
+        {
+            foreach (var entry in playlistsJson)
             {
-                var artist = new Artist()
-                {
-                    ArtistName = (string)entry["ArtistName"]
-                };
-                var song = new Song()
-                {
-                    SongId = int.Parse((string)entry["SongId"]),
-                    SongName = (string)entry["SongName"],
-                    SongArtist = artist,
-                    Duration = float.Parse((string)entry["Duration"])
-                };
-                int playlistId = int.Parse((string)entry["PlaylistId"]);
-                Playlist playlist = null;
-                if (this.playlists.ContainsKey(playlistId))
-                {
-                    playlist = this.playlists[playlistId];
-                }
-                if (playlist == null)
-                {
-                    playlist = new Playlist()
-                    {
-                        PlaylistId = int.Parse((string)entry["PlaylistId"]),
-                        PlaylistName = (string)entry["PlaylistName"],
-                        Songs = new ObservableCollection<Song>()
-                    };
-                    playlists[playlistId] = playlist;
-                }
-                playlist.Songs.Add(song);
+                InsertPlaylistFromJSON(entry);
             }
-            int b = 5;
+        }
+
+        /// <summary>
+        /// Inserts the playlist to the playlist dictionary from the json token given.
+        /// </summary>
+        /// <param name="token">A json token representing the playlist entry in the DB.</param>
+        private void InsertPlaylistFromJSON(JToken token)
+        {
+            Song song = ParseSongFromJSON(token);
+            int playlistId = int.Parse((string)token["PlaylistId"]);
+            Playlist playlist = null;
+            if (this.UserPlaylists.ContainsKey(playlistId))
+            {
+                playlist = this.UserPlaylists[playlistId];
+            }
+            if (playlist == null)
+            {
+                playlist = new Playlist()
+                {
+                    PlaylistId = int.Parse((string)token["PlaylistId"]),
+                    PlaylistName = (string)token["PlaylistName"],
+                    Songs = new ObservableCollection<Song>()
+                };
+                UserPlaylists[playlistId] = playlist;
+            }
+            playlist.Songs.Add(song);
+        }
+
+        /// <summary>
+        /// Parses the song from json token given.
+        /// </summary>
+        /// <param name="token">A json token.</param>
+        /// <returns>A song object populated by the values in the json token.</returns>
+        private Song ParseSongFromJSON(JToken token)
+        {
+            var artist = new Artist()
+            {
+                ArtistName = (string)token["ArtistName"]
+            };
+            return new Song()
+            {
+                SongId = int.Parse((string)token["SongId"]),
+                SongName = (string)token["SongName"],
+                SongArtist = artist,
+                Duration = float.Parse((string)token["Duration"])
+            };
         }
 
         public bool AddToPlaylists(Playlist playlist)
         {
 			try
 			{
-				this.playlists.Add(playlist.PlaylistId, playlist);
+				this.UserPlaylists.Add(playlist.PlaylistId, playlist);
 				return true;
 			}
 			catch (ArgumentException e)
