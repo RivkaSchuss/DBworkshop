@@ -29,7 +29,19 @@ namespace Moodify.ViewModel
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
-        public int VM_NumOfSongs
+		public string VM_PlaylistName
+		{
+			get
+			{
+				return this.model.PlaylistName;
+			}
+			set
+			{
+				this.model.PlaylistName = value;
+			}
+		}
+
+		public int VM_NumOfSongs
         {
             get
             {
@@ -40,5 +52,41 @@ namespace Moodify.ViewModel
                 this.model.NumOfSongs = value;
             }
         }
-    }
+
+		public float VM_Tempo
+		{
+			get
+			{
+				return this.model.Tempo;
+			}
+			set
+			{
+				this.model.Tempo = value;
+			}
+		}
+
+		public float VM_Popularity
+		{
+			get
+			{
+				return this.model.Popularity;
+			}
+			set
+			{
+				this.model.Popularity = value;
+			}
+		}
+
+		public float VM_Loudness
+		{
+			get
+			{
+				return this.model.Loudness;
+			}
+			set
+			{
+				this.model.Loudness = value;
+			}
+		}
+	}
 }

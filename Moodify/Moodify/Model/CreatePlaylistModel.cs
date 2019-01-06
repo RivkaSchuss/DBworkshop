@@ -16,6 +16,7 @@ namespace Moodify.Model
 		private float tempo;
 		private float popularity;
 		private float loudness;
+		private string playlistName = "";
 
         public CreatePlaylistModel()
         {
@@ -30,7 +31,20 @@ namespace Moodify.Model
             }
         }
 
-       public int NumOfSongs
+		public string PlaylistName
+		{
+			get
+			{
+				return this.playlistName;
+			}
+			set
+			{
+				this.playlistName = value;
+				this.NotifyPropertyChanged("PlaylistName");
+			}
+		}
+
+		public int NumOfSongs
         {
             get
             {
@@ -43,7 +57,7 @@ namespace Moodify.Model
             }
         }
 
-		public float Temp
+		public float Tempo
 		{
 			get
 			{
