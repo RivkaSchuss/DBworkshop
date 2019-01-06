@@ -35,7 +35,7 @@ namespace Moodify.Helpers
 
             Dictionary<Mood, ObservableCollection<Playlist>> dic = new Dictionary<Mood, ObservableCollection<Playlist>>()
             {
-                { new Mood("Fun", new Genre(), highTempo), AddExamplePlaylists() },
+                { new Mood("Fun", new Genre(), highTempo), AddFunPlaylists() },
                 { new Mood("Chill", new Genre(), lowTempo), AddChillPlaylists() },
                 { new Mood("Party", new Genre(), highTempo), AddPartyPlaylists() },
                 { new Mood("Romantic", new Genre(), mediumTempo), AddRomanticPlaylists() },

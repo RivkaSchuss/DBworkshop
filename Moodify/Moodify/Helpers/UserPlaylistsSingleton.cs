@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Moodify.Helpers
 {
@@ -32,7 +33,7 @@ namespace Moodify.Helpers
         {
             get
             {
-                //this.GetPlaylistsFromDB();
+                this.GetPlaylistsFromDB();
                 return this.playlists;
             }
             set
@@ -89,11 +90,27 @@ namespace Moodify.Helpers
             int b = 5;
         }
 
+        /// <summary>
+        /// Adds playlist to the user's playlists and store it in the DB.
+        /// </summary>
+        /// <param name="playlist">The playlist.</param>
+        /// <returns></returns>
         public bool AddToPlaylists(Playlist playlist)
         {
+            DBHandler handler = DBHandler.Instance;
 			try
 			{
-				this.playlists.Add(playlist.PlaylistId, playlist);
+                int playlistID = InsertNewPlaylistToDB(playlist.PlaylistName, handler);
+                List<int> songsID = playlist.Songs.Select(song => song.SongId).ToList();
+                InsertSongsWithPlaylistID(songsID, playlistID, handler);
+                InsertPlaylistIDToUser(playlistID, handler);
+                //Playlist userPlaylist = new Playlist()
+                //{
+                //    PlaylistId = playlistID,
+                //    Songs = playlist.Songs,
+                //    PlaylistName = playlist.PlaylistName + "'s " + ConnectionStatus.Instance.UserDetails.UserName
+                //};
+                //this.playlists.Add(playlistID, userPlaylist);
 				return true;
 			}
 			catch (ArgumentException e)
@@ -101,6 +118,35 @@ namespace Moodify.Helpers
 				return false;
 			}
 			
+        }
+
+        private int InsertNewPlaylistToDB(string playlistName, DBHandler handler)
+        {
+            string query = $"INSERT into playlist_info (playlist_name) VALUES ('{playlistName}');" +
+               $"SELECT LAST_INSERT_ID();";
+
+            JArray result = handler.ExecuteWithResults(query);
+            return int.Parse((string)result[0]["LAST_INSERT_ID()"]);
+        }
+
+        private void InsertSongsWithPlaylistID(List<int> songsID, int playlistID, DBHandler handler)
+        {
+            string songsTuples = string.Empty;
+            foreach (int songID in songsID)
+            {
+                songsTuples += "(" + playlistID + "," + "'" + songID + "'), "; 
+            }
+            songsTuples = songsTuples.Substring(0, songsTuples.Length - 2);
+            string query = $"INSERT into playlist_songs (playlist_id, song_id) VALUES {songsTuples};";
+            bool result = handler.ExecuteNoResult(query);
+            result.Equals(true);
+        }
+
+        private bool InsertPlaylistIDToUser(int playlistID, DBHandler handler)
+        {
+            User user = ConnectionStatus.Instance.UserDetails;
+            string query = $"INSERT INTO playlist_affiliation (playlist_id, user_id) SELECT {playlistID}, user_id from users where username = '{user.UserName}';";
+            return handler.ExecuteNoResult(query);
         }
     }
 }

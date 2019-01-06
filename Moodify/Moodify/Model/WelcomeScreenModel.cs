@@ -95,22 +95,23 @@ namespace Moodify.Model
 
         public bool TryRegister(string userName, string email, string password)
         {
-			if (userName == "123")
-			{
-				return false;
-			}
-			else
-			{
-				connection.IsConnected = true;
-				this.IsConnected = true;
-				return true;
-			}
+			//if (userName == "123")
+			//{
+			//	return false;
+			//}
+			//else
+			//{
+			//	connection.IsConnected = true;
+			//	this.IsConnected = true;
+			//	return true;
+			//}
 			DBHandler handler = DBHandler.Instance;
 
             string query = $"INSERT into users (username, email, password) VALUES ('{userName}', '{email}', '{password}')";
             bool result = handler.ExecuteNoResult(query);
             if (result)
             {
+                CreateUserDetails(userName, password, email);
                 connection.IsConnected = true;
                 this.IsConnected = true;
                 return result;
@@ -131,7 +132,33 @@ namespace Moodify.Model
             string query = $"SELECT user_id from users" +
                 $" where binary username = '{userName}' and binary password = '{password}'";
             JArray result = handler.ExecuteWithResults(query);
-            return result != null && result.Count == 1; // true if the user exists in the DB.
+            if (result != null && result.Count == 1)
+            {
+                CreateUserDetails(userName, password, string.Empty);
+                connection.IsConnected = true;
+                this.IsConnected = true;
+                return true;
+            }
+            return false;
+        }
+
+        private void CreateUserDetails(string userName, string password, string email)
+        {
+            if(email == string.Empty)
+            {
+                email = GetEmailUser(userName);
+            }
+            User user = new User(userName, email, password);
+            ConnectionStatus status = ConnectionStatus.Instance;
+            status.UserDetails = user;
+        }
+
+        private string GetEmailUser(string userName)
+        {
+            DBHandler handler = DBHandler.Instance;
+            string query = $"SELECT email from users where username = '{userName}'";
+            JArray result = handler.ExecuteWithResults(query);
+            return (string)result[0]["email"];
         }
 
     }
