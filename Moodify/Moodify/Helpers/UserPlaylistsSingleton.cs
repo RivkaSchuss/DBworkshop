@@ -49,13 +49,7 @@ namespace Moodify.Helpers
         {
             DBHandler handler = DBHandler.Instance;
             int userID = 4;
-            string query = string.Format(@"SELECT playlist_affiliation.playlist_id as PlaylistId, playlist_name as PlaylistName, playlist_songs.song_id as SongId, title as SongName, artist_name as ArtisName, duration as Duration
-                            from playlist_info, playlist_affiliation, playlist_songs, song_info, artists, song_analysis
-                            where playlist_affiliation.user_id = '{0}' and playlist_affiliation.playlist_id = playlist_info.playlist_id
-                             and playlist_info.playlist_id = playlist_songs.playlist_id
-                             and song_info.song_id = playlist_songs.song_id
-                             and song_info.artist_id = artists.artist_id
-                             and song_analysis.song_id = song_info.song_id", userID);
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlGetUserPlaylistsQuery"], userID);
             JArray result = handler.ExecuteWithResults(query);
             ParseUserPlaylistsFromJSON(result);
         }

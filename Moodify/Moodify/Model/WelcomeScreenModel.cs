@@ -105,8 +105,7 @@ namespace Moodify.Model
 			//	return true;
 			//}
 			DBHandler handler = DBHandler.Instance;
-
-            string query = $"INSERT into users (username, email, password) VALUES ('{userName}', '{email}', '{password}')";
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlRegisterQuery"], userName, email, password);
             bool result = handler.ExecuteNoResult(query);
             if (result)
             {
@@ -128,8 +127,7 @@ namespace Moodify.Model
                 return true;
             }
             DBHandler handler = DBHandler.Instance;
-            string query = $"SELECT user_id, email from users" +
-                $" where binary username = '{userName}' and binary password = '{password}'";
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlSignInQuery"], userName, password);
             JArray result = handler.ExecuteWithResults(query);
             if (result != null && result.Count == 1)
             {

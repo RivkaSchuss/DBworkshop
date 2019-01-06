@@ -1,2 +1,2 @@
 SELECT user_id from users
-WHERE binary username = '{userName}' and binary password = '{password}'
+WHERE binary username = '{0}' and binary password = '{1}'
