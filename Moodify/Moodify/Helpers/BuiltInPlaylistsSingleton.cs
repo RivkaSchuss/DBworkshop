@@ -57,41 +57,42 @@ namespace Moodify.Helpers
             get; set;
         }
 
-        public ObservableCollection<Playlist> AddFunPlaylist()
+        public ObservableCollection<Playlist> AddSadPlaylist()
         {
-            return null;
+            return GetPlaylistsByMood(0, 52, -51.64, -20, 8, "Sad_Built");
         }
 
         public ObservableCollection<Playlist> AddChillPlaylist()
         {
-            return GetPlaylistsByMood(53, 105, -40, -30, 8, "Chill_Bulit");
-        }
-
-        public ObservableCollection<Playlist> AddPartyPlaylist()
-        {
-            return null;
+            return GetPlaylistsByMood(53, 105, -40, -30, 9, "Chill_Bulit");
         }
 
         public ObservableCollection<Playlist> AddRomanticPlaylist()
         {
-            return null;
+            return GetPlaylistsByMood(106, 158, -29, -19, 10, "Romantic_Bulit");
         }
 
-        public ObservableCollection<Playlist> AddSadPlaylist()
+        public ObservableCollection<Playlist> AddPartyPlaylist()
         {
-            return null;
+            return GetPlaylistsByMood(159, 211, -18, -8, 11, "Party_Bulit");
         }
 
-        public ObservableCollection<Playlist> GetPlaylistsByMood(float minTempo, float maxTempo, float minLoudness, float maxLoudness, int playlistID, string playlistName)
+        public ObservableCollection<Playlist> AddFunPlaylist()
+        {
+            return GetPlaylistsByMood(212, 270, -51, -7, 12, "Fun_Bulit");
+        }
+
+        public ObservableCollection<Playlist> GetPlaylistsByMood(double minTempo, double maxTempo, double minLoudness, double maxLoudness, int playlistID, string playlistName)
         {
             DBHandler handler = DBHandler.Instance;
             string query = string.Format(@"SELECT song_id as SongId, title as SongName, artist_name as ArtistName, duration as Duration
                                 FROM (SELECT *
                                 FROM song_analysis natural JOIN song_info NATURAL JOIN similar_artists NATURAL JOIN artists
                                 GROUP BY song_id
-                                HAVING tempo >=53 and tempo <= 105 and
-                                 loudness >= -40 and loudness <= -30
-                                ORDER BY song_hotness DESC) as joined", minTempo, maxTempo, minLoudness, maxLoudness);
+                                HAVING tempo >= '{0}' and tempo <= '{1}' and
+                                 loudness >= '{2}' and loudness <= '{3}'
+                                ORDER BY song_hotness DESC
+                                LIMIT 10) as joined", minTempo, maxTempo, minLoudness, maxLoudness);
             JArray result = handler.ExecuteWithResults(query);
             ObservableCollection <Playlist> playlists =  new ObservableCollection<Playlist>();
             playlists.Add(ParsePlaylist(result, playlistID, playlistName));
