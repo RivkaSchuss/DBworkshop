@@ -13,6 +13,9 @@ namespace Moodify.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private int numOfSongs;
+		private float tempo;
+		private float popularity;
+		private float loudness;
 
         public CreatePlaylistModel()
         {
@@ -39,6 +42,45 @@ namespace Moodify.Model
                 this.NotifyPropertyChanged("NumOfSongs");
             }
         }
-        
-    }
+
+		public float Temp
+		{
+			get
+			{
+				return this.tempo;
+			}
+			set
+			{
+				this.tempo = value;
+				this.NotifyPropertyChanged("Tempo");
+			}
+		}
+
+		public float Popularity
+		{
+			get
+			{
+				return this.popularity;
+			}
+			set
+			{
+				this.popularity = value;
+				this.NotifyPropertyChanged("Popularity");
+			}
+		}
+
+		public float Loudness
+		{
+			get
+			{
+				return this.loudness;
+			}
+			set
+			{
+				this.loudness = value;
+				this.NotifyPropertyChanged("Loudness");
+			}
+		}
+
+	}
 }

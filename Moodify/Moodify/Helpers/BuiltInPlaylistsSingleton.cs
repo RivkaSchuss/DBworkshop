@@ -34,12 +34,18 @@ namespace Moodify.Helpers
             int highTempo = 140;
 
             Dictionary<Mood, ObservableCollection<Playlist>> dic = new Dictionary<Mood, ObservableCollection<Playlist>>()
-            {
-                { new Mood("Fun", new Genre(), highTempo), AddFunPlaylist() },
-                { new Mood("Chill", new Genre(), lowTempo), AddChillPlaylist() },
-                { new Mood("Party", new Genre(), highTempo), AddPartyPlaylist() },
-                { new Mood("Romantic", new Genre(), mediumTempo), AddRomanticPlaylist() },
-                { new Mood("Sad", new Genre(), lowTempo), AddSadPlaylist() }
+			{ 
+				{ new Mood("Fun", new Genre(), highTempo), AddExamplePlaylists() },
+				{ new Mood("Chill", new Genre(), lowTempo), AddExamplePlaylists() },
+				{ new Mood("Party", new Genre(), highTempo), AddExamplePlaylists() },
+				{ new Mood("Romantic", new Genre(), mediumTempo), AddExamplePlaylists() },
+				{ new Mood("Sad", new Genre(), lowTempo), AddExamplePlaylists() }
+
+				//{ new Mood("Fun", new Genre(), highTempo), AddFunPlaylist() },
+    //            { new Mood("Chill", new Genre(), lowTempo), AddChillPlaylist() },
+    //            { new Mood("Party", new Genre(), highTempo), AddPartyPlaylist() },
+    //            { new Mood("Romantic", new Genre(), mediumTempo), AddRomanticPlaylist() },
+    //            { new Mood("Sad", new Genre(), lowTempo), AddSadPlaylist() }
             };
             ObservableCollection<Mood> generics = new ObservableCollection<Mood>();
 
@@ -121,35 +127,71 @@ namespace Moodify.Helpers
         }
 
 
-        //public ObservableCollection<Playlist> AddExamplePlaylists()
-        //{
-        //    ObservableCollection<Playlist> playlists = new ObservableCollection<Playlist>();
+		public ObservableCollection<Playlist> AddExamplePlaylists()
+		{
+			ObservableCollection<Playlist> playlists = new ObservableCollection<Playlist>();
 
-        //    Playlist test = new Playlist();
-        //    test.PlaylistName = "Rivka's playlist";
-        //    test.PlaylistId = 12;
-        //    Song song1 = new Song();
-        //    song1.SongName = "lalala";
-        //    Song song2 = new Song();
-        //    song2.SongName = "jdjdjd";
-        //    test.Songs = new ObservableCollection<Song>();
-        //    test.Songs.Add(song1);
-        //    test.Songs.Add(song2);
-        //    playlists.Add(test);
+			Playlist test = new Playlist();
+			test.PlaylistName = "Rivka's playlist";
+			test.PlaylistId = 12;
+			Song song1 = new Song();
+			song1.SongName = "lalala";
+			Song song2 = new Song();
+			song2.SongName = "jdjdjd";
+			test.Songs = new ObservableCollection<Song>();
+			test.Songs.Add(song1);
+			test.Songs.Add(song2);
+			playlists.Add(test);
 
-        //    Playlist test2 = new Playlist();
-        //    test2.PlaylistName = "Avihay's playlist";
-        //    test2.PlaylistId = 15;
-        //    Song song3 = new Song();
-        //    song3.SongName = "lalala";
-        //    Song song4 = new Song();
-        //    song4.SongName = "jdjdjd";
-        //    test2.Songs = new ObservableCollection<Song>();
-        //    test2.Songs.Add(song3);
-        //    test2.Songs.Add(song4);
-        //    playlists.Add(test2);
+			Playlist test2 = new Playlist();
+			test2.PlaylistName = "yael's playlist";
+			test2.PlaylistId = 15;
+			Song song3 = new Song();
+			song3.SongName = "lalala";
+			Song song4 = new Song();
+			song4.SongName = "jdjdjd";
+			test2.Songs = new ObservableCollection<Song>();
+			test2.Songs.Add(song3);
+			test2.Songs.Add(song4);
+			playlists.Add(test2);
 
-        //    return playlists;
-        //}
-    }
+			Playlist test3 = new Playlist();
+			test3.PlaylistName = "Avihay's playlist";
+			test3.PlaylistId = 15;
+			Song song31 = new Song();
+			song3.SongName = "ldsfsdalala";
+			Song song32 = new Song();
+			song4.SongName = "jdjfdsadjd";
+			test3.Songs = new ObservableCollection<Song>();
+			test3.Songs.Add(song3);
+			test3.Songs.Add(song4);
+			playlists.Add(test3);
+
+			Playlist test4 = new Playlist();
+			test4.PlaylistName = "dan's playlist";
+			test4.PlaylistId = 15;
+			Song song41 = new Song();
+			song3.SongName = "hhhhh";
+			Song song42 = new Song();
+			song4.SongName = "bnnbv";
+			test4.Songs = new ObservableCollection<Song>();
+			test4.Songs.Add(song3);
+			test4.Songs.Add(song4);
+			playlists.Add(test4);
+
+			Playlist test5 = new Playlist();
+			test5.PlaylistName = "barak's playlist";
+			test5.PlaylistId = 15;
+			Song song51 = new Song();
+			song3.SongName = "cccc";
+			Song song52 = new Song();
+			song4.SongName = "vvvvv";
+			test5.Songs = new ObservableCollection<Song>();
+			test5.Songs.Add(song3);
+			test5.Songs.Add(song4);
+			playlists.Add(test5);
+
+			return playlists;
+		}
+	}
 }
