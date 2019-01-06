@@ -53,39 +53,75 @@ namespace Moodify.ViewModel
             }
         }
 
-		public float VM_Tempo
+		public float VM_TempoMax
 		{
 			get
 			{
-				return this.model.Tempo;
+				return this.model.TempoMax;
 			}
 			set
 			{
-				this.model.Tempo = value;
+				this.model.TempoMax = value;
 			}
 		}
 
-		public float VM_Popularity
+		public float VM_TempoMin
 		{
 			get
 			{
-				return this.model.Popularity;
+				return this.model.TempoMin;
 			}
 			set
 			{
-				this.model.Popularity = value;
+				this.model.TempoMin = value;
 			}
 		}
 
-		public float VM_Loudness
+		public float VM_PopularityMax
 		{
 			get
 			{
-				return this.model.Loudness;
+				return this.model.PopularityMax;
 			}
 			set
 			{
-				this.model.Loudness = value;
+				this.model.PopularityMax = value;
+			}
+		}
+
+		public float VM_PopularityMin
+		{
+			get
+			{
+				return this.model.PopularityMin;
+			}
+			set
+			{
+				this.model.PopularityMin = value;
+			}
+		}
+
+		public float VM_LoudnessMax
+		{
+			get
+			{
+				return this.model.LoudnessMax;
+			}
+			set
+			{
+				this.model.LoudnessMax = value;
+			}
+		}
+
+		public float VM_LoudnessMin
+		{
+			get
+			{
+				return this.model.LoudnessMin;
+			}
+			set
+			{
+				this.model.LoudnessMin = value;
 			}
 		}
 	}
