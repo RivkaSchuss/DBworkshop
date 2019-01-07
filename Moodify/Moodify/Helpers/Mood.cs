@@ -10,25 +10,9 @@ namespace Moodify.Helpers
     public class Mood
     {
 
-        public Mood(string moodName, Genre genre, float tempo)
+        public Mood(string moodName)
         {
             this.MoodName = moodName;
-            this.Genre = genre;
-            this.Tempo = tempo;
-        }
-
-        public Genre Genre
-        {
-            get;
-            set;
-        }
-
-
-        public float Tempo
-        {
-            get;
-            set;
-
         }
 
         public ObservableCollection<Song> Songs
