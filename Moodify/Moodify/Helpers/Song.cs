@@ -8,107 +8,34 @@ namespace Moodify.Helpers
 {
     public class Song
     {
-        private int songId;
-        private string songName;
-        private string albumName;
-        private Artist artist;
-        private float song_hotness;
-        private float tempo;
         private float duration;
-        private float loudness;
 
-        public int SongId
-        {
-            set
-            {
-                this.songId = value;
-            }
-            get
-            {
-                return this.songId;
-            }
-        }
+        public int SongId { set; get; }
 
-        public string SongName
-        {
-            set
-            {
-                this.songName = value;
-            }
-            get
-            {
-                return this.songName;
-            }
-        }
-        public string AlbumName
-        {
-            set
-            {
-                this.albumName = value;
-            }
-            get
-            {
-                return this.albumName;
-            }
-        }
+        public string SongName { set; get; }
+        public string AlbumName { set; get; }
 
-        public Artist SongArtist
-        {
-            set
-            {
-                this.artist = value;
-            }
-            get
-            {
-                return this.artist;
-            }
-        }
+        public Artist SongArtist { set; get; }
 
-        public float SongHotness
-        {
-            set
-            {
-                this.song_hotness = value;
-            }
-            get
-            {
-                return this.song_hotness;
-            }
-        }
+        public float SongHotness { set; get; }
 
-        public float Tempo
-        {
-            set
-            {
-                this.tempo = value;
-            }
-            get
-            {
-                return this.tempo;
-            }
-        }
+        public float Tempo { set; get; }
 
-        public float Duration
+        public float RealDuration
         {
             set
             {
                 this.duration = value;
+                this.Duration = TimeSpan.FromSeconds(Convert.ToInt32(this.duration)).ToString(@"mm\:ss"); ;
             }
             get
             {
                 return this.duration;
             }
         }
-        public float Loudness
-        {
-            set
-            {
-                this.loudness = value;
-            }
-            get
-            {
-                return this.loudness;
-            }
-        }
+
+        public string Duration { get; set; }
+
+        public float Loudness { set; get; }
     }
 }

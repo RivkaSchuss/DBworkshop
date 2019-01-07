@@ -1,1 +1,1 @@
-SELECT SUM(duration) from playlist_songs natural join song_analysis where playlist_id = '{0}'
+SELECT SUM(duration) as total_duration from playlist_songs natural join song_analysis where playlist_id = '{0}'
