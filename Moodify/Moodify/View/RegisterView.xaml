@@ -28,8 +28,10 @@
 					 VerticalAlignment="Top" Width="222" Text="{Binding VM_Password}"
 					 materialDesign:HintAssist.Hint="Password"/>
 			<!--<TextBox Height="23" HorizontalAlignment="Left" Margin="183,107,0,0" Name="passwordBoxConfirm" VerticalAlignment="Top" Width="222" />-->
-			<Button Content="Submit" Height="26" HorizontalAlignment="Left" Margin="183,140,0,0" Name="Submit" VerticalAlignment="Top" Width="80" Click="Submit_Click" />
-			<Button Content="Cancel" Height="26" HorizontalAlignment="Right" Margin="0,140,60,0" Name="Cancel" VerticalAlignment="Top" Width="80" Click="Cancel_Click" />
+			<Button Content="Submit" Height="26" HorizontalAlignment="Left" Margin="183,140,0,0" 
+					Name="Submit" VerticalAlignment="Top" Width="80" Click="Submit_Click" ToolTip="Click here to register"/>
+			<Button Content="Cancel" Height="26" HorizontalAlignment="Right" Margin="0,140,60,0" Name="Cancel" VerticalAlignment="Top" Width="80" Click="Cancel_Click" 
+					ToolTip="Click to cancel register and return to Welcome Screen"/>
 			<TextBlock Height="23" HorizontalAlignment="Left" FontWeight="Bold" Margin="67,190,0,0" Name="Error" Text="User name already in use!" VerticalAlignment="Top" Width="500" Foreground="Red"
 					   Visibility="{Binding VM_IsConnectionFailed, Converter={StaticResource BoolVisibilityConverter}}"/>
 		</Grid>

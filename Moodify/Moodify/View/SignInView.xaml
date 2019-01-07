@@ -24,8 +24,10 @@
 			<TextBox Height="23" HorizontalAlignment="Left" Margin="183,50,0,0" Name="textBoxPassword"
 					 VerticalAlignment="Top" Width="222" Text="{Binding VM_Password}"
 					 materialDesign:HintAssist.Hint="Password"/>
-			<Button Content="Submit" Height="28" HorizontalAlignment="Left" Margin="183,80,0,0" Name="Submit" VerticalAlignment="Top" Width="80" Click="Submit_Click" /> 
-			<Button Content="Cancel" Height="28" HorizontalAlignment="Right" Margin="0,80,60,0" Name="Cancel" VerticalAlignment="Top" Width="80" Click="Cancel_Click" />
+			<Button Content="Submit" Height="28" HorizontalAlignment="Left" Margin="183,80,0,0" 
+					Name="Submit" VerticalAlignment="Top" Width="80" Click="Submit_Click" ToolTip="Click to sign in"/> 
+			<Button Content="Cancel" Height="28" HorizontalAlignment="Right" Margin="0,80,60,0" Name="Cancel" VerticalAlignment="Top" 
+					Width="80" Click="Cancel_Click" ToolTip="Click to cancel and return to Welcome Screen"/>
 			<TextBlock Height="23" HorizontalAlignment="Left" Margin="100,120,0,0" Name="Error" Text="User name or password is incorrect!"
 					   VerticalAlignment="Top" Width="500" Foreground="Red" FontWeight="Bold"
 					   Visibility="{Binding VM_IsConnectionFailed, Converter={StaticResource BoolVisibilityConverter}}"/>

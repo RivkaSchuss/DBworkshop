@@ -17,7 +17,8 @@
 					<DataTemplate >
 						<StackPanel Orientation="Horizontal" Margin="10,10,10,10">
 							<TextBlock Text="{Binding Path=Key}" Margin="10, 10, 10, 10"/>
-							<Button Content="{Binding Path=Value.PlaylistName}" CommandParameter="{Binding Path=Key}" Click="OpenPlaylist_Click" >
+							<Button Content="{Binding Path=Value.PlaylistName}" ToolTip="Display playlist"
+									CommandParameter="{Binding Path=Key}" Click="OpenPlaylist_Click" >
 							</Button>
 						</StackPanel>
 					</DataTemplate>

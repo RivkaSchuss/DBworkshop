@@ -28,7 +28,7 @@
 					<DataGridTemplateColumn>
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
-								<Button Click="Show_Songs" CommandParameter="{Binding PlaylistId}">Show Songs</Button>
+								<Button Click="Show_Songs" CommandParameter="{Binding PlaylistId}" ToolTip="Show songs from the playlist">Show Songs</Button>
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
 					</DataGridTemplateColumn>
