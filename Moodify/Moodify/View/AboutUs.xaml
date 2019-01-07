@@ -15,7 +15,7 @@
 		<materialDesign:Chip Content="Project GitHub Site" Icon="P" Click="ProjectClick" Margin="200,-250,0,0"/>
 		<TextBlock TextWrapping="Wrap" MinWidth="280" TextAlignment="Center"
 					Height="80" Margin="0,300,0,0"	FontWeight="DemiBold" FontSize="20">
-			This project was written by the authors above in Data Base Workshop course Bar-Ilan University.
+			This project was written by the authors above in Database Workshop course Bar-Ilan University.
 		</TextBlock>
 	</Grid>
 </UserControl>
