@@ -18,7 +18,7 @@
 					<DataGridTextColumn Header="Song" Width ="Auto" IsReadOnly="True" Binding ="{Binding SongName}"/>
 					<DataGridTextColumn Header="Artist" Width ="Auto" IsReadOnly="True" Binding ="{Binding SongArtist.ArtistName}"/>
 					<DataGridTextColumn Header="Album" Width ="Auto" IsReadOnly="True" Binding ="{Binding AlbumName}"/>
-					<DataGridTextColumn Header="Genre" Width ="Auto" IsReadOnly="True" Binding ="{Binding Genre}"/>
+					<DataGridTextColumn Header="Genre" Width ="Auto" IsReadOnly="True" Binding ="{Binding SongArtist.Genre}"/>
 					<DataGridTextColumn Header="Duration" Width ="Auto" IsReadOnly="True" Binding ="{Binding Duration}"/>
 				</DataGrid.Columns>
 			</DataGrid>
