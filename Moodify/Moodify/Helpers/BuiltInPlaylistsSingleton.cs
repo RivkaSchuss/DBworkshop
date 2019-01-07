@@ -30,9 +30,6 @@ namespace Moodify.Helpers
 
         public Dictionary<Mood, ObservableCollection<Playlist>> CreateDictionary()
         {
-            int lowTempo = 40;
-            int mediumTempo = 100;
-            int highTempo = 140;
 
             Dictionary<Mood, ObservableCollection<Playlist>> dic = new Dictionary<Mood, ObservableCollection<Playlist>>()
             {
@@ -121,47 +118,9 @@ namespace Moodify.Helpers
             DBHandler handler = DBHandler.Instance;
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlGenerateBuiltinPlaylist"], minTempo, maxTempo, minLoudness, maxLoudness, orderBy);
             JArray result = handler.ExecuteWithResults(query);
-            return PlaylistParser(result, playlistID, playlistName);
+            return PlaylistJSONParser.ParseJSONPlaylist(result, playlistID, playlistName);
         }
 
-        /// <summary>
-        /// Parses the playlist from json (the result of the sql query) to Playlist Object.
-        /// </summary>
-        /// <param name="jsonPlaylist">The json playlist.</param>
-        /// <param name="playlistID">The playlist identifier.</param>
-        /// <param name="playlistName">Name of the playlist.</param>
-        /// <returns></returns>
-        public Playlist PlaylistParser(JArray jsonPlaylist, int playlistID, string playlistName)
-        {
-            if (jsonPlaylist == null)
-            {
-                return null; 
-            }
-
-            Playlist playlist = new Playlist()
-            {
-                PlaylistId = playlistID,
-                PlaylistName = playlistName,
-                Songs = new ObservableCollection<Song>()
-            };
-            foreach (var entry in jsonPlaylist)
-            {
-                var artist = new Artist()
-                {
-                    ArtistName = (string)entry["ArtistName"]
-                };
-                var song = new Song()
-                {
-                    SongId = int.Parse((string)entry["SongId"]),
-                    SongName = (string)entry["SongName"],
-                    SongArtist = artist,
-                    RealDuration = float.Parse((string)entry["Duration"])
-                };
-                playlist.Songs.Add(song);
-
-            }
-            return playlist;      
-        }
 
 	}
 }
