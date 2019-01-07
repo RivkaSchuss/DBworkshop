@@ -76,11 +76,28 @@ namespace Moodify.Properties {
         ///                                GROUP BY song_id
         ///                                HAVING tempo &gt;= &apos;{0}&apos; and tempo &lt;= &apos;{1}&apos; and
         ///                                 loudness &gt;= &apos;{2}&apos; and loudness &lt;= &apos;{3}&apos;
-        ///                                ORDER BY so [rest of string was truncated]&quot;;.
+        ///                                ORDER BY {4 [rest of string was truncated]&quot;;.
         /// </summary>
         public static string SqlGenerateBuiltinPlaylist {
             get {
                 return ResourceManager.GetString("SqlGenerateBuiltinPlaylist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select song_id as SongId, title as SongName, artist_name as ArtistName, duration as Duration
+        ///FROM (SELECT *
+        ///FROM song_analysis natural JOIN song_info NATURAL JOIN similar_artists NATURAL JOIN artists
+        ///GROUP BY song_id
+        ///HAVING tempo &gt;= {0} and tempo &lt;= {1} and
+        /// loudness &gt;= {2} and loudness &lt;= {3} and
+        /// song_hotness &gt;= {4} and song_hotness &lt;= {5}
+        /// ORDER BY RAND()
+        ///LIMIT {6}) as joined.
+        /// </summary>
+        public static string SqlGenerateCustomePlaylist {
+            get {
+                return ResourceManager.GetString("SqlGenerateCustomePlaylist", resourceCulture);
             }
         }
         

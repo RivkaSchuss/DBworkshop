@@ -1,0 +1,9 @@
+Select song_id as SongId, title as SongName, artist_name as ArtistName, duration as Duration
+FROM (SELECT *
+FROM song_analysis natural JOIN song_info NATURAL JOIN similar_artists NATURAL JOIN artists
+GROUP BY song_id
+HAVING tempo >= {0} and tempo <= {1} and
+ loudness >= {2} and loudness <= {3} and
+ song_hotness >= {4} and song_hotness <= {5}
+ ORDER BY RAND()
+LIMIT {6}) as joined

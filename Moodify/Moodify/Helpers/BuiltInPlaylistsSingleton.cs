@@ -1,5 +1,6 @@
 ﻿using Moodify.Model;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -56,22 +57,22 @@ namespace Moodify.Helpers
 
         public ObservableCollection<Playlist> AddChillPlaylists()
         {
-            return CreatePlaylists(53, 105, -40, -30, 2, "Moodify Chill");
+            return CreatePlaylists(53, 105, -40, -30, 3, "Moodify Chill");
         }
 
         public ObservableCollection<Playlist> AddRomanticPlaylists()
         {
-            return CreatePlaylists(106, 158, -29, -19, 4, "Moodify Romantic");
+            return CreatePlaylists(106, 158, -29, -19, 6, "Moodify Romantic");
         }
 
         public ObservableCollection<Playlist> AddPartyPlaylists()
         {
-            return CreatePlaylists(159, 211, -18, -8, 6, "Moodify Party");
+            return CreatePlaylists(159, 211, -18, -8, 9, "Moodify Party");
         }
 
         public ObservableCollection<Playlist> AddFunPlaylists()
         {
-            return CreatePlaylists(212, 270, -51, -7, 8, "Moodify Fun");
+            return CreatePlaylists(212, 270, -51, -7, 12, "Moodify Fun");
         }
 
         /// <summary>
@@ -87,9 +88,21 @@ namespace Moodify.Helpers
         public ObservableCollection<Playlist> CreatePlaylists(double minTempo, double maxTempo, double minLoudness, double maxLoudness, int playlistID, string playlistName)
         {
             ObservableCollection<Playlist> playlists = new ObservableCollection<Playlist>();
-            playlists.Add(GetPlaylistByMoodByOrder(minTempo, maxTempo, minLoudness, maxLoudness, playlistID, playlistName + " Popular", "DESC"));
-            playlists.Add(GetPlaylistByMoodByOrder(minTempo, maxTempo, minLoudness, maxLoudness, playlistID + 1, playlistName + " Indie", "ASC"));
+            Playlist popular = GetPlaylistByMoodByOrder(minTempo, maxTempo, minLoudness, maxLoudness, playlistID, playlistName + " Popular", "song_hotness DESC");
+            AddPlaylistToCollection(popular, playlists);
+            Playlist indie = GetPlaylistByMoodByOrder(minTempo, maxTempo, minLoudness, maxLoudness, playlistID + 1, playlistName + " Indie", "song_hotness ASC");
+            AddPlaylistToCollection(indie, playlists);
+            Playlist random = GetPlaylistByMoodByOrder(minTempo, maxTempo, minLoudness, maxLoudness, playlistID + 2, playlistName + " Random", "RAND()");
+            AddPlaylistToCollection(random, playlists);
             return playlists;
+        }
+
+        private void AddPlaylistToCollection(Playlist playlist, ObservableCollection<Playlist> playlists)
+        {
+            if (playlist != null)
+            {
+                playlists.Add(playlist);
+            }
         }
 
         /// <summary>
@@ -120,6 +133,11 @@ namespace Moodify.Helpers
         /// <returns></returns>
         public Playlist PlaylistParser(JArray jsonPlaylist, int playlistID, string playlistName)
         {
+            if (jsonPlaylist == null)
+            {
+                return null; 
+            }
+
             Playlist playlist = new Playlist()
             {
                 PlaylistId = playlistID,

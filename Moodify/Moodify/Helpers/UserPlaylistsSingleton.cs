@@ -47,12 +47,22 @@ namespace Moodify.Helpers
         /// </summary>
         private void GetPlaylistsFromDB()
         {
-            DBHandler handler = DBHandler.Instance;
-            //int userID = ConnectionStatus.Instance.UserDetails.UserID;
             int userID = 4;
+            DBHandler handler = DBHandler.Instance;
+            //User user = ConnectionStatus.Instance.UserDetails;
+            //if (user == null)
+            //{
+            //    userID = 100;
+            //} else
+            //{
+            //    userID = user.UserID;
+            //}
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlGetUserPlaylistsQuery"], userID);
             JArray result = handler.ExecuteWithResults(query);
-            ParseUserPlaylistsFromJSON(result);
+            if (result != null)
+            {
+                ParseUserPlaylistsFromJSON(result);
+            }
         }
 
         /// <summary>
@@ -121,6 +131,11 @@ namespace Moodify.Helpers
         /// <returns></returns>
         public bool AddToPlaylists(Playlist playlist)
         {
+            if (ConnectionStatus.Instance.UserDetails == null)
+            {
+                return false;
+            }
+
             DBHandler handler = DBHandler.Instance;
 			try
 			{
@@ -161,7 +176,8 @@ namespace Moodify.Helpers
         private bool InsertPlaylistIDToUser(int playlistID, DBHandler handler)
         {
             User user = ConnectionStatus.Instance.UserDetails;
-            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertPlaylistIDToUser"], user.UserName);
+            var d = DBQueryManager.Instance;
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertPlaylistIDToUser"], playlistID, user.UserName);
             return handler.ExecuteNoResult(query);
         }
     }

@@ -4,5 +4,5 @@ SELECT song_id as SongId, title as SongName, artist_name as ArtistName, duration
                                 GROUP BY song_id
                                 HAVING tempo >= '{0}' and tempo <= '{1}' and
                                  loudness >= '{2}' and loudness <= '{3}'
-                                ORDER BY song_hotness {4}
-                                LIMIT 10) as joined
+                                ORDER BY {4}
+                                LIMIT 12) as joined
