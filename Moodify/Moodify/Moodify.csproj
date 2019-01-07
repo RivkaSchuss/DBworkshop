@@ -89,7 +89,7 @@
     <Compile Include="Helpers\DBQueryManager.cs" />
     <Compile Include="Helpers\Mood.cs" />
     <Compile Include="Helpers\NullVisibilityConverter.cs" />
-    <Compile Include="Helpers\PlaylistParser.cs" />
+    <Compile Include="Helpers\PlaylistJSONParser.cs" />
     <Compile Include="Helpers\Song.cs" />
     <Compile Include="Helpers\BoolVisibilityConverter.cs" />
     <Compile Include="Helpers\UserPlaylistsSingleton.cs" />

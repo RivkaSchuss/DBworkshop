@@ -146,46 +146,7 @@ namespace Moodify.Model
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlGenerateCustomePlaylist"],
                 tempoMin, tempoMax, loudnessMin, loudnessMax, popularityMin, popularityMax, numOfSongs);
             JArray result = handler.ExecuteWithResults(query);
-            CustomPlaylistSingleton.Instance.CustomPlaylist = PlaylistParser(result, -1, PlaylistName);
-        }
-
-        /// <summary>
-        /// Parses the playlist from json (the result of the sql query) to Playlist Object.
-        /// </summary>
-        /// <param name="jsonPlaylist">The json playlist.</param>
-        /// <param name="playlistID">The playlist identifier.</param>
-        /// <param name="playlistName">Name of the playlist.</param>
-        /// <returns></returns>
-        public Playlist PlaylistParser(JArray jsonPlaylist, int playlistID, string playlistName)
-        {
-            if (jsonPlaylist == null)
-            {
-                return null;
-            }
-
-            Playlist playlist = new Playlist()
-            {
-                PlaylistId = playlistID,
-                PlaylistName = playlistName,
-                Songs = new ObservableCollection<Song>()
-            };
-            foreach (var entry in jsonPlaylist)
-            {
-                var artist = new Artist()
-                {
-                    ArtistName = (string)entry["ArtistName"]
-                };
-                var song = new Song()
-                {
-                    SongId = int.Parse((string)entry["SongId"]),
-                    SongName = (string)entry["SongName"],
-                    SongArtist = artist,
-                    RealDuration = float.Parse((string)entry["Duration"])
-                };
-                playlist.Songs.Add(song);
-
-            }
-            return playlist;
+            CustomPlaylistSingleton.Instance.CustomPlaylist = PlaylistJSONParser.ParseJSONPlaylist(result, -1, PlaylistName);
         }
 
     }
