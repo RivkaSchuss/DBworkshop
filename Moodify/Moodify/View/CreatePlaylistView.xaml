@@ -29,27 +29,27 @@
 					Margin="70 0 0 0"/>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0" Height="50">
-				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Tempo Values: (0 to 262)            Max:  "/>
-				<TextBox Name="tempoMax" Text="262" Width="100"
-					 Margin="0 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
-				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Min:" Margin="15 0 0 0"/>
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Tempo Values: (0 to 262)            Min:  "/>
 				<TextBox Name="tempoMin" Text="0" Width="100"
+					 Margin="0 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Max:" Margin="15 0 0 0"/>
+				<TextBox Name="tempoMax" Text="262" Width="100"
 					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0" Height="50">
-				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Popularity Values: (0% to 100%) Max:"/>
-				<TextBox Name="popularityMax"  Text="100" Width="100"
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Popularity Values: (0% to 100%) Min:"/>
+				<TextBox Name="popularityMin"  Text="0" Width="100"
 					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
-				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Min:" Margin="15 0 0 0"/>
-				<TextBox Name="popularityMin" Text="0" Width="100"
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Max:" Margin="15 0 0 0"/>
+				<TextBox Name="popularityMax" Text="100" Width="100"
 					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0" Height="50">
-				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Loudness Values: (-52 to 1)         Max:"/>
-				<TextBox Name="loudnessMax" Text="1" Width="100"
-					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
-				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Min:" Margin="15 0 0 0"/>
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Loudness Values: (-52 to 1)         Min:"/>
 				<TextBox Name="loudnessMin" Text="-52" Width="100"
+					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Max:" Margin="15 0 0 0"/>
+				<TextBox Name="loudnessMax" Text="1" Width="100"
 					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
 			</StackPanel>
 

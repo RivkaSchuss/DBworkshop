@@ -34,6 +34,10 @@ namespace Moodify.Model
 
         public Playlist FindPlaylist()
         {
+			if(playlistID == -1)
+			{
+				return CustomPlaylistSingleton.Instance.CustomPlaylist;
+			}
             BuiltInPlaylistsSingleton builtInPlaylists = BuiltInPlaylistsSingleton.Instance;
             this.MoodDictionary = builtInPlaylists.PlaylistDictionary;
             foreach (ObservableCollection<Playlist> collec in this.MoodDictionary.Values)

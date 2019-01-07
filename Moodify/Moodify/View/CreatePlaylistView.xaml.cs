@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -61,7 +62,12 @@ namespace Moodify.View
 				createPlaylistVM.VM_LoudnessMax = lMax;
 				createPlaylistVM.VM_LoudnessMin = lMax;
 
+
+				this.createPlaylistVM.GenerateCustomPlaylist();
 				this.Close();
+				ShowSongsView songsView = new ShowSongsView(-1);
+				songsView.ShowDialog();
+
 			}
 			catch (ArgumentException ex)
 			{
