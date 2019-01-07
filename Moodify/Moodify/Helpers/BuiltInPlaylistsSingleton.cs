@@ -157,7 +157,6 @@ namespace Moodify.Helpers
                     SongArtist = artist,
                     Duration = float.Parse((string)entry["Duration"])
                 };
-                //int playlistId = int.Parse((string)jsonPlaylist["PlaylistId"]);
                 playlist.Songs.Add(song);
 
             }

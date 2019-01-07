@@ -251,5 +251,8 @@
   <ItemGroup>
     <None Include="Resources\SqlGenerateCustomePlaylist.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SqlSumTotalDurationPlaylist.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

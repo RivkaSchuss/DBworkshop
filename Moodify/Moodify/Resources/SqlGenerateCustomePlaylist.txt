@@ -1,4 +1,4 @@
-Select song_id as SongId, title as SongName, artist_name as ArtistName, duration as Duration
+SELECT song_id as SongId, title as SongName, artist_name as ArtistName, album_name as AlbumName, genre as Genre, duration as Duration
 FROM (SELECT *
 FROM song_analysis natural JOIN song_info NATURAL JOIN similar_artists NATURAL JOIN artists
 GROUP BY song_id

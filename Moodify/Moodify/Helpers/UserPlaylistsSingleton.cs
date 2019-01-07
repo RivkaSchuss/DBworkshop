@@ -97,8 +97,11 @@ namespace Moodify.Helpers
                 {
                     PlaylistId = int.Parse((string)token["PlaylistId"]),
                     PlaylistName = (string)token["PlaylistName"],
-                    Songs = new ObservableCollection<Song>()
+                    Songs = new ObservableCollection<Song>(),                    
                 };
+                string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertSongsWithPlaylistID"], playlist.PlaylistId);
+                JArray result = DBHandler.Instance.ExecuteWithResults(query);
+                playlist.TotalDuration = float.Parse((string)DBHandler.Instance.ExecuteWithResults(query);
                 this.playlists[playlistId] = playlist;
             }
             playlist.Songs.Add(song);
@@ -150,7 +153,6 @@ namespace Moodify.Helpers
 			{
 				return false;
 			}
-			
         }
 
         private int InsertNewPlaylistToDB(string playlistName, DBHandler handler)

@@ -40,5 +40,10 @@ namespace Moodify.Helpers
         {
             get; set;
         }
+
+        public float TotalDuration
+        {
+            get; set;
+        }
     }
 }

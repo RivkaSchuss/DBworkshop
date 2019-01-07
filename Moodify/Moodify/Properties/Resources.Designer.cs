@@ -160,5 +160,14 @@ namespace Moodify.Properties {
                 return ResourceManager.GetString("SqlSignInQuery", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT SUM(duration) from playlist_songs natural join song_analysis where playlist_id = &apos;{0}&apos;.
+        /// </summary>
+        public static string SqlSumTotalDurationPlaylist {
+            get {
+                return ResourceManager.GetString("SqlSumTotalDurationPlaylist", resourceCulture);
+            }
+        }
     }
 }

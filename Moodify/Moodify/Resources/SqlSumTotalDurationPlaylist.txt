@@ -1,0 +1,1 @@
+SELECT SUM(duration) from playlist_songs natural join song_analysis where playlist_id = '{0}'
