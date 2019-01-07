@@ -9,8 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
 	<Grid Background="AliceBlue">
 		<materialDesign:Chip Content="Avihay Arzuan" Icon="A" Click="AvihayClick" Margin="100,-100,0,0"/>
-		<materialDesign:Chip Content="Barak Obama" Icon="B" Click="BarakClick" Margin="100,100,0,0"/>
-		<materialDesign:Chip Content="Dan Teplizki" Icon="D" Click="DanClick" Margin="350,-100,0,0"/>
+		<materialDesign:Chip Content="Barak Talmor" Icon="B" Click="BarakClick" Margin="100,100,0,0"/>
+		<materialDesign:Chip Content="Dan Tepliski" Icon="D" Click="DanClick" Margin="350,-100,0,0"/>
 		<materialDesign:Chip Content="Rivka Schuss" Icon="R" Click="RivkaClick" Margin="350,100,0,0"/>
 		<materialDesign:Chip Content="Project GitHub Site" Icon="P" Click="ProjectClick" Margin="200,-250,0,0"/>
 		<TextBlock TextWrapping="Wrap" MinWidth="280" TextAlignment="Center"

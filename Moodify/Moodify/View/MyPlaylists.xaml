@@ -12,18 +12,37 @@
 		<StackPanel Background="LightBlue">
 			<Label HorizontalAlignment="Left" Content="My Playlists" FontSize="25" FontWeight="Bold" Foreground="BlueViolet"
 			   Padding="10"/>
-			<ListBox ItemsSource="{Binding VM_PlaylistsDic}" ScrollViewer.CanContentScroll="False" Width="Auto" Height="Auto">
-				<ListBox.ItemTemplate>
-					<DataTemplate >
-						<StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-							<TextBlock Text="{Binding Path=Key}" Margin="10, 10, 10, 10"/>
+			<DataGrid ItemsSource="{Binding VM_PlaylistsDic}" AutoGenerateColumns="False" CanUserAddRows="False">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Playlist Name" Width="Auto" Binding="{Binding PlaylistName}" IsReadOnly="True"></DataGridTextColumn>
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<Button Click="OpenPlaylist_Click" CommandParameter="{Binding Path=Key}" 
+										ToolTip="Display Playlist" Content="{Binding Path=Value.PlaylistName}"
+										Margin="-100 0 0 0"></Button>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTextColumn Header="Playlist Length" Width="Auto" Binding="{Binding Path=Value.Songs.Count}" IsReadOnly="True"></DataGridTextColumn>
+					<DataGridTextColumn Header="Duration" Width="Auto" Binding="{Binding Path=Value.TotalDuration}" IsReadOnly="True"></DataGridTextColumn>
+				</DataGrid.Columns>
+			</DataGrid>
+			<!--<ListView ItemsSource="{Binding VM_PlaylistsDic}" ScrollViewer.CanContentScroll="False" Width="Auto" 
+					 Height="Auto">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal" Margin="0,10,10,10">
 							<Button Content="{Binding Path=Value.PlaylistName}" ToolTip="Display playlist"
-									CommandParameter="{Binding Path=Key}" Click="OpenPlaylist_Click" >
+									CommandParameter="{Binding Path=Key}" Click="OpenPlaylist_Click" 
+									Margin="00 0 0 0">
 							</Button>
+							<TextBlock Text="{Binding Path=Value.Songs.Count}" Margin="10, 10, 10, 10"
+									   FontWeight="Bold" FontSize="15"/>
 						</StackPanel>
 					</DataTemplate>
-				</ListBox.ItemTemplate>
-			</ListBox>
+				</ListView.ItemTemplate>
+			</ListView>-->
 		</StackPanel>
 	</ScrollViewer>
 </UserControl>
