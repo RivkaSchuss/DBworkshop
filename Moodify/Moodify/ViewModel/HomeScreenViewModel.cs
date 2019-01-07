@@ -1,4 +1,5 @@
-﻿using Moodify.Model;
+﻿using Moodify.Helpers;
+using Moodify.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,18 +22,7 @@ namespace Moodify.ViewModel
                 this.NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
-
-		//public string VM_UserName
-  //      {
-  //          get
-  //          {
-  //              return this.model.UserName;
-  //          }
-		//	set
-		//	{
-		//		this.model.UserName = value;
-		//	}
-  //      }
+		
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -40,6 +30,8 @@ namespace Moodify.ViewModel
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
+
+
 
     }
 }

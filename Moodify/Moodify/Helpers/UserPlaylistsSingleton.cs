@@ -47,7 +47,7 @@ namespace Moodify.Helpers
         /// </summary>
         private void GetPlaylistsFromDB()
         {
-            int userID = 4;
+			int userID = ConnectionStatus.Instance.UserDetails.UserID;
             DBHandler handler = DBHandler.Instance;
             //User user = ConnectionStatus.Instance.UserDetails;
             //if (user == null)
