@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Moodify.Helpers
 		{
 			get
 			{
-				if(connectionInstance == null)
+				if (connectionInstance == null)
 				{
 					connectionInstance = new ConnectionStatus();
 				}
@@ -22,7 +23,30 @@ namespace Moodify.Helpers
 			}
 		}
 
-		public bool IsConnected { get; set; }
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		public void NotifyPropertyChanged(string propName)
+		{
+			if (PropertyChanged != null)
+			{
+				this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+			}
+		}
+
+		private bool isConnected;
+
+		public bool IsConnected
+		{
+			get
+			{
+				return this.isConnected;
+			}
+			set
+			{
+				this.isConnected = value;
+				this.NotifyPropertyChanged("IsConnected");
+			}
+		}
 
 		public User UserDetails { get; set; }
 	}
