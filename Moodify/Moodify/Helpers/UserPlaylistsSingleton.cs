@@ -48,6 +48,7 @@ namespace Moodify.Helpers
         private void GetPlaylistsFromDB()
         {
             DBHandler handler = DBHandler.Instance;
+            //int userID = ConnectionStatus.Instance.UserDetails.UserID;
             int userID = 4;
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlGetUserPlaylistsQuery"], userID);
             JArray result = handler.ExecuteWithResults(query);
@@ -127,13 +128,6 @@ namespace Moodify.Helpers
                 List<int> songsID = playlist.Songs.Select(song => song.SongId).ToList();
                 InsertSongsWithPlaylistID(songsID, playlistID, handler);
                 InsertPlaylistIDToUser(playlistID, handler);
-                //Playlist userPlaylist = new Playlist()
-                //{
-                //    PlaylistId = playlistID,
-                //    Songs = playlist.Songs,
-                //    PlaylistName = playlist.PlaylistName + "'s " + ConnectionStatus.Instance.UserDetails.UserName
-                //};
-                //this.playlists.Add(playlistID, userPlaylist);
 				return true;
 			}
 			catch (ArgumentException e)

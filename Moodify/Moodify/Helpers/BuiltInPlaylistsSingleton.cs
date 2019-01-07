@@ -106,14 +106,7 @@ namespace Moodify.Helpers
         public Playlist GetPlaylistByMoodByOrder(double minTempo, double maxTempo, double minLoudness, double maxLoudness, int playlistID, string playlistName, string orderBy)
         {
             DBHandler handler = DBHandler.Instance;
-            string query = string.Format(@"SELECT song_id as SongId, title as SongName, artist_name as ArtistName, duration as Duration
-                                FROM (SELECT *
-                                FROM song_analysis natural JOIN song_info NATURAL JOIN similar_artists NATURAL JOIN artists
-                                GROUP BY song_id
-                                HAVING tempo >= '{0}' and tempo <= '{1}' and
-                                 loudness >= '{2}' and loudness <= '{3}'
-                                ORDER BY song_hotness {4}
-                                LIMIT 10) as joined", minTempo, maxTempo, minLoudness, maxLoudness, orderBy);
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlGenerateBuiltinPlaylist"], minTempo, maxTempo, minLoudness, maxLoudness, orderBy);
             JArray result = handler.ExecuteWithResults(query);
             return PlaylistParser(result, playlistID, playlistName);
         }

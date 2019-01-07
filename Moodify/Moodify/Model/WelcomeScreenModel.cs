@@ -106,16 +106,16 @@ namespace Moodify.Model
 			//}
 			DBHandler handler = DBHandler.Instance;
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlRegisterQuery"], userName, email, password);
-            bool result = handler.ExecuteNoResult(query);
-            if (result)
+            JArray result = handler.ExecuteWithResults(query);
+            if (result != null)
             {
-                CreateUserDetails(userName, password, email);
+                int userID = int.Parse((string)result[0]["LAST_INSERT_ID()"]);
+                CreateUserDetails(userName, password, email, userID);
                 connection.IsConnected = true;
                 this.IsConnected = true;
-                return result;
+                return true;
             }
-            return result;
-
+            return false;
         }
 
         public bool TrySignIn(string userName, string password)
@@ -132,7 +132,8 @@ namespace Moodify.Model
             if (result != null && result.Count == 1)
             {
                 string email = (string)result[0]["email"];
-                CreateUserDetails(userName, password, email);
+                int userID = int.Parse((string)result[0]["user_id"]);
+                CreateUserDetails(userName, password, email, userID);
                 connection.IsConnected = true;
                 this.IsConnected = true;
                 return true;
@@ -140,9 +141,15 @@ namespace Moodify.Model
             return false;
         }
 
-        private void CreateUserDetails(string userName, string password, string email)
+        private void CreateUserDetails(string userName, string password, string email, int userID)
         {
-            User user = new User(userName, email, password);
+            User user = new User()
+            {
+                UserName = userName,
+                Password = password,
+                Email = email,
+                UserID = userID
+            };
             ConnectionStatus status = ConnectionStatus.Instance;
             status.UserDetails = user;
         }

@@ -8,40 +8,14 @@ namespace Moodify.Helpers
 {
 	class User
 	{
-		private string userName;
-		private string password;
-		private string email;
 
-		public string UserName
-		{
-			get
-			{
-				return userName;
-			}
-			set
-			{
-				this.userName = value;
-			}
-		}
+        public string UserName { get; set; }
 
-		public string Password
-		{
-			get
-			{
-				return password;
-			}
-			set
-			{
-				this.password = value;
-			}
-		}
+        public string Password { get; set; }
 
-		public User(string userName,  string email, string password)
-		{
-			this.userName = userName;
-			this.password = password;
-			this.email = email;
-		}
+        public string Email { get; set; }
+
+        public int UserID { get; set; }
 
 	}
 }

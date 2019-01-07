@@ -236,5 +236,8 @@
   <ItemGroup>
     <None Include="Resources\SqlGetUserPlaylistsQuery.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SqlGenerateBuiltinPlaylist.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
