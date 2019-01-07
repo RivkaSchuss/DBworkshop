@@ -99,9 +99,9 @@ namespace Moodify.Helpers
                     PlaylistName = (string)token["PlaylistName"],
                     Songs = new ObservableCollection<Song>(),                    
                 };
-                string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertSongsWithPlaylistID"], playlist.PlaylistId);
-                JArray result = DBHandler.Instance.ExecuteWithResults(query);
-                playlist.TotalDuration = float.Parse((string)DBHandler.Instance.ExecuteWithResults(query);
+                //string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertSongsWithPlaylistID"], playlist.PlaylistId);
+                //JArray result = DBHandler.Instance.ExecuteWithResults(query);
+                //playlist.TotalDuration = float.Parse((string)DBHandler.Instance.ExecuteWithResults(query));
                 this.playlists[playlistId] = playlist;
             }
             playlist.Songs.Add(song);
