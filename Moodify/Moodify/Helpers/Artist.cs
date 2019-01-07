@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace Moodify.Helpers
         private string artistName;
         private string genre;
         private float artist_hotness;
+
+        private TextInfo TextInfoProp { get; set; } = new CultureInfo(CultureInfo.CurrentUICulture.ToString(), false).TextInfo;
 
         public int ArtistId
         {
@@ -45,7 +48,7 @@ namespace Moodify.Helpers
             }
             get
             {
-                return this.genre;
+                return TextInfoProp.ToTitleCase(this.genre);
             }
         }
 
