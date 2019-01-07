@@ -124,5 +124,10 @@ namespace Moodify.ViewModel
 				this.model.LoudnessMin = value;
 			}
 		}
+
+		public void GenerateCustomPlaylist()
+		{
+			this.model.GenerateCustomPlaylist();
+		}
 	}
 }
