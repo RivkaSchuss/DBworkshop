@@ -10,7 +10,7 @@ namespace Moodify.Helpers
     {
         private int artistId;
         private string artistName;
-        private Genre genre;
+        private string genre;
         private float artist_hotness;
 
         public int ArtistId
@@ -37,7 +37,7 @@ namespace Moodify.Helpers
             }
         }
 
-        public Genre GenreName
+        public string Genre
         {
             set
             {

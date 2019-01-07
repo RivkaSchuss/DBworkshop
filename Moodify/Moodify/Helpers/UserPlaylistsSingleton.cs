@@ -121,14 +121,17 @@ namespace Moodify.Helpers
         {
             var artist = new Artist()
             {
-                ArtistName = (string)token["ArtistName"]
+                ArtistName = (string)token["ArtistName"],
+                Genre = (string)token["Genre"]
             };
             return new Song()
             {
                 SongId = int.Parse((string)token["SongId"]),
                 SongName = (string)token["SongName"],
                 SongArtist = artist,
+                AlbumName = (string)token["AlbumName"],
                 RealDuration = float.Parse((string)token["Duration"])
+                
             };
         }
 
