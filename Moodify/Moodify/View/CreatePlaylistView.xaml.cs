@@ -60,7 +60,7 @@ namespace Moodify.View
 				createPlaylistVM.VM_PopularityMax = pMax;
 				createPlaylistVM.VM_PopularityMin = pMin;
 				createPlaylistVM.VM_LoudnessMax = lMax;
-				createPlaylistVM.VM_LoudnessMin = lMax;
+				createPlaylistVM.VM_LoudnessMin = lMin;
 
 
 				this.createPlaylistVM.GenerateCustomPlaylist();

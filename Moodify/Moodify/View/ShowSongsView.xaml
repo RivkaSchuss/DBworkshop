@@ -29,9 +29,10 @@
 				</DataGrid.Columns>
 			</DataGrid>
 			<Button Margin ="10, 10, 10, 10" Content="Add To My Playlists" CommandParameter="{Binding VM_PlaylistID}" Click="AddPlaylists"
-				Width="200" HorizontalAlignment="Left"></Button>
+				Width="200" HorizontalAlignment="Left" ToolTip="Add the playlists to DataBase"></Button>
 			<Button Margin ="400, -43, 10, 10" Content="Return"
-				Width="100" HorizontalAlignment="Left" Click="ClickReturn"></Button>
+				Width="100" HorizontalAlignment="Left" Click="ClickReturn"
+					ToolTip="Return To Explore"></Button>
 			<TextBlock Text="{Binding VM_AddingSuccesful, Converter={StaticResource BoolToConvert}}" 
                    Visibility="{Binding VM_AddingSuccesful, Converter={StaticResource NullToVisibilityConverter}}"
 				   FontWeight="Bold" Padding="10" Foreground="BlueViolet">

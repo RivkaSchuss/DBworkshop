@@ -9,11 +9,6 @@
         mc:Ignorable="d"
         Title="Create Playlist" Height="450" Width="800" ResizeMode="NoResize">
 	<materialDesign:DialogHost CloseOnClickAway="True">
-		<!--<materialDesign:DialogHost.DialogContent>
-			<Grid Margin="500">
-				--><!--<TextBlock Text="My first Dialog" />--><!--
-			</Grid>
-		</materialDesign:DialogHost.DialogContent>-->
 		<StackPanel Background="LightBlue">
 			<Label HorizontalAlignment="Left" Content="Let's create a playlist!" FontSize="30" FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
 			<!--<Label HorizontalAlignment="Center" Content="First, choose how many songs you'd like in your playlist" FontSize="20" FontWeight="Thin"></Label>-->
@@ -23,9 +18,9 @@
 					 VerticalAlignment="Top" Width="222" Text="{Binding VM_PlaylistName}" FontSize="15"/>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0">
-				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="{Binding VM_NumOfSongs, StringFormat=List length: {0}}"/>
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="{Binding VM_NumOfSongs, StringFormat=Maximum list length: {0}}"/>
 				<Slider Minimum="1" Maximum="12" Style="{StaticResource MaterialDesignDiscreteSlider}" 
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding VM_NumOfSongs}" Width="400"
+                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding VM_NumOfSongs}" Width="340"
 					Margin="70 0 0 0"/>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0" Height="50">
@@ -58,11 +53,11 @@
 				<Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
 				Width="100" Content="Submit" Height="40" HorizontalAlignment="Center" Margin="0,0,0,0" 
 				Name="Register" VerticalAlignment="Top" Click="SubmitClick"
-				/>
+				ToolTip="Generate Playlist and view songs"/>
 				<Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
 				Width="100" Content="Cancel" Height="40" HorizontalAlignment="Right" Margin="250,0,0,0" 
 				Name="Cancel" VerticalAlignment="Top" Click="CancelClick"
-				/>
+				ToolTip="Cancel and return to Explore"/>
 			</StackPanel>
 		</StackPanel>
 	</materialDesign:DialogHost>
