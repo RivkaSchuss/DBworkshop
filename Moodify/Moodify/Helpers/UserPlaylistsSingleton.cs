@@ -76,6 +76,14 @@ namespace Moodify.Helpers
             {
                 InsertPlaylistFromJSON(entry);
             }
+            // Calculating the total duration time of the playlist songs
+            foreach (KeyValuePair<int, Playlist> entry in playlists)
+            {
+                Playlist playlist = entry.Value;
+                string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlSumTotalDurationPlaylist"], playlist.PlaylistId);
+                JArray result = DBHandler.Instance.ExecuteWithResults(query);
+                playlist.TotalDuration = float.Parse((string)result[0]["total_duration"]);
+            }
         }
 
         /// <summary>
@@ -99,9 +107,6 @@ namespace Moodify.Helpers
                     PlaylistName = (string)token["PlaylistName"],
                     Songs = new ObservableCollection<Song>(),                    
                 };
-                //string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertSongsWithPlaylistID"], playlist.PlaylistId);
-                //JArray result = DBHandler.Instance.ExecuteWithResults(query);
-                //playlist.TotalDuration = float.Parse((string)DBHandler.Instance.ExecuteWithResults(query));
                 this.playlists[playlistId] = playlist;
             }
             playlist.Songs.Add(song);
@@ -125,7 +130,7 @@ namespace Moodify.Helpers
                 SongName = (string)token["SongName"],
                 SongArtist = artist,
                 AlbumName = (string)token["AlbumName"],
-                Duration = float.Parse((string)token["Duration"])
+                RealDuration = float.Parse((string)token["Duration"])
                 
             };
         }
