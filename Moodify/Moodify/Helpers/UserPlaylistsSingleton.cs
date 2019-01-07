@@ -82,7 +82,8 @@ namespace Moodify.Helpers
                 Playlist playlist = entry.Value;
                 string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlSumTotalDurationPlaylist"], playlist.PlaylistId);
                 JArray result = DBHandler.Instance.ExecuteWithResults(query);
-                playlist.TotalDuration = float.Parse((string)result[0]["total_duration"]);
+                float totalSeconds = float.Parse((string)result[0]["total_duration"]);
+                playlist.TotalDuration = TimeSpan.FromSeconds(Convert.ToInt32(totalSeconds)).ToString(@"hh\.mm\:ss");
             }
         }
 
