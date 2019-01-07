@@ -85,6 +85,7 @@
     <Compile Include="Helpers\BoolConverter.cs" />
     <Compile Include="Helpers\BuiltInPlaylistsSingleton.cs" />
     <Compile Include="Helpers\ConnectionStatus.cs" />
+    <Compile Include="Helpers\CustomPlaylistSingleton.cs" />
     <Compile Include="Helpers\DBQueryManager.cs" />
     <Compile Include="Helpers\Mood.cs" />
     <Compile Include="Helpers\NullVisibilityConverter.cs" />
