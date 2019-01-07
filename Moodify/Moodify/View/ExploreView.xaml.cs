@@ -1,6 +1,8 @@
-﻿using Moodify.ViewModel;
+﻿using Moodify.Helpers;
+using Moodify.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +23,22 @@ namespace Moodify.View
 	public partial class ExploreView : UserControl
 	{
         private IExploreVM viewModel;
+		ConnectionStatus connection = ConnectionStatus.Instance;
+
 		public ExploreView()
 		{
+			connection.PropertyChanged += HandleEvent;
+			IsEnabled = false;
 			InitializeComponent();
-            this.viewModel = new ExploreViewModel();
-            this.DataContext = viewModel;
 		}
+
+		public void HandleEvent(object sender, PropertyChangedEventArgs args)
+		{
+			this.viewModel = new ExploreViewModel();
+            this.DataContext = viewModel;
+			this.IsEnabled = connection.IsConnected;
+		}
+
 
         private void Custom_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -47,6 +59,16 @@ namespace Moodify.View
 			ScrollViewer svc = (ScrollViewer)sender;
 			svc.ScrollToVerticalOffset(svc.VerticalOffset - e.Delta);
 			e.Handled = true;
+		}
+
+		public void OnTabItemSelecting(object sender, CurrentChangingEventArgs e)
+		{
+			//this.IsEnabled = false;
+			//ConnectionStatus connection = ConnectionStatus.Instance;
+			//if (!connection.IsConnected)
+			//{
+			//	int prevIdx = this.tab.Items.IndexOf(this.OnTabItemSelecting.
+			//}
 		}
 	}
 }

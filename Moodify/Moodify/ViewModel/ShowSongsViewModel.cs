@@ -77,5 +77,6 @@ namespace Moodify.ViewModel
                 this.model.AddingSuccesful = value;
             }
         }
+
     }
 }

@@ -15,9 +15,9 @@ namespace Moodify.ViewModel
         private IMyPlaylistsModel model;
 
 
-        public MyPlaylistsViewModel(int userId)
+        public MyPlaylistsViewModel()
         {
-            this.model = new MyPlaylistsModel(userId);
+            this.model = new MyPlaylistsModel();
             this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
             {
                 this.NotifyPropertyChanged("VM_" + e.PropertyName);

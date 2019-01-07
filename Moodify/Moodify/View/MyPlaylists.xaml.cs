@@ -1,6 +1,8 @@
-﻿using Moodify.ViewModel;
+﻿using Moodify.Helpers;
+using Moodify.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,17 +23,26 @@ namespace Moodify.View
 	public partial class MyPlaylists : UserControl
 	{
         public IMyPlaylistsVM viewModel;
-        private int userId;
+        //private int userId;
+		ConnectionStatus connection = ConnectionStatus.Instance;
 
 		public MyPlaylists()
 		{
 			InitializeComponent();
-            this.userId = 0;
-            this.viewModel = new MyPlaylistsViewModel(userId);
-            this.DataContext = this.viewModel;
+			connection.PropertyChanged += HandleEvent;
+            //this.userId = 0;
+			IsEnabled = false;
         }
 
-        private void OpenPlaylist_Click(object sender, RoutedEventArgs e)
+		public void HandleEvent(object sender, PropertyChangedEventArgs args)
+		{
+			InitializeComponent();
+			this.viewModel = new MyPlaylistsViewModel();
+            this.DataContext = this.viewModel;
+			this.IsEnabled = connection.IsConnected;
+		}
+
+		private void OpenPlaylist_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             int playlistId = (int) button.CommandParameter;
