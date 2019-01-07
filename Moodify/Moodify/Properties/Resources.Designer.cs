@@ -97,6 +97,34 @@ namespace Moodify.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT into playlist_info (playlist_name) VALUES (&apos;{0}&apos;);
+        ///SELECT LAST_INSERT_ID();.
+        /// </summary>
+        public static string SqlInsertNewPlaylist {
+            get {
+                return ResourceManager.GetString("SqlInsertNewPlaylist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO playlist_affiliation (playlist_id, user_id) SELECT {0}, user_id FROM users WHERE username = &apos;{1}&apos;;.
+        /// </summary>
+        public static string SqlInsertPlaylistIDToUser {
+            get {
+                return ResourceManager.GetString("SqlInsertPlaylistIDToUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT into playlist_songs (playlist_id, song_id) VALUES {0};.
+        /// </summary>
+        public static string SqlInsertSongsWithPlaylistID {
+            get {
+                return ResourceManager.GetString("SqlInsertSongsWithPlaylistID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INSERT into users (username, email, password) VALUES (&apos;{0}&apos;, &apos;{1}&apos;, &apos;{2}&apos;);
         ///SELECT LAST_INSERT_ID().
         /// </summary>

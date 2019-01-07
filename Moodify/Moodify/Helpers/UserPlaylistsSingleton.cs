@@ -124,13 +124,14 @@ namespace Moodify.Helpers
             DBHandler handler = DBHandler.Instance;
 			try
 			{
+                //TODO: CHECK HOW TO HANDLE FAILURE.
                 int playlistID = InsertNewPlaylistToDB(playlist.PlaylistName, handler);
                 List<int> songsID = playlist.Songs.Select(song => song.SongId).ToList();
                 InsertSongsWithPlaylistID(songsID, playlistID, handler);
                 InsertPlaylistIDToUser(playlistID, handler);
 				return true;
 			}
-			catch (ArgumentException e)
+			catch (ArgumentException)
 			{
 				return false;
 			}
@@ -139,14 +140,13 @@ namespace Moodify.Helpers
 
         private int InsertNewPlaylistToDB(string playlistName, DBHandler handler)
         {
-            string query = $"INSERT into playlist_info (playlist_name) VALUES ('{playlistName}');" +
-               $"SELECT LAST_INSERT_ID();";
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertNewPlaylist"], playlistName);
 
             JArray result = handler.ExecuteWithResults(query);
             return int.Parse((string)result[0]["LAST_INSERT_ID()"]);
         }
 
-        private void InsertSongsWithPlaylistID(List<int> songsID, int playlistID, DBHandler handler)
+        private bool InsertSongsWithPlaylistID(List<int> songsID, int playlistID, DBHandler handler)
         {
             string songsTuples = string.Empty;
             foreach (int songID in songsID)
@@ -154,15 +154,14 @@ namespace Moodify.Helpers
                 songsTuples += "(" + playlistID + "," + "'" + songID + "'), "; 
             }
             songsTuples = songsTuples.Substring(0, songsTuples.Length - 2);
-            string query = $"INSERT into playlist_songs (playlist_id, song_id) VALUES {songsTuples};";
-            bool result = handler.ExecuteNoResult(query);
-            result.Equals(true);
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertSongsWithPlaylistID"], songsTuples);
+            return handler.ExecuteNoResult(query);
         }
 
         private bool InsertPlaylistIDToUser(int playlistID, DBHandler handler)
         {
             User user = ConnectionStatus.Instance.UserDetails;
-            string query = $"INSERT INTO playlist_affiliation (playlist_id, user_id) SELECT {playlistID}, user_id from users where username = '{user.UserName}';";
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertPlaylistIDToUser"], user.UserName);
             return handler.ExecuteNoResult(query);
         }
     }

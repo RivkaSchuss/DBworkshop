@@ -1,0 +1,1 @@
+INSERT into playlist_songs (playlist_id, song_id) VALUES {0};

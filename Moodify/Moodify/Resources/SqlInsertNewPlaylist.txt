@@ -1,0 +1,2 @@
+INSERT into playlist_info (playlist_name) VALUES ('{0}');
+SELECT LAST_INSERT_ID();
