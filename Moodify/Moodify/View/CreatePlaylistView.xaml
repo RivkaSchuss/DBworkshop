@@ -3,30 +3,68 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d"
-        Title="Create Playlist" Height="450" Width="800">
-	<StackPanel Background="LightBlue">
-		<Label HorizontalAlignment="Left" Content="Let's create a playlist!" FontSize="30" FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
-		<Label HorizontalAlignment="Center" Content="First, choose how many songs you'd like in your playlist" FontSize="20" FontWeight="Thin"></Label>
-		<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="150 0 0 0">
-			<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Playlist Name:"/>
-			
-		</StackPanel>
-		<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="150 0 0 0">
-			<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="{Binding VM_NumOfSongs, StringFormat=List length: {0}}"/>
-			<Slider Minimum="1" Maximum="12" Style="{StaticResource MaterialDesignDiscreteSlider}" 
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding VM_NumOfSongs}" Width="400"/>
-		</StackPanel>
-		<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="150 0 0 0">
-			<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="{Binding VM_Popularity, StringFormat=List length: {0}}"/>
-			<Slider Minimum="0" Maximum="1" Style="{StaticResource MaterialDesignDiscreteSlider}" 
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding VM_NumOfSongs}" Width="400"/>
-		</StackPanel>
+        Title="Create Playlist" Height="450" Width="800" ResizeMode="NoResize">
+	<materialDesign:DialogHost CloseOnClickAway="True">
+		<!--<materialDesign:DialogHost.DialogContent>
+			<Grid Margin="500">
+				--><!--<TextBlock Text="My first Dialog" />--><!--
+			</Grid>
+		</materialDesign:DialogHost.DialogContent>-->
+		<StackPanel Background="LightBlue">
+			<Label HorizontalAlignment="Left" Content="Let's create a playlist!" FontSize="30" FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
+			<!--<Label HorizontalAlignment="Center" Content="First, choose how many songs you'd like in your playlist" FontSize="20" FontWeight="Thin"></Label>-->
+			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0">
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Playlist Name:"/>
+				<TextBox HorizontalAlignment="Left" Margin="230,20,0,0" Name="textBoxUserName"
+					 VerticalAlignment="Top" Width="222" Text="{Binding VM_PlaylistName}" FontSize="15"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0">
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="{Binding VM_NumOfSongs, StringFormat=List length: {0}}"/>
+				<Slider Minimum="1" Maximum="12" Style="{StaticResource MaterialDesignDiscreteSlider}" 
+                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding VM_NumOfSongs}" Width="400"
+					Margin="70 0 0 0"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0" Height="50">
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Tempo Values: (0 to 262)            Max:  "/>
+				<TextBox Name="tempoMax" Text="262" Width="100"
+					 Margin="0 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Min:" Margin="15 0 0 0"/>
+				<TextBox Name="tempoMin" Text="0" Width="100"
+					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0" Height="50">
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Popularity Values: (0% to 100%) Max:"/>
+				<TextBox Name="popularityMax"  Text="100" Width="100"
+					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Min:" Margin="15 0 0 0"/>
+				<TextBox Name="popularityMin" Text="0" Width="100"
+					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0" Height="50">
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Loudness Values: (-52 to 1)         Max:"/>
+				<TextBox Name="loudnessMax" Text="1" Width="100"
+					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
+				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Min:" Margin="15 0 0 0"/>
+				<TextBox Name="loudnessMin" Text="-52" Width="100"
+					 Margin="10 0 0 0" FontSize="15" HorizontalContentAlignment="Right"/>
+			</StackPanel>
 
-	</StackPanel>
+			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 30 0 0">
+
+				<Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+				Width="100" Content="Submit" Height="40" HorizontalAlignment="Center" Margin="0,0,0,0" 
+				Name="Register" VerticalAlignment="Top" Click="SubmitClick"
+				/>
+				<Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
+				Width="100" Content="Cancel" Height="40" HorizontalAlignment="Right" Margin="250,0,0,0" 
+				Name="Cancel" VerticalAlignment="Top" Click="CancelClick"
+				/>
+			</StackPanel>
+		</StackPanel>
+	</materialDesign:DialogHost>
+
 </Window>
-		<!--<Slider Name="a" HorizontalAlignment="Stretch" Maximum="12" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,10,10,10" Value="{Binding VM_NumOfSongs}"/>
-		<TextBlock FontSize="25" Margin="120,50,150,0" Text="{Binding VM_NumOfSongs, StringFormat=List length: {0}}"></TextBlock>
-		<Slider Minimum="0" Maximum="100" Style="{StaticResource MaterialDesignDiscreteSlider}"
-				ToolTip="MaterialDesignDiscreteSlider" Value="50" Width="280" />-->

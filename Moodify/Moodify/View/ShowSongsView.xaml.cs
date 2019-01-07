@@ -40,5 +40,12 @@ namespace Moodify.View
 		{
 			this.Close();
 		}
-    }
+
+		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+		{
+			ScrollViewer svc = (ScrollViewer)sender;
+			svc.ScrollToVerticalOffset(svc.VerticalOffset - e.Delta);
+			e.Handled = true;
+		}
+	}
 }

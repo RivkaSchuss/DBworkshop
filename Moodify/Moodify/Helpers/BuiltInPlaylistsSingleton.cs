@@ -142,6 +142,12 @@ namespace Moodify.Helpers
 			test.Songs = new ObservableCollection<Song>();
 			test.Songs.Add(song1);
 			test.Songs.Add(song2);
+			for (int i = 0; i< 10; i++)
+			{
+				Song songss = new Song();
+				songss.SongName ="example" + i.ToString();
+				test.Songs.Add(songss);
+			}
 			playlists.Add(test);
 
 			Playlist test2 = new Playlist();

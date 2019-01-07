@@ -13,13 +13,14 @@
         <Helpers:BoolConverter x:Key="BoolToConvert"/>
     </Window.Resources>
 
-	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="True"  ScrollViewer.HorizontalScrollBarVisibility="Auto">
-		<StackPanel Background="LightBlue">
+	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+				  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+		<StackPanel Background="LightBlue" ScrollViewer.CanContentScroll="False">
 			<TextBlock HorizontalAlignment="Left" Text="{Binding VM_PlaylistName, StringFormat='Here are the songs from the playlist: {0}'}" FontSize="20"
 				   FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
-			<DataGrid ItemsSource="{Binding VM_SongList}" AutoGenerateColumns="False">
+			<DataGrid ItemsSource="{Binding VM_SongList}" AutoGenerateColumns="False" CanUserAddRows="False">
 				<DataGrid.Columns>
-					<DataGridTextColumn Header="#" Width="Auto" IsReadOnly="True" Binding="{Binding SongId}"/>
+					<!--<DataGridTextColumn Header="#" Width="Auto" IsReadOnly="True" Binding="{Binding SongId}"/>-->
 					<DataGridTextColumn Header="Song" Width="Auto" Binding="{Binding SongName}" IsReadOnly="True"></DataGridTextColumn>
 					<DataGridTextColumn Header="Artist" Width="Auto" Binding="{Binding SongArtist.ArtistName}" IsReadOnly="True"></DataGridTextColumn>
 					<DataGridTextColumn Header="Album" Width="Auto" Binding="{Binding AlbumName}" IsReadOnly="True"></DataGridTextColumn>

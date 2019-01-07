@@ -6,17 +6,22 @@
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d"
         Title="Playlist" Height="450" Width="800">
-    <StackPanel Background ="LightBlue">
-        <Label HorizontalAlignment="Center" Content="{Binding VM_Playlist.PlaylistName}" FontSize="25" FontWeight="Thin" Foreground="Blue" Padding="10"/>
-        <DataGrid ItemsSource="{Binding VM_Playlist.Songs}" AutoGenerateColumns="False" CanUserAddRows="False" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Width="Auto" Height="Auto">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="#" Width="Auto" IsReadOnly="True" Binding="{Binding SongId}"/>
-                <DataGridTextColumn Header="Song" Width ="*" IsReadOnly="True" Binding ="{Binding SongName}"/>
-                <DataGridTextColumn Header="Artist" Width ="*" IsReadOnly="True" Binding ="{Binding SongArtist.ArtistName}"/>
-                <DataGridTextColumn Header="Album" Width ="*" IsReadOnly="True" Binding ="{Binding AlbumName}"/>
-                <DataGridTextColumn Header="Genre" Width ="*" IsReadOnly="True" Binding ="{Binding Genre}"/>
-                <DataGridTextColumn Header="Duration" Width ="*" IsReadOnly="True" Binding ="{Binding Duration}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+				  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+		<StackPanel Background ="LightBlue">
+			<Label HorizontalAlignment="Center" Content="{Binding VM_Playlist.PlaylistName}" FontSize="25"
+			   FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
+			<DataGrid ItemsSource="{Binding VM_Playlist.Songs}" AutoGenerateColumns="False" CanUserAddRows="False" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
+				  Width="Auto" Height="Auto">
+				<DataGrid.Columns>
+					<!--<DataGridTextColumn Header="#" Width="Auto" IsReadOnly="True" Binding="{Binding SongId}"/>-->
+					<DataGridTextColumn Header="Song" Width ="*" IsReadOnly="True" Binding ="{Binding SongName}"/>
+					<DataGridTextColumn Header="Artist" Width ="*" IsReadOnly="True" Binding ="{Binding SongArtist.ArtistName}"/>
+					<DataGridTextColumn Header="Album" Width ="*" IsReadOnly="True" Binding ="{Binding AlbumName}"/>
+					<DataGridTextColumn Header="Genre" Width ="*" IsReadOnly="True" Binding ="{Binding Genre}"/>
+					<DataGridTextColumn Header="Duration" Width ="*" IsReadOnly="True" Binding ="{Binding Duration}"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</StackPanel>
+	</ScrollViewer>
 </Window>

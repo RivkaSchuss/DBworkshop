@@ -7,21 +7,22 @@
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800">
 	<!--Title="MyPlaylists" Height="450" Width="800">-->
-    
-    <StackPanel Background="LightBlue">
-        <Label HorizontalAlignment="Left" Content="My Playlists" FontSize="25" FontWeight="Bold" Foreground="BlueViolet"
+	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+				  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+		<StackPanel Background="LightBlue">
+			<Label HorizontalAlignment="Left" Content="My Playlists" FontSize="25" FontWeight="Bold" Foreground="BlueViolet"
 			   Padding="10"/>
-        <ListBox ItemsSource="{Binding VM_PlaylistsDic}" ScrollViewer.CanContentScroll="True" Width="Auto" Height="Auto">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                        <TextBlock Text="{Binding Path=Key}" Margin="10, 10, 10, 10"/>
-                        <Button Content="{Binding Path=Value.PlaylistName}" CommandParameter="{Binding Path=Key}" Click="OpenPlaylist_Click" >
-                        </Button>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-    </StackPanel>
+			<ListBox ItemsSource="{Binding VM_PlaylistsDic}" ScrollViewer.CanContentScroll="False" Width="Auto" Height="Auto">
+				<ListBox.ItemTemplate>
+					<DataTemplate >
+						<StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+							<TextBlock Text="{Binding Path=Key}" Margin="10, 10, 10, 10"/>
+							<Button Content="{Binding Path=Value.PlaylistName}" CommandParameter="{Binding Path=Key}" Click="OpenPlaylist_Click" >
+							</Button>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</StackPanel>
+	</ScrollViewer>
 </UserControl>

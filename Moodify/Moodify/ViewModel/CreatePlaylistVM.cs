@@ -61,7 +61,7 @@ namespace Moodify.ViewModel
 			}
 			set
 			{
-				this.model.TempoMax = value;
+				this.model.TempoMax= value;
 			}
 		}
 

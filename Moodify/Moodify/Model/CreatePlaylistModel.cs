@@ -69,7 +69,7 @@ namespace Moodify.Model
 			}
 			set
 			{
-				this.TempoMax = value;
+				this.tempoMax = value;
 				this.NotifyPropertyChanged("TempoMax");
 			}
 		}
