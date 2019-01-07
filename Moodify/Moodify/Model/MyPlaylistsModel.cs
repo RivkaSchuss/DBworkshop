@@ -12,7 +12,7 @@ namespace Moodify.Model
     class MyPlaylistsModel : IMyPlaylistsModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private Dictionary<int, Playlist> playlistsDic;
+        private IDictionary<int, Playlist> playlistsDic;
         private ObservableCollection<Playlist> playlists;
         private int userId;
 
@@ -57,7 +57,7 @@ namespace Moodify.Model
             }
         }
 
-        public Dictionary<int, Playlist> PlaylistsDic
+        public IDictionary<int, Playlist> PlaylistsDic
         {
             set
             {

@@ -9,7 +9,6 @@ namespace Moodify.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-		private IList<User> userList;
 		private ConnectionStatus connection = ConnectionStatus.Instance;
 		private bool connectionFailed;
 		private string userName = "";
@@ -95,22 +94,22 @@ namespace Moodify.Model
 
         public bool TryRegister(string userName, string email, string password)
         {
-			if (userName == "123")
-			{
-				return false;
-			}
-			else
-			{
-				connection.IsConnected = true;
-				this.IsConnected = true;
-				return true;
-			}
+			//if (userName == "123")
+			//{
+			//	return false;
+			//}
+			//else
+			//{
+			//	connection.IsConnected = true;
+			//	this.IsConnected = true;
+			//	return true;
+			//}
 			DBHandler handler = DBHandler.Instance;
-
-            string query = $"INSERT into users (username, email, password) VALUES ('{userName}', '{email}', '{password}')";
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlRegisterQuery"], userName, email, password);
             bool result = handler.ExecuteNoResult(query);
             if (result)
             {
+                CreateUserDetails(userName, password, email);
                 connection.IsConnected = true;
                 this.IsConnected = true;
                 return result;
@@ -128,10 +127,24 @@ namespace Moodify.Model
                 return true;
             }
             DBHandler handler = DBHandler.Instance;
-            string query = $"SELECT user_id from users" +
-                $" where binary username = '{userName}' and binary password = '{password}'";
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlSignInQuery"], userName, password);
             JArray result = handler.ExecuteWithResults(query);
-            return result != null && result.Count == 1; // true if the user exists in the DB.
+            if (result != null && result.Count == 1)
+            {
+                string email = (string)result[0]["email"];
+                CreateUserDetails(userName, password, email);
+                connection.IsConnected = true;
+                this.IsConnected = true;
+                return true;
+            }
+            return false;
+        }
+
+        private void CreateUserDetails(string userName, string password, string email)
+        {
+            User user = new User(userName, email, password);
+            ConnectionStatus status = ConnectionStatus.Instance;
+            status.UserDetails = user;
         }
 
     }

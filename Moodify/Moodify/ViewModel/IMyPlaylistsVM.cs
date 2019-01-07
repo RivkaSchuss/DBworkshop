@@ -11,7 +11,7 @@ namespace Moodify.ViewModel
 {
 	public interface IMyPlaylistsVM : INotifyPropertyChanged
 	{
-        Dictionary<int, Playlist> VM_PlaylistsDic { get; }
+        IDictionary<int, Playlist> VM_PlaylistsDic { get; }
         ObservableCollection<Playlist> VM_Playlists { get; }
     }
 }
