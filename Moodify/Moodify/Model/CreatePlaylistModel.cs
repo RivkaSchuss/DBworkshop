@@ -144,7 +144,7 @@ namespace Moodify.Model
         {
             DBHandler handler = DBHandler.Instance;
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlGenerateCustomePlaylist"],
-                tempoMin, tempoMax, loudnessMin, loudnessMax, popularityMin, popularityMax, numOfSongs);
+                tempoMin, tempoMax, loudnessMin, loudnessMax, popularityMin/100, popularityMax/100, numOfSongs);
             JArray result = handler.ExecuteWithResults(query);
             CustomPlaylistSingleton.Instance.CustomPlaylist = PlaylistJSONParser.ParseJSONPlaylist(result, -1, PlaylistName);
         }
