@@ -1,10 +1,10 @@
 ﻿<Window x:Class="Moodify.View.SignInView"  
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:local="clr-namespace:Moodify.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		xmlns:converters="clr-namespace:Moodify.Converters"
 		ResizeMode="NoResize"
+		Icon="pack://application:,,,/ImageResources/mood.jpg"
 		Title="Sign In" Height="285" Width="528" Background="Black">
 	<Window.Resources>
 		<converters:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>

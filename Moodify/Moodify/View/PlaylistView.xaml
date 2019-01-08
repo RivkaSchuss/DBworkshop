@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d"
+		Icon="pack://application:,,,/ImageResources/mood.jpg"
         Title="Playlist" Height="450" Width="800">
 	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
 				  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
