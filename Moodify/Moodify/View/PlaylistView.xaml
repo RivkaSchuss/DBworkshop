@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d"
+		Icon="pack://application:,,,/ImageResources/mood.jpg"
         Title="Playlist" Height="450" Width="800">
 	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
 				  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
@@ -14,7 +15,6 @@
 			<DataGrid ItemsSource="{Binding VM_Playlist.Songs}" AutoGenerateColumns="False" CanUserAddRows="False" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
 				  Width="Auto" Height="Auto">
 				<DataGrid.Columns>
-					<!--<DataGridTextColumn Header="#" Width="Auto" IsReadOnly="True" Binding="{Binding SongId}"/>-->
 					<DataGridTextColumn Header="Song" Width ="Auto" IsReadOnly="True" Binding ="{Binding SongName}"/>
 					<DataGridTextColumn Header="Artist" Width ="Auto" IsReadOnly="True" Binding ="{Binding SongArtist.ArtistName}"/>
 					<DataGridTextColumn Header="Album" Width ="Auto" IsReadOnly="True" Binding ="{Binding AlbumName}"/>

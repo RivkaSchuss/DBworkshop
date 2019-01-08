@@ -1,9 +1,9 @@
-﻿using Moodify.Helpers;
+﻿using System.ComponentModel;
+using Moodify.Containers;
+using Moodify.DB;
 using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.ComponentModel;
 
-namespace Moodify.Model
+namespace Moodify.Model.WelcomeScreen
 {
     class WelcomeScreenModel : IWelcomeScreenModel
     {

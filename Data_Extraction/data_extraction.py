@@ -57,7 +57,6 @@ def generate_song_analysis_from_file(h5_file):
     # song_analysis.song_id = hdf5_getters.get_song_id(h5_file)
     song_analysis.song_hotness = hdf5_getters.get_song_hotttnesss(h5_file)
     if str(song_analysis.song_hotness) == 'nan':
-        # TODO: NULL?
         song_analysis.song_hotness = 0.0
     else:
         song_analysis.song_hotness = round(song_analysis.song_hotness, 5)  # round to fit SQL
@@ -112,8 +111,7 @@ song_analysis_writer.writerow(['song_id', 'song_hotness', 'tempo', 'duration', '
 artists_writer.writerow(['artist_id', 'artist_name', 'genre', 'artist_hotness'])
 
 # generate data from h5 files
-# TODO: Similar Artists
-basedir = "C:\Users\Dan\Desktop\University\DB Workshop\MillionSongSubset\data"  # TODO: hardcoded as fuck
+basedir = "" #TODO: ----> enter directory here.
 ext = ".h5"
 for root, dirs, files in os.walk(basedir):
     fs = glob.glob(os.path.join(root, '*' + ext))

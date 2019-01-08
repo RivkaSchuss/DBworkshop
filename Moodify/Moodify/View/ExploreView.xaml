@@ -4,10 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moodify.View"
-             xmlns:Helpers="clr-namespace:Moodify.Helpers"
+        xmlns:converters="clr-namespace:Moodify.Converters"
              mc:Ignorable="d">
     <UserControl.Resources>
-        <Helpers:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <converters:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
     </UserControl.Resources>
 	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
 				  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">

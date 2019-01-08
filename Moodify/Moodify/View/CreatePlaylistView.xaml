@@ -4,14 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-
+		Icon="pack://application:,,,/ImageResources/mood.jpg"
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d"
         Title="Create Playlist" Height="450" Width="800" ResizeMode="NoResize">
 	<materialDesign:DialogHost CloseOnClickAway="True">
 		<StackPanel Background="LightBlue">
 			<Label HorizontalAlignment="Left" Content="Let's create a playlist!" FontSize="30" FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
-			<!--<Label HorizontalAlignment="Center" Content="First, choose how many songs you'd like in your playlist" FontSize="20" FontWeight="Thin"></Label>-->
 			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0">
 				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Playlist Name:"/>
 				<TextBox HorizontalAlignment="Left" Margin="230,20,0,0" Name="textBoxUserName"
