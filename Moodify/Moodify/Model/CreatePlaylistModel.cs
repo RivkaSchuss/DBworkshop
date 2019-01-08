@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
+    /// <summary>
+    /// The model for custom playlist creation window.
+    /// </summary>
+    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
     class CreatePlaylistModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private int numOfSongs = 5;
 		private float tempoMax = 131;
 		private float tempoMin = 131;
-		//private float tempo;
 		private float popularityMax = 0.7F;
 		private float popularityMin = 0.7F;
 		private float loudnessMax = -25;
 		private float loudnessMin = -25;
-		private string playlistName = "Playlist name example";
+		private string playlistName = "Enter Playlist name here";
 
-        public CreatePlaylistModel()
-        {
-        }
 
         public void NotifyPropertyChanged(string propName)
         {

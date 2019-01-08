@@ -12,32 +12,9 @@ namespace Moodify.Helpers
 	/// </summary>
 	public class Playlist
     {
-        private string playlistName;
-        private ObservableCollection<Song> songs;
+        public string PlaylistName { set; get; }
 
-        public string PlaylistName
-        {
-            set
-            {
-                this.playlistName = value;
-            }
-            get
-            {
-                return this.playlistName;
-            }
-        }
-
-        public ObservableCollection<Song> Songs
-        {
-            set
-            {
-                this.songs = value;
-            }
-            get
-            {
-                return this.songs;
-            }
-        }
+        public ObservableCollection<Song> Songs { set; get; }
 
         public int PlaylistId
         {

@@ -7,36 +7,13 @@ namespace Moodify.Helpers
 	/// </summary>
 	public class Artist
     {
-        private int artistId;
-        private string artistName;
         private string genre;
-        private float artist_hotness;
 
         private TextInfo TextInfoProp { get; set; } = new CultureInfo(CultureInfo.CurrentUICulture.ToString(), false).TextInfo;
 
-        public int ArtistId
-        {
-            set
-            {
-                this.artistId = value;
-            }
-            get
-            {
-                return this.artistId;
-            }
-        }
+        public int ArtistId { set; get; }
 
-        public string ArtistName
-        {
-            set
-            {
-                this.artistName = value;
-            }
-            get
-            {
-                return this.artistName;
-            }
-        }
+        public string ArtistName { set; get; }
 
         public string Genre
         {
@@ -50,16 +27,6 @@ namespace Moodify.Helpers
             }
         }
 
-        public float ArtistHotness
-        {
-            set
-            {
-                this.artist_hotness = value;
-            }
-            get
-            {
-                return this.artist_hotness;
-            }
-        }
+        public float ArtistHotness { set; get; }
     }
 }

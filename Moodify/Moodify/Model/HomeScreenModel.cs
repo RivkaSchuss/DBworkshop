@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
+    /// <summary>
+    /// Model component for the Home Screen.
+    /// </summary>
+    /// <seealso cref="Moodify.Model.IHomeScreenModel" />
     class HomeScreenModel : IHomeScreenModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
 
-		public bool UserConnected { get; set; }
+        public bool UserConnected { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propName)
         {

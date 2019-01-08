@@ -100,6 +100,8 @@
     <Compile Include="Model\IExploreModel.cs" />
     <Compile Include="Model\IHomeScreenModel.cs" />
     <Compile Include="Model\IMyPlaylistsModel.cs" />
+    <Compile Include="Model\IPlaylistModel.cs" />
+    <Compile Include="Model\IShowSongsModel.cs" />
     <Compile Include="Model\IWelcomeScreenModel.cs" />
     <Compile Include="Model\MyPlaylistsModel.cs" />
     <Compile Include="Model\PlaylistModel.cs" />
@@ -222,7 +224,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\mood.jpg" />
+    <Resource Include="ImageResources\mood.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SqlSignInQuery.txt" />

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
-    public class PlaylistModel : INotifyPropertyChanged
+    public class PlaylistModel : IPlaylistModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private Playlist playlist;

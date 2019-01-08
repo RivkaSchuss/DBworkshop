@@ -10,7 +10,9 @@ using System.Resources;
 
 namespace Moodify.Model
 {
-    // Singleton MySQL DB Handler.
+    /// <summary>
+    /// Singleton class for MySQL DB access handling. 
+    /// </summary>
     class DBHandler
     {
         /// <summary>
@@ -18,29 +20,10 @@ namespace Moodify.Model
         /// </summary>
         private DBHandler()
         {
-            //ConnectionString = "server=localhost; uid=root; pwd=123456; database=moodify_schema";
-            //LoadConnectionString();
             ConnectionString = Properties.Resources.ResourceManager.GetString("connectionString");
             ConnectionHandler = new MySqlConnection(ConnectionString);
         }
 
-        private void LoadConnectionString()
-        {
-            string connectionString = string.Empty;
-
-            string namespacePart = "Moodify.Properties.Resources";
-            string fileName = "connectionString.txt";
-            string resourceName = namespacePart + "." + fileName;
-            var auxList= System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            using (Stream stm = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
-            {
-                if (stm != null)
-                {
-                    connectionString = new StreamReader(stm).ReadToEnd();
-                }
-            }
-            ConnectionString = connectionString;
-        }
 
         public static DBHandler Instance { get; } = new DBHandler(); // Singleton
 

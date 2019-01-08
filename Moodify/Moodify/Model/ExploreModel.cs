@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
+    /// <summary>
+    /// Model componenet for the Explore window.
+    /// </summary>
+    /// <seealso cref="Moodify.Model.IExploreModel" />
     class ExploreModel : IExploreModel
     {
         public event PropertyChangedEventHandler PropertyChanged;

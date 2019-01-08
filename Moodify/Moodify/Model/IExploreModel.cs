@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
+    /// <summary>
+    /// Defines the Explore componenet Model.
+    /// </summary>
+    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
     interface IExploreModel : INotifyPropertyChanged
     {
         Mood MoodChosen { get; set; }
