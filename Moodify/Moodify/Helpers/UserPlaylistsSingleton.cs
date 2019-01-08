@@ -7,7 +7,10 @@ using System.Linq;
 
 namespace Moodify.Helpers
 {
-    public class UserPlaylistsSingleton
+	/// <summary>
+	/// Singleton to deal with UserPlaylist
+	/// </summary>
+	public class UserPlaylistsSingleton
     {
         private static UserPlaylistsSingleton instance = null;
 
@@ -49,14 +52,6 @@ namespace Moodify.Helpers
         {
 			int userID = ConnectionStatus.Instance.UserDetails.UserID;
             DBHandler handler = DBHandler.Instance;
-            //User user = ConnectionStatus.Instance.UserDetails;
-            //if (user == null)
-            //{
-            //    userID = 100;
-            //} else
-            //{
-            //    userID = user.UserID;
-            //}
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlGetUserPlaylistsQuery"], userID);
             JArray result = handler.ExecuteWithResults(query);
             if (result != null)
@@ -164,7 +159,13 @@ namespace Moodify.Helpers
 			}
         }
 
-        private int InsertNewPlaylistToDB(string playlistName, DBHandler handler)
+		/// <summary>
+		/// Inserts the new playlist to database.
+		/// </summary>
+		/// <param name="playlistName">Name of the playlist.</param>
+		/// <param name="handler">The handler.</param>
+		/// <returns></returns>
+		private int InsertNewPlaylistToDB(string playlistName, DBHandler handler)
         {
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertNewPlaylist"], playlistName);
 
@@ -172,7 +173,14 @@ namespace Moodify.Helpers
             return int.Parse((string)result[0]["LAST_INSERT_ID()"]);
         }
 
-        private bool InsertSongsWithPlaylistID(List<int> songsID, int playlistID, DBHandler handler)
+		/// <summary>
+		/// Inserts the songs with playlist identifier.
+		/// </summary>
+		/// <param name="songsID">The songs identifier.</param>
+		/// <param name="playlistID">The playlist identifier.</param>
+		/// <param name="handler">The handler.</param>
+		/// <returns></returns>
+		private bool InsertSongsWithPlaylistID(List<int> songsID, int playlistID, DBHandler handler)
         {
             string songsTuples = string.Empty;
             foreach (int songID in songsID)
@@ -184,7 +192,13 @@ namespace Moodify.Helpers
             return handler.ExecuteNoResult(query);
         }
 
-        private bool InsertPlaylistIDToUser(int playlistID, DBHandler handler)
+		/// <summary>
+		/// Inserts the playlist identifier to user.
+		/// </summary>
+		/// <param name="playlistID">The playlist identifier.</param>
+		/// <param name="handler">The handler.</param>
+		/// <returns></returns>
+		private bool InsertPlaylistIDToUser(int playlistID, DBHandler handler)
         {
             User user = ConnectionStatus.Instance.UserDetails;
             var d = DBQueryManager.Instance;

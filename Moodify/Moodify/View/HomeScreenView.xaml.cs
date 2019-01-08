@@ -18,6 +18,7 @@ namespace Moodify.View
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
+	/// This is the main View of the app.
 	/// </summary>
 	public partial class HomeScreenView : Window
 	{
@@ -29,7 +30,5 @@ namespace Moodify.View
 			this.homeScreenVM = new HomeScreenViewModel();
 			this.DataContext = this.homeScreenVM;
 		}
-
-		
 	}
 }

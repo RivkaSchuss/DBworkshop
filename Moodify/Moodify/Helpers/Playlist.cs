@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Moodify.Helpers
 {
-    public class Playlist
+	/// <summary>
+	/// Define a playlist for the program
+	/// </summary>
+	public class Playlist
     {
         private string playlistName;
         private ObservableCollection<Song> songs;

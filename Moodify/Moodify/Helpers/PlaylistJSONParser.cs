@@ -8,9 +8,19 @@ using System.Threading.Tasks;
 
 namespace Moodify.Helpers
 {
-    class PlaylistJSONParser
+	/// <summary>
+	/// Parse Playlist ffrom JSON
+	/// </summary>
+	class PlaylistJSONParser
     {
-        public static Playlist ParseJSONPlaylist(JArray jsonPlaylist, int playlistID, string playlistName)
+		/// <summary>
+		/// Parses JSON to playlist.
+		/// </summary>
+		/// <param name="jsonPlaylist">The playlist as JArray.</param>
+		/// <param name="playlistID">The playlist identifier.</param>
+		/// <param name="playlistName">Name of the playlist.</param>
+		/// <returns></returns>
+		public static Playlist ParseJSONPlaylist(JArray jsonPlaylist, int playlistID, string playlistName)
         {
             if (jsonPlaylist == null)
             {

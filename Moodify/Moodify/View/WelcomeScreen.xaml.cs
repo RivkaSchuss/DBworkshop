@@ -61,7 +61,12 @@ namespace Moodify.View
 				this.viewModel.VM_Email = value;
 			}
 		}
-
+		/// <summary>
+		/// Gets or sets a value indicating whether the last connection succeeeded or failed.
+		/// </summary>
+		/// <value>
+		///   <c>true</c> if this instance is connection failed; otherwise, <c>false</c>.
+		/// </value>
 		public bool IsConnectionFailed
 		{
 			get
@@ -81,6 +86,9 @@ namespace Moodify.View
 			this.DataContext = this.viewModel;
 		}
 
+		/// <summary>
+		/// Called when Register button is clicked.
+		/// </summary>
 		public void OnRegister(object sender, RoutedEventArgs e)
 		{
 			IsConnectionFailed = false;
@@ -88,14 +96,21 @@ namespace Moodify.View
 			RegisterWindow.ShowDialog();
 		}
 
+		/// <summary>
+		/// Called when Sign In button is clicked.
+		/// </summary>
 		public void OnSignIn(object sender, RoutedEventArgs e)
 		{
 			SignInView signInView = new SignInView(this);
 			signInView.ShowDialog();
 		}
 
+		/// <summary>
+		/// Called when Log off click is activated.
+		/// </summary>
 		public void OnLogOff(object sender, RoutedEventArgs e)
 		{
+			//Defualt values
 			this.UserName = "";
 			this.Password = "";
 			this.Email = "";
@@ -104,6 +119,9 @@ namespace Moodify.View
 			this.viewModel.VM_IsConnected = false;
 		}
 
+		/// <summary>
+		/// Try to activate sign in from the view model.
+		/// </summary>
 		public void TrySignIn()
 		{
 			bool result = this.viewModel.TrySignIn(this.UserName, this.Password);
@@ -113,6 +131,9 @@ namespace Moodify.View
 			}
 		}
 
+		/// <summary>
+		/// Try to register the user with the view model.
+		/// </summary>
 		public void TryRegister()
 		{
 			bool result = this.viewModel.TryRegister(this.UserName, this.Email, this.Password);

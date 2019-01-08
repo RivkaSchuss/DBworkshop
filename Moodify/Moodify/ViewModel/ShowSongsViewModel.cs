@@ -10,7 +10,11 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-    public class ShowSongsViewModel : INotifyPropertyChanged
+	/// <summary>
+	/// ShowSong VM class
+	/// </summary>
+	/// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
+	public class ShowSongsViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ShowSongsModel model;
@@ -66,7 +70,13 @@ namespace Moodify.ViewModel
             }
         }
 
-        public string VM_AddingSuccesful
+		/// <summary>
+		/// Gets or sets the if the adding of the playlist was succesful.
+		/// </summary>
+		/// <value>
+		/// The adding succesful "SUCCESS"\"FAILURE".
+		/// </value>
+		public string VM_AddingSuccesful
         {
             get
             {

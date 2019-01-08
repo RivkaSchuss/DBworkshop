@@ -10,7 +10,11 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-    class ExploreViewModel : IExploreVM
+	/// <summary>
+	/// The Explore VM
+	/// </summary>
+	/// <seealso cref="Moodify.ViewModel.IExploreVM" />
+	class ExploreViewModel : IExploreVM
     {
         private IExploreModel model;
 
@@ -51,7 +55,13 @@ namespace Moodify.ViewModel
 
         }
 
-        public Mood VM_MoodChosen
+		/// <summary>
+		/// Gets or sets the mood chosen by user.
+		/// </summary>
+		/// <value>
+		/// The mood chosen.
+		/// </value>
+		public Mood VM_MoodChosen
         {
             get
             {
@@ -63,7 +73,13 @@ namespace Moodify.ViewModel
             }
         }
 
-        public Playlist VM_PlaylistSelected
+		/// <summary>
+		/// Gets or sets the playlist selected.
+		/// </summary>
+		/// <value>
+		/// The playlist selected.
+		/// </value>
+		public Playlist VM_PlaylistSelected
         {
             get
             {

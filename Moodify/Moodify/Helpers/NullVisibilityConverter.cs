@@ -9,7 +9,12 @@ using System.Windows.Data;
 
 namespace Moodify.Helpers
 {
-    public class NullVisibilityConverter : IValueConverter
+	/// <summary>
+	/// Class to convert by object values.
+	/// used to convert visibility of objects in Xaml
+	/// </summary>
+	/// <seealso cref="System.Windows.Data.IValueConverter" />
+	public class NullVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -22,6 +27,11 @@ namespace Moodify.Helpers
         }
     }
 
+	/// <summary>
+	/// Class to convert by object values.
+	/// used to convert visibility of objects in Xaml
+	/// </summary>
+	/// <seealso cref="System.Windows.Data.IValueConverter" />
 	public class NotNullVisibilityConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

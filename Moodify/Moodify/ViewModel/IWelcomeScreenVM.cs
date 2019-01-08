@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Moodify.ViewModel
 {
-    public interface IWelcomeScreenVM : INotifyPropertyChanged
+	/// <summary>
+	/// Interface for the welcomeScreen
+	/// </summary>
+	/// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
+	public interface IWelcomeScreenVM : INotifyPropertyChanged
 	{
 		bool TryRegister(string userName, string Email, string Password);
 		bool TrySignIn(string userName, string password);

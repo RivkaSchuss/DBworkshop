@@ -30,7 +30,9 @@ namespace Moodify.View
 			this.DataContext = welcomeScreen.DataContext;
 		}
 
-
+		/// <summary>
+		/// Handles the Click event of the Submit Button.
+		/// </summary>
 		public void Submit_Click(object sender, RoutedEventArgs e)
 		{
 			this.welcomeScreen.TrySignIn();
@@ -41,7 +43,9 @@ namespace Moodify.View
 			}
 		}
 
-
+		/// <summary>
+		/// Handles the Click event of the Cancel button.
+		/// </summary>
 		public void Cancel_Click(object sender, RoutedEventArgs e)
 		{
 			this.welcomeScreen.UserName = "";

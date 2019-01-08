@@ -26,12 +26,17 @@ namespace Moodify.View
 		ConnectionStatus connection = ConnectionStatus.Instance;
 
 		public ExploreView()
-		{
+		{	
+			// Sign to the event of ConnectionStatus changed
 			connection.PropertyChanged += HandleEvent;
 			IsEnabled = false;
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Handles the event of ConnectionStatus changed
+		/// changed the Is Enable of the tabitem. 
+		/// </summary>
 		public void HandleEvent(object sender, PropertyChangedEventArgs args)
 		{
 			this.viewModel = new ExploreViewModel();
@@ -39,14 +44,19 @@ namespace Moodify.View
 			this.IsEnabled = connection.IsConnected;
 		}
 
-
-        private void Custom_Button_Click(object sender, RoutedEventArgs e)
+		/// <summary>
+		/// Handles the Click event of the Custom Button.
+		/// </summary>
+		private void Custom_Button_Click(object sender, RoutedEventArgs e)
         {
             CreatePlaylistView view = new CreatePlaylistView();
             view.ShowDialog();
         }
 
-        private void Show_Songs(object sender, RoutedEventArgs e)
+		/// <summary>
+		/// Handles the Songs event of the Show button.
+		/// </summary>
+		private void Show_Songs(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             int playlistId = (int)button.CommandParameter;
@@ -54,6 +64,11 @@ namespace Moodify.View
             view.ShowDialog();
         }
 
+		/// <summary>
+		/// Handles the PreviewMouseWheel event of the ScrollViewer control.
+		/// </summary>
+		/// <param name="sender">The source of the event.</param>
+		/// <param name="e">The <see cref="MouseWheelEventArgs"/> instance containing the event data.</param>
 		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
 		{
 			ScrollViewer svc = (ScrollViewer)sender;
@@ -61,14 +76,5 @@ namespace Moodify.View
 			e.Handled = true;
 		}
 
-		public void OnTabItemSelecting(object sender, CurrentChangingEventArgs e)
-		{
-			//this.IsEnabled = false;
-			//ConnectionStatus connection = ConnectionStatus.Instance;
-			//if (!connection.IsConnected)
-			//{
-			//	int prevIdx = this.tab.Items.IndexOf(this.OnTabItemSelecting.
-			//}
-		}
 	}
 }

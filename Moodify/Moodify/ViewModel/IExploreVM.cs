@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
+	/// <summary>
+	/// Interface for the Explore tab
+	/// </summary>
+	/// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
 	interface IExploreVM : INotifyPropertyChanged
 	{
 	}

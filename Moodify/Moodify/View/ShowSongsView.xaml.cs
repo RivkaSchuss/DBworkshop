@@ -27,20 +27,29 @@ namespace Moodify.View
             InitializeComponent();
             this.viewModel = new ShowSongsViewModel(playlistId);
             this.DataContext = this.viewModel;
-            
         }
 
-        private void AddPlaylists(object sender, RoutedEventArgs e)
+		/// <summary>
+		/// Adds the playlists to the user Playlists
+		/// </summary>
+		private void AddPlaylists(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             this.viewModel.VM_PlaylistID = (int)button.CommandParameter;
         }
 
+		/// <summary>
+		/// Clicks the return button, closes the current window.
+		/// </summary>
 		private void ClickReturn(object sender, RoutedEventArgs e)
 		{
 			this.Close();
 		}
 
+		/// <summary>
+		/// Handles the PreviewMouseWheel event of the ScrollViewer control.
+		/// Makes the Table to able to scroll the window properly.
+		/// </summary>
 		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
 		{
 			ScrollViewer svc = (ScrollViewer)sender;

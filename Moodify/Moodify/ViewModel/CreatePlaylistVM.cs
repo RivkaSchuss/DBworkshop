@@ -1,16 +1,13 @@
-﻿using Moodify.Helpers;
-using Moodify.Model;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using Moodify.Model;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-    class CreatePlaylistVM : INotifyPropertyChanged
+	/// <summary>
+	/// The VM of CreatePlaylist window
+	/// </summary>
+	/// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
+	class CreatePlaylistVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private CreatePlaylistModel model;
@@ -125,6 +122,9 @@ namespace Moodify.ViewModel
 			}
 		}
 
+		/// <summary>
+		/// Generates the custom playlist using the model.
+		/// </summary>
 		public void GenerateCustomPlaylist()
 		{
 			this.model.GenerateCustomPlaylist();

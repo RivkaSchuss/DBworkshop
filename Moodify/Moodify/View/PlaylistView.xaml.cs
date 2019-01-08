@@ -28,6 +28,10 @@ namespace Moodify.View
             this.DataContext = new PlaylistViewModel(currentPlaylist);
         }
 
+		/// <summary>
+		/// Handles the PreviewMouseWheel event of the ScrollViewer control.
+		/// Make the table to scroll properly
+		/// </summary>
 		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
 		{
 			ScrollViewer svc = (ScrollViewer)sender;

@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace Moodify.Helpers
 {
-    public class Song
+	/// <summary>
+	/// Defines the Song class for the program
+	/// </summary>
+	public class Song
     {
         private float duration;
 
         public int SongId { set; get; }
 
         public string SongName { set; get; }
+
         public string AlbumName { set; get; }
 
         public Artist SongArtist { set; get; }
@@ -21,7 +25,13 @@ namespace Moodify.Helpers
 
         public float Tempo { set; get; }
 
-        public float RealDuration
+		/// <summary>
+		/// Gets or sets the duration for common people.
+		/// </summary>
+		/// <value>
+		/// The duration of the for common people.
+		/// </value>
+		public float RealDuration
         {
             set
             {

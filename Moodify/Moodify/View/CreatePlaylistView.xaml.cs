@@ -1,21 +1,9 @@
 ﻿using MaterialDesignThemes.Wpf;
 using Moodify.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Moodify.View
 {
@@ -33,6 +21,10 @@ namespace Moodify.View
 			this.DataContext = this.createPlaylistVM;
 		}
 
+		/// <summary>
+		/// Handle submit click button
+		/// the function parse all the user inputs and check if they are valid.
+		/// </summary>
 		private void SubmitClick(object sender, RoutedEventArgs e)
 		{
 			int i = 0;
@@ -62,13 +54,13 @@ namespace Moodify.View
 				createPlaylistVM.VM_LoudnessMax = lMax;
 				createPlaylistVM.VM_LoudnessMin = lMin;
 
-
+				// ask from the VM to generate a new playlist
 				this.createPlaylistVM.GenerateCustomPlaylist();
 				this.Close();
 				ShowSongsView songsView = new ShowSongsView(-1);
 				songsView.ShowDialog();
-
 			}
+			//if exception is thrown, the window will show the error
 			catch (ArgumentException ex)
 			{
 				dialogContent.Text = ex.Message + FromIndexToValue(i);
@@ -82,6 +74,11 @@ namespace Moodify.View
 
 		}
 
+		/// <summary>
+		/// Froms the index to value where was the error.
+		/// </summary>
+		/// <param name="i">The index of the current check</param>
+		/// <returns></returns>
 		private string FromIndexToValue(int i)
 		{
 			if(i== 0)
@@ -100,6 +97,21 @@ namespace Moodify.View
 			}
 		}
 
+		/// <summary>
+		/// Gets the values from string given by the users and parse them.
+		/// </summary>
+		/// <param name="textMax">The value given in maximum text box</param>
+		/// <param name="textMin">The value given in minimum text box</param>
+		/// <param name="maxValue">The maximum value allowed</param>
+		/// <param name="minValue">The minimum value allowed</param>
+		/// <returns></returns>
+		/// <exception cref="ArgumentException">
+		/// Error: maximum value is lower than minimum value given:
+		/// or
+		/// Error: maximum value is higher than minimum value allowed:
+		/// or
+		/// Error: minimum value is lower than minimum value allowed:
+		/// </exception>
 		private Tuple<float, float> GetValues(string textMax, string textMin, float maxValue, float minValue)
 		{
 			float min = float.Parse(textMin, CultureInfo.InvariantCulture.NumberFormat);
@@ -120,6 +132,9 @@ namespace Moodify.View
 			return Tuple.Create(max, min);
 		}
 
+		/// <summary>
+		/// Close the window and cancel the custom process.
+		/// </summary>
 		private void CancelClick(object sender, RoutedEventArgs e)
 		{
 			this.Close();

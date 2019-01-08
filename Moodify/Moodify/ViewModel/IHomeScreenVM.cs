@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
+	/// <summary>
+	/// Interface for the main HomeScreen
+	/// </summary>
+	/// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
 	public interface IHomeScreenVM : INotifyPropertyChanged
 	{
-		
-		
 	}
 }

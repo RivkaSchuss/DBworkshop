@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
+	/// <summary>
+	/// The HomeScreen VM
+	/// </summary>
+	/// <seealso cref="Moodify.ViewModel.IHomeScreenVM" />
 	class HomeScreenViewModel : IHomeScreenVM
 	{
         private IHomeScreenModel model;
@@ -22,7 +26,6 @@ namespace Moodify.ViewModel
                 this.NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
-		
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,8 +33,5 @@ namespace Moodify.ViewModel
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
-
-
-
     }
 }

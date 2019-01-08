@@ -23,17 +23,19 @@ namespace Moodify.View
 	public partial class MyPlaylists : UserControl
 	{
         public IMyPlaylistsVM viewModel;
-        //private int userId;
 		ConnectionStatus connection = ConnectionStatus.Instance;
 
 		public MyPlaylists()
 		{
 			InitializeComponent();
+			// Sign to the event of the connection status
 			connection.PropertyChanged += HandleEvent;
-            //this.userId = 0;
 			IsEnabled = false;
         }
 
+		/// <summary>
+		/// Handles the event of connection status changed.
+		/// </summary>
 		public void HandleEvent(object sender, PropertyChangedEventArgs args)
 		{
 			InitializeComponent();
@@ -42,6 +44,9 @@ namespace Moodify.View
 			this.IsEnabled = connection.IsConnected;
 		}
 
+		/// <summary>
+		/// Handles the Click event of the Show songs button.
+		/// </summary>
 		private void OpenPlaylist_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -50,12 +55,15 @@ namespace Moodify.View
             playlistView.ShowDialog();
         }
 
+		/// <summary>
+		/// Handles the PreviewMouseWheel event of the ScrollViewer control.
+		/// Makes the table to scroll properly.
+		/// </summary>
 		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
 		{
 			ScrollViewer svc = (ScrollViewer)sender;
 			svc.ScrollToVerticalOffset(svc.VerticalOffset - e.Delta);
 			e.Handled = true;
 		}
-
 	}
 }

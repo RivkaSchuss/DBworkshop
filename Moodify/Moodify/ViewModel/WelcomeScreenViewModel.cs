@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
+	/// <summary>
+	/// Welcome Screen View Model
+	/// </summary>
+	/// <seealso cref="Moodify.ViewModel.IWelcomeScreenVM" />
 	class WelcomeScreenViewModel : IWelcomeScreenVM
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -93,17 +97,27 @@ namespace Moodify.ViewModel
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
+		/// <summary>
+		/// Try to register the user.
+		/// </summary>
+		/// <param name="userName">Name of the user</param>
+		/// <param name="email">The email of the user</param>
+		/// <param name="Password">The password of the user</param>
+		/// <returns></returns>
 		public bool TryRegister(string userName, string email, string Password)
 		{
 			return model.TryRegister(userName, email, Password);
 		}
 
+		/// <summary>
+		/// Try to sign in.
+		/// </summary>
+		/// <param name="userName">Name of the user.</param>
+		/// <param name="password">The password.</param>
+		/// <returns></returns>
 		public bool TrySignIn(string userName, string password)
 		{
 			return model.TrySignIn(userName, password);
 		}
-
-
-
 	}
 }

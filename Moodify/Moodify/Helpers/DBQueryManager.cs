@@ -5,7 +5,10 @@ using System.Resources;
 
 namespace Moodify.Helpers
 {
-    class DBQueryManager
+	/// <summary>
+	/// Class to handle the queries for the DB
+	/// </summary>
+	class DBQueryManager
     {
         public static DBQueryManager Instance { get; } = new DBQueryManager(); // Singleton
         public IDictionary<string, string> QueryDictionary { get; private set; }

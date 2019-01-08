@@ -9,8 +9,6 @@
     <UserControl.Resources>
         <Helpers:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
     </UserControl.Resources>
-	<!--Title="ExploreView" Height="450" Width="800">-->
-
 	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
 				  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
 		<StackPanel Background="LightBlue" ScrollViewer.CanContentScroll="False">
@@ -33,7 +31,6 @@
 						</DataGridTemplateColumn.CellTemplate>
 					</DataGridTemplateColumn>
 				</DataGrid.Columns>
-
 			</DataGrid>
 			<Label HorizontalAlignment="Left" Content="Or create your own:" FontSize="20"
 				   FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>

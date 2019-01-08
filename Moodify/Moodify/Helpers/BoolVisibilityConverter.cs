@@ -9,6 +9,11 @@ using System.Windows;
 
 namespace Moodify.Helpers
 {
+	/// <summary>
+	/// Class to convert by object values.
+	/// used to convert visibility of objects in Xaml
+	/// </summary>
+	/// <seealso cref="System.Windows.Data.IValueConverter" />
 	public class BoolVisibilityConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -23,6 +28,11 @@ namespace Moodify.Helpers
 		}
 	}
 
+	/// <summary>
+	/// Class to convert by object values.
+	/// used to convert visibility of objects in Xaml
+	/// </summary>
+	/// <seealso cref="System.Windows.Data.IValueConverter" />
 	public class NotBoolVisibilityConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

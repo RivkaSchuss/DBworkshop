@@ -7,7 +7,10 @@ using System.Collections.ObjectModel;
 
 namespace Moodify.Helpers
 {
-    public class BuiltInPlaylistsSingleton
+	/// <summary>
+	/// Defines the Built in playlist in the program
+	/// </summary>
+	public class BuiltInPlaylistsSingleton
     {
         private static BuiltInPlaylistsSingleton instance = null;
 
@@ -28,7 +31,11 @@ namespace Moodify.Helpers
             this.PlaylistDictionary = CreateDictionary();
         }
 
-        public Dictionary<Mood, ObservableCollection<Playlist>> CreateDictionary()
+		/// <summary>
+		/// Creates the dictionary of the built in playlists.
+		/// </summary>
+		/// <returns></returns>
+		public Dictionary<Mood, ObservableCollection<Playlist>> CreateDictionary()
         {
 
             Dictionary<Mood, ObservableCollection<Playlist>> dic = new Dictionary<Mood, ObservableCollection<Playlist>>()
@@ -94,7 +101,12 @@ namespace Moodify.Helpers
             return playlists;
         }
 
-        private void AddPlaylistToCollection(Playlist playlist, ObservableCollection<Playlist> playlists)
+		/// <summary>
+		/// Adds the playlist to the collection.
+		/// </summary>
+		/// <param name="playlist">The playlist.</param>
+		/// <param name="playlists">The playlists.</param>
+		private void AddPlaylistToCollection(Playlist playlist, ObservableCollection<Playlist> playlists)
         {
             if (playlist != null)
             {
@@ -120,7 +132,5 @@ namespace Moodify.Helpers
             JArray result = handler.ExecuteWithResults(query);
             return PlaylistJSONParser.ParseJSONPlaylist(result, playlistID, playlistName);
         }
-
-
 	}
 }

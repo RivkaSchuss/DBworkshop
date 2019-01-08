@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace Moodify.Helpers
 {
-    public class Artist
+	/// <summary>
+	/// Class to define Artist for the Program
+	/// </summary>
+	public class Artist
     {
         private int artistId;
         private string artistName;

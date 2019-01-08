@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
-    public class PlaylistViewModel : INotifyPropertyChanged
+	/// <summary>
+	/// Playlist VM
+	/// </summary>
+	/// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
+	public class PlaylistViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

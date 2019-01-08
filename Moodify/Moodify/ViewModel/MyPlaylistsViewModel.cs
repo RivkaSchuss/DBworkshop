@@ -10,10 +10,13 @@ using System.Threading.Tasks;
 
 namespace Moodify.ViewModel
 {
+	/// <summary>
+	/// MyPlaylists VM
+	/// </summary>
+	/// <seealso cref="Moodify.ViewModel.IMyPlaylistsVM" />
 	public class MyPlaylistsViewModel : IMyPlaylistsVM
 	{
         private IMyPlaylistsModel model;
-
 
         public MyPlaylistsViewModel()
         {

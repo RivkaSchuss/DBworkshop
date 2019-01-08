@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Moodify.Helpers
 {
+	/// <summary>
+	/// Defines a User in the program
+	/// </summary>
 	class User
 	{
-
         public string UserName { get; set; }
 
         public string Password { get; set; }
