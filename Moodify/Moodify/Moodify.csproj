@@ -81,43 +81,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\Artist.cs" />
-    <Compile Include="Helpers\BoolConverter.cs" />
-    <Compile Include="Helpers\BuiltInPlaylistsSingleton.cs" />
-    <Compile Include="Helpers\ConnectionStatus.cs" />
-    <Compile Include="Helpers\CustomPlaylistSingleton.cs" />
-    <Compile Include="Helpers\DBQueryManager.cs" />
-    <Compile Include="Helpers\Mood.cs" />
-    <Compile Include="Helpers\NullVisibilityConverter.cs" />
-    <Compile Include="Helpers\PlaylistJSONParser.cs" />
-    <Compile Include="Helpers\Song.cs" />
-    <Compile Include="Helpers\BoolVisibilityConverter.cs" />
-    <Compile Include="Helpers\UserPlaylistsSingleton.cs" />
-    <Compile Include="Model\CreatePlaylistModel.cs" />
-    <Compile Include="Model\DBHandler.cs" />
-    <Compile Include="Helpers\User.cs" />
-    <Compile Include="Model\ExploreModel.cs" />
-    <Compile Include="Model\IExploreModel.cs" />
-    <Compile Include="Model\IHomeScreenModel.cs" />
-    <Compile Include="Model\IMyPlaylistsModel.cs" />
-    <Compile Include="Model\IPlaylistModel.cs" />
-    <Compile Include="Model\IShowSongsModel.cs" />
-    <Compile Include="Model\IWelcomeScreenModel.cs" />
-    <Compile Include="Model\MyPlaylistsModel.cs" />
-    <Compile Include="Model\PlaylistModel.cs" />
-    <Compile Include="Model\ShowSongsModel.cs" />
-    <Compile Include="Model\WelcomeScreenModel.cs" />
-    <Compile Include="Helpers\Playlist.cs" />
-    <Compile Include="ViewModel\CreatePlaylistVM.cs" />
-    <Compile Include="ViewModel\ExploreViewModel.cs" />
-    <Compile Include="ViewModel\IExploreVM.cs" />
-    <Compile Include="ViewModel\IHomeScreenVM.cs" />
-    <Compile Include="ViewModel\IMyPlaylistsVM.cs" />
-    <Compile Include="ViewModel\IWelcomeScreenVM.cs" />
-    <Compile Include="ViewModel\MyPlaylistsViewModel.cs" />
-    <Compile Include="ViewModel\PlaylistViewModel.cs" />
-    <Compile Include="ViewModel\ShowSongsViewModel.cs" />
-    <Compile Include="ViewModel\WelcomeScreenViewModel.cs" />
+    <Compile Include="Containers\Artist.cs" />
+    <Compile Include="Converters\BoolConverter.cs" />
+    <Compile Include="Model\CreatePlaylist\ICreatePlaylistModel.cs" />
+    <Compile Include="Singletons\BuiltInPlaylistsSingleton.cs" />
+    <Compile Include="Containers\ConnectionStatus.cs" />
+    <Compile Include="Singletons\CustomPlaylistSingleton.cs" />
+    <Compile Include="DB\DBQueryManager.cs" />
+    <Compile Include="Containers\Mood.cs" />
+    <Compile Include="Converters\NullVisibilityConverter.cs" />
+    <Compile Include="Parsers\PlaylistJSONParser.cs" />
+    <Compile Include="Containers\Song.cs" />
+    <Compile Include="Converters\BoolVisibilityConverter.cs" />
+    <Compile Include="Singletons\UserPlaylistsSingleton.cs" />
+    <Compile Include="Model\CreatePlaylist\CreatePlaylistModel.cs" />
+    <Compile Include="DB\DBHandler.cs" />
+    <Compile Include="Containers\User.cs" />
+    <Compile Include="Model\Explore\ExploreModel.cs" />
+    <Compile Include="Model\Explore\IExploreModel.cs" />
+    <Compile Include="Model\HomeScreen\IHomeScreenModel.cs" />
+    <Compile Include="Model\MyPlaylists\IMyPlaylistsModel.cs" />
+    <Compile Include="Model\PlaylistModel\IPlaylistModel.cs" />
+    <Compile Include="Model\ShowSongs\IShowSongsModel.cs" />
+    <Compile Include="Model\WelcomeScreen\IWelcomeScreenModel.cs" />
+    <Compile Include="Model\MyPlaylists\MyPlaylistsModel.cs" />
+    <Compile Include="Model\PlaylistModel\PlaylistModel.cs" />
+    <Compile Include="Model\ShowSongs\ShowSongsModel.cs" />
+    <Compile Include="Model\WelcomeScreen\WelcomeScreenModel.cs" />
+    <Compile Include="Containers\Playlist.cs" />
+    <Compile Include="ViewModel\CreatePlaylist\CreatePlaylistVM.cs" />
+    <Compile Include="ViewModel\CreatePlaylist\ICreatePlaylistVM.cs" />
+    <Compile Include="ViewModel\Explore\ExploreViewModel.cs" />
+    <Compile Include="ViewModel\Explore\IExploreVM.cs" />
+    <Compile Include="ViewModel\HomeScreen\IHomeScreenVM.cs" />
+    <Compile Include="ViewModel\MyPlaylists\IMyPlaylistsVM.cs" />
+    <Compile Include="ViewModel\ShowSongs\IShowSongsViewModel.cs" />
+    <Compile Include="ViewModel\WelcomeScreen\IWelcomeScreenVM.cs" />
+    <Compile Include="ViewModel\MyPlaylists\MyPlaylistsViewModel.cs" />
+    <Compile Include="ViewModel\PlaylistVM\IPlaylistViewModel.cs" />
+    <Compile Include="ViewModel\PlaylistVM\PlaylistViewModel.cs" />
+    <Compile Include="ViewModel\ShowSongs\ShowSongsViewModel.cs" />
+    <Compile Include="ViewModel\WelcomeScreen\WelcomeScreenViewModel.cs" />
     <Compile Include="View\AboutUs.xaml.cs">
       <DependentUpon>AboutUs.xaml</DependentUpon>
     </Compile>
@@ -165,8 +169,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\HomeScreenModel.cs" />
-    <Compile Include="ViewModel\HomeScreenViewModel.cs" />
+    <Compile Include="Model\HomeScreen\HomeScreenModel.cs" />
+    <Compile Include="ViewModel\HomeScreen\HomeScreenViewModel.cs" />
     <Compile Include="View\HomeScreenView.xaml.cs">
       <DependentUpon>HomeScreenView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -265,5 +269,6 @@
   <ItemGroup>
     <None Include="Resources\SqlDeleteSongsFromPlaylist.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

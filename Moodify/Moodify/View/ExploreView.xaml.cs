@@ -1,5 +1,4 @@
-﻿using Moodify.Helpers;
-using Moodify.ViewModel;
+﻿using Moodify.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Moodify.Containers;
+using Moodify.ViewModel.Explore;
 
 namespace Moodify.View
 {

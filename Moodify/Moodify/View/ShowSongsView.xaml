@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moodify.View"
-        xmlns:Helpers="clr-namespace:Moodify.Helpers"
+        xmlns:converters="clr-namespace:Moodify.Converters"
         mc:Ignorable="d"
         Title="Show Songs" Height="600" Width="800" >
     <Window.Resources>
-        <Helpers:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
-		<Helpers:NotNullVisibilityConverter x:Key="NotNullToVisibilityConverter"/>
-        <Helpers:BoolConverter x:Key="BoolToConvert"/>
+        <converters:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
+		<converters:NotNullVisibilityConverter x:Key="NotNullToVisibilityConverter"/>
+        <converters:BoolConverter x:Key="BoolToConvert"/>
     </Window.Resources>
 
 	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
