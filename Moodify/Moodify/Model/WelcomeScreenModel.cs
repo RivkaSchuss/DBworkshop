@@ -92,20 +92,25 @@ namespace Moodify.Model
             }
         }
 
+        /// <summary>
+        /// The function try to register the submit user details.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="email">The email.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>true - if there is no user with the same username, otherwise false</returns>
         public bool TryRegister(string userName, string email, string password)
         {
-			//if (userName == "123")
-			//{
-			//	return false;
-			//}
-			//else
-			//{
-			//	connection.IsConnected = true;
-			//	this.IsConnected = true;
-			//	return true;
-			//}
 			DBHandler handler = DBHandler.Instance;
-            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlRegisterQuery"], userName, email, password);
+            // Checks if the username already exists
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlCheckIfUsernameExists"], userName);
+            if(handler.ExecuteWithResults(query) != null)
+            {
+                return false;
+            }
+
+            // Try to register the user after checked if the username is not found.
+            query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlRegisterQuery"], userName, email, password);
             JArray result = handler.ExecuteWithResults(query);
             if (result != null)
             {
@@ -118,17 +123,18 @@ namespace Moodify.Model
             return false;
         }
 
+        /// <summary>
+        /// The function try to sign in with sql query by given username and password
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>true - if the credentials are correct, otherwise false</returns>
         public bool TrySignIn(string userName, string password)
         {
-            if (userName == "123")
-            {
-                connection.IsConnected = true;
-                this.IsConnected = true;
-                return true;
-            }
             DBHandler handler = DBHandler.Instance;
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlSignInQuery"], userName, password);
             JArray result = handler.ExecuteWithResults(query);
+            // Checks if the query returns the user_id and the email when the credentials are correct.
             if (result != null && result.Count == 1)
             {
                 string email = (string)result[0]["email"];
@@ -141,6 +147,13 @@ namespace Moodify.Model
             return false;
         }
 
+        /// <summary>
+        /// Creates the user details when try to sign in or register and store it into the ConnectionStatus singleton.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="email">The email.</param>
+        /// <param name="userID">The user identifier.</param>
         private void CreateUserDetails(string userName, string password, string email, int userID)
         {
             User user = new User()
@@ -153,6 +166,5 @@ namespace Moodify.Model
             ConnectionStatus status = ConnectionStatus.Instance;
             status.UserDetails = user;
         }
-
     }
 }

@@ -25,7 +25,6 @@ namespace Moodify.Model
 
         public CreatePlaylistModel()
         {
-            //this.PlaylistOptions = AddExamplePlaylists();
         }
 
         public void NotifyPropertyChanged(string propName)
@@ -140,6 +139,9 @@ namespace Moodify.Model
 			}
 		}
 
+        /// <summary>
+        /// Generates the custom playlist by the properites that were submit by the user.
+        /// </summary>
         public void GenerateCustomPlaylist()
         {
             DBHandler handler = DBHandler.Instance;
