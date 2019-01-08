@@ -8,7 +8,7 @@ namespace Moodify.DB
 	/// <summary>
 	/// Class to handle the queries for the DB
 	/// </summary>
-	class DBQueryManager
+	class DBQueryManager : IDBQueryManager
     {
         public static DBQueryManager Instance { get; } = new DBQueryManager(); // Singleton
         public IDictionary<string, string> QueryDictionary { get; private set; }

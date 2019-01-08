@@ -83,6 +83,8 @@
     </ApplicationDefinition>
     <Compile Include="Containers\Artist.cs" />
     <Compile Include="Converters\BoolConverter.cs" />
+    <Compile Include="DB\IDBHandler.cs" />
+    <Compile Include="DB\IDBQueryManager.cs" />
     <Compile Include="Model\CreatePlaylist\ICreatePlaylistModel.cs" />
     <Compile Include="Singletons\BuiltInPlaylistsSingleton.cs" />
     <Compile Include="Containers\ConnectionStatus.cs" />

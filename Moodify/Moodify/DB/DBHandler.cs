@@ -8,7 +8,7 @@ namespace Moodify.DB
     /// <summary>
     /// Singleton class for MySQL DB access handling. 
     /// </summary>
-    class DBHandler
+    class DBHandler : IDBHandler
     {
         /// <summary>
         /// Prevents a default instance of the <see cref="DBHandler"/> class from being created.
