@@ -79,6 +79,26 @@ namespace Moodify.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM playlist_info WHERE playlist_id = &apos;{0}&apos;.
+        /// </summary>
+        public static string SqlDeletePlaylistInfoEntity {
+            get {
+                return ResourceManager.GetString("SqlDeletePlaylistInfoEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE
+        ///FROM playlist_songs
+        ///WHERE playlist_id = {0}.
+        /// </summary>
+        public static string SqlDeleteSongsFromPlaylist {
+            get {
+                return ResourceManager.GetString("SqlDeleteSongsFromPlaylist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT song_id as SongId, title as SongName, artist_name as ArtistName, album_name as AlbumName, genre as Genre, duration as Duration
         ///                                FROM (SELECT *
         ///                                FROM song_analysis natural JOIN song_info NATURAL JOIN similar_artists NATURAL JOIN artists

@@ -18,8 +18,6 @@ namespace Moodify.Model
         /// </summary>
         private DBHandler()
         {
-            //ConnectionString = "server=localhost; uid=root; pwd=123456; database=moodify_schema";
-            //LoadConnectionString();
             ConnectionString = Properties.Resources.ResourceManager.GetString("connectionString");
             ConnectionHandler = new MySqlConnection(ConnectionString);
         }

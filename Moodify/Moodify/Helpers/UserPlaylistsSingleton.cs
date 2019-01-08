@@ -1,4 +1,5 @@
 ﻿using Moodify.Model;
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace Moodify.Helpers
 	/// </summary>
 	public class UserPlaylistsSingleton
     {
+        private const string INSERT_SONGS_TO_PLAYLIST_FAILURE = "1";
+        private const string INSERT_PLAYLIST_TO_USER_FAILURE = "2";
         private static UserPlaylistsSingleton instance = null;
 
         public static UserPlaylistsSingleton Instance
@@ -142,30 +145,61 @@ namespace Moodify.Helpers
             {
                 return false;
             }
-
+            int playlistID = -1;
             DBHandler handler = DBHandler.Instance;
 			try
 			{
-                //TODO: CHECK HOW TO HANDLE FAILURE.
-                int playlistID = InsertNewPlaylistToDB(playlist.PlaylistName, handler);
+                playlistID = InsertNewPlaylistToDB(playlist.PlaylistName, handler);
                 List<int> songsID = playlist.Songs.Select(song => song.SongId).ToList();
                 InsertSongsWithPlaylistID(songsID, playlistID, handler);
                 InsertPlaylistIDToUser(playlistID, handler);
 				return true;
 			}
-			catch (ArgumentException)
+			catch (Exception e)
 			{
-				return false;
-			}
+                handleAddPlaylistException(e.Message, playlistID);
+                return false;
+            }
         }
 
-		/// <summary>
-		/// Inserts the new playlist to database.
-		/// </summary>
-		/// <param name="playlistName">Name of the playlist.</param>
-		/// <param name="handler">The handler.</param>
-		/// <returns></returns>
-		private int InsertNewPlaylistToDB(string playlistName, DBHandler handler)
+        /// <summary>
+        /// Handles the add playlist exception.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="playlistID">The playlist identifier.</param>
+        private void handleAddPlaylistException(string message, int playlistID)
+        {
+            switch (message)
+            {
+                case INSERT_SONGS_TO_PLAYLIST_FAILURE:
+                    DeleteQuery(playlistID, "SqlDeletePlaylistInfoEntity");
+                    break;
+                case INSERT_PLAYLIST_TO_USER_FAILURE:
+                    DeleteQuery(playlistID, "SqlDeleteSongsFromPlaylist");
+                    DeleteQuery(playlistID, "SqlDeletePlaylistInfoEntity");
+                    break;
+                default: break;
+            }
+        }
+
+        /// <summary>
+        /// Deletes the query.
+        /// </summary>
+        /// <param name="playlistID">The playlist identifier.</param>
+        /// <param name="sqlQueryKey">The SQL query key.</param>
+        private void DeleteQuery(int playlistID, string sqlQueryKey)
+        {
+            string query = string.Format(DBQueryManager.Instance.QueryDictionary[sqlQueryKey], playlistID);
+            DBHandler.Instance.ExecuteNoResult(query);
+        }
+
+        /// <summary>
+        /// Inserts the new playlist to database.
+        /// </summary>
+        /// <param name="playlistName">Name of the playlist.</param>
+        /// <param name="handler">The handler.</param>
+        /// <returns></returns>
+        private int InsertNewPlaylistToDB(string playlistName, DBHandler handler)
         {
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertNewPlaylist"], playlistName);
 
@@ -180,7 +214,7 @@ namespace Moodify.Helpers
 		/// <param name="playlistID">The playlist identifier.</param>
 		/// <param name="handler">The handler.</param>
 		/// <returns></returns>
-		private bool InsertSongsWithPlaylistID(List<int> songsID, int playlistID, DBHandler handler)
+		private void InsertSongsWithPlaylistID(List<int> songsID, int playlistID, DBHandler handler)
         {
             string songsTuples = string.Empty;
             foreach (int songID in songsID)
@@ -189,7 +223,10 @@ namespace Moodify.Helpers
             }
             songsTuples = songsTuples.Substring(0, songsTuples.Length - 2);
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertSongsWithPlaylistID"], songsTuples);
-            return handler.ExecuteNoResult(query);
+            if (!handler.ExecuteNoResult(query))
+            {
+                throw new Exception(INSERT_SONGS_TO_PLAYLIST_FAILURE);
+            }
         }
 
 		/// <summary>
@@ -198,12 +235,15 @@ namespace Moodify.Helpers
 		/// <param name="playlistID">The playlist identifier.</param>
 		/// <param name="handler">The handler.</param>
 		/// <returns></returns>
-		private bool InsertPlaylistIDToUser(int playlistID, DBHandler handler)
+		private void InsertPlaylistIDToUser(int playlistID, DBHandler handler)
         {
             User user = ConnectionStatus.Instance.UserDetails;
             var d = DBQueryManager.Instance;
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlInsertPlaylistIDToUser"], playlistID, user.UserName);
-            return handler.ExecuteNoResult(query);
+            if (!handler.ExecuteNoResult(query))
+            {
+                throw new Exception(INSERT_PLAYLIST_TO_USER_FAILURE);
+            }
         }
     }
 }

@@ -257,5 +257,11 @@
   <ItemGroup>
     <None Include="Resources\SqlCheckIfUsernameExists.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SqlDeletePlaylistInfoEntity.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SqlDeleteSongsFromPlaylist.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
