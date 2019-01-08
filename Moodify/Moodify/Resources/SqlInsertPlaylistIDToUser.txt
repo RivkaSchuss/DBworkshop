@@ -1,1 +1,2 @@
-INSERT INTO playlist_affiliation (playlist_id, user_id) SELECT {0}, user_id FROM users WHERE username = '{1}';
+INSERT INTO playlist_affiliation (playlist_id, user_id) 
+SELECT {0}, user_id FROM users WHERE username = '{1}';

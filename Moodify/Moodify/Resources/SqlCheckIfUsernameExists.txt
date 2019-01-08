@@ -1,1 +1,3 @@
-SELECT * FROM users where username = '{0}'
+SELECT user_id
+FROM users
+WHERE username = '{0}'
