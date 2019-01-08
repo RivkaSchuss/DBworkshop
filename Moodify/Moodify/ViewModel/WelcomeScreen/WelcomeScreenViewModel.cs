@@ -27,6 +27,7 @@ namespace Moodify.ViewModel.WelcomeScreen
 				this.NotifyPropertyChanged("VM_UserName");
 			}
 		}
+
 		public string VM_Password
 		{
 			get

@@ -14,8 +14,8 @@
 	</UserControl.Resources>
 	<Grid Background ="LightBlue">
 		<materialDesign:Card  Background="{DynamicResource PrimaryHueLightBrush}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
-							  Width="150" Padding="8" Visibility="{Binding VM_IsConnected, Converter={StaticResource BoolVisibilityConverter}}"
-							  Margin="-310,10,150,100">
+							  Width="Auto" MaxWidth="500" Padding="8" Visibility="{Binding VM_IsConnected, Converter={StaticResource BoolVisibilityConverter}}"
+							  Margin="0,10,0,00">
 			<TextBlock FontSize="16" Text="{Binding VM_UserName, StringFormat=Welcome {0}!}"> </TextBlock>
 		</materialDesign:Card>
 
