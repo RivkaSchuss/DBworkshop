@@ -26,19 +26,6 @@ namespace Moodify.Model
 			}
 		}
 
-		//public int UserId
-		//{
-		//    get
-		//    {
-		//        return this.userId;
-		//    }
-		//    set
-		//    {
-		//        this.userId = value;
-		//        this.NotifyPropertyChanged("UserId");
-		//    }
-		//}
-
 		public void NotifyPropertyChanged(string propName)
 		{
 			if (PropertyChanged != null)

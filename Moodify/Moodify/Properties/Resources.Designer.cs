@@ -70,13 +70,22 @@ namespace Moodify.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT song_id as SongId, title as SongName, artist_name as ArtistName, duration as Duration
+        ///   Looks up a localized string similar to SELECT * FROM users where username = &apos;{0}&apos;.
+        /// </summary>
+        public static string SqlCheckIfUsernameExists {
+            get {
+                return ResourceManager.GetString("SqlCheckIfUsernameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT song_id as SongId, title as SongName, artist_name as ArtistName, album_name as AlbumName, genre as Genre, duration as Duration
         ///                                FROM (SELECT *
         ///                                FROM song_analysis natural JOIN song_info NATURAL JOIN similar_artists NATURAL JOIN artists
         ///                                GROUP BY song_id
         ///                                HAVING tempo &gt;= &apos;{0}&apos; and tempo &lt;= &apos;{1}&apos; and
         ///                                 loudness &gt;= &apos;{2}&apos; and loudness &lt;= &apos;{3}&apos;
-        ///                                ORDER BY {4 [rest of string was truncated]&quot;;.
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         public static string SqlGenerateBuiltinPlaylist {
             get {
@@ -85,7 +94,7 @@ namespace Moodify.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select song_id as SongId, title as SongName, artist_name as ArtistName, duration as Duration
+        ///   Looks up a localized string similar to SELECT song_id as SongId, title as SongName, artist_name as ArtistName, album_name as AlbumName, genre as Genre, duration as Duration
         ///FROM (SELECT *
         ///FROM song_analysis natural JOIN song_info NATURAL JOIN similar_artists NATURAL JOIN artists
         ///GROUP BY song_id
@@ -102,10 +111,10 @@ namespace Moodify.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT playlist_affiliation.playlist_id as PlaylistId, playlist_name as PlaylistName, playlist_songs.song_id as SongId, title as SongName, artist_name as ArtisName, duration as Duration
+        ///   Looks up a localized string similar to SELECT playlist_affiliation.playlist_id as PlaylistId, playlist_name as PlaylistName, playlist_songs.song_id as SongId, title as SongName, artist_name as ArtistName, duration as Duration, genre as Genre, album_name as AlbumName
         ///                            from playlist_info, playlist_affiliation, playlist_songs, song_info, artists, song_analysis
         ///                            where playlist_affiliation.user_id = &apos;{0}&apos; and playlist_affiliation.playlist_id = playlist_info.playlist_id
-        ///                             and playlist_info.playlist_id = playli [rest of string was truncated]&quot;;.
+        ///                          [rest of string was truncated]&quot;;.
         /// </summary>
         public static string SqlGetUserPlaylistsQuery {
             get {
@@ -162,7 +171,7 @@ namespace Moodify.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT SUM(duration) from playlist_songs natural join song_analysis where playlist_id = &apos;{0}&apos;.
+        ///   Looks up a localized string similar to SELECT SUM(duration) as total_duration from playlist_songs natural join song_analysis where playlist_id = &apos;{0}&apos;.
         /// </summary>
         public static string SqlSumTotalDurationPlaylist {
             get {

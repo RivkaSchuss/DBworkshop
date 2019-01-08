@@ -254,5 +254,8 @@
   <ItemGroup>
     <None Include="Resources\SqlSumTotalDurationPlaylist.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SqlCheckIfUsernameExists.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
