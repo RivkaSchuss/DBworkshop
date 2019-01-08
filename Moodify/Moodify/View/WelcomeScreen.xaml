@@ -19,9 +19,6 @@
 			<TextBlock FontSize="16" Text="{Binding VM_UserName, StringFormat=Welcome {0}!}"> </TextBlock>
 		</materialDesign:Card>
 
-		<!--<Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
-			_DARK
-		</Button>-->
 		<Button Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Click to open Register window" 
 				Width="100" Content="Register" Height="50" HorizontalAlignment="Center" Margin="-130,120,0,0" 
 				Name="Register" VerticalAlignment="Top" Click="OnRegister"

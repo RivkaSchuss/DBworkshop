@@ -11,7 +11,6 @@
 	<materialDesign:DialogHost CloseOnClickAway="True">
 		<StackPanel Background="LightBlue">
 			<Label HorizontalAlignment="Left" Content="Let's create a playlist!" FontSize="30" FontWeight="Bold" Foreground="BlueViolet" Padding="10"/>
-			<!--<Label HorizontalAlignment="Center" Content="First, choose how many songs you'd like in your playlist" FontSize="20" FontWeight="Thin"></Label>-->
 			<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="120 0 0 0">
 				<TextBlock FontSize="20" VerticalAlignment="Bottom" Text="Playlist Name:"/>
 				<TextBox HorizontalAlignment="Left" Margin="230,20,0,0" Name="textBoxUserName"

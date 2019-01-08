@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Moodify.View"
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800">
-	<!--Title="MyPlaylists" Height="450" Width="800">-->
 	<ScrollViewer Background="Transparent" ScrollViewer.CanContentScroll="False"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
 				  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
 		<StackPanel Background="LightBlue">
@@ -28,21 +27,6 @@
 					<DataGridTextColumn Header="Duration" Width="Auto" Binding="{Binding Path=Value.TotalDuration}" IsReadOnly="True"></DataGridTextColumn>
 				</DataGrid.Columns>
 			</DataGrid>
-			<!--<ListView ItemsSource="{Binding VM_PlaylistsDic}" ScrollViewer.CanContentScroll="False" Width="Auto" 
-					 Height="Auto">
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						<StackPanel Orientation="Horizontal" Margin="0,10,10,10">
-							<Button Content="{Binding Path=Value.PlaylistName}" ToolTip="Display playlist"
-									CommandParameter="{Binding Path=Key}" Click="OpenPlaylist_Click" 
-									Margin="00 0 0 0">
-							</Button>
-							<TextBlock Text="{Binding Path=Value.Songs.Count}" Margin="10, 10, 10, 10"
-									   FontWeight="Bold" FontSize="15"/>
-						</StackPanel>
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>-->
 		</StackPanel>
 	</ScrollViewer>
 </UserControl>

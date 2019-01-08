@@ -14,11 +14,9 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="252*" />
 			</Grid.RowDefinitions>
-			<!--<TextBlock Height="20" HorizontalAlignment="Left" Margin="67,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C"/>-->
 			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,25,0,0" Name="textBlockUserName" Text="User Name:" VerticalAlignment="Top" Width="110" />
 			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,55,0,0" Name="textBlockEmailId" Text="Email:" VerticalAlignment="Top" Width="110" />
 			<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,85,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110"  />
-			<!--<TextBlock Height="23" HorizontalAlignment="Left" Margin="67,107,0,0" Name="textBlockConfirmPwd" Text="ConfirmPassword:" VerticalAlignment="Top" Width="110" Grid.RowSpan="2" />-->
 			<TextBox Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="textBoxUserName"
 					 VerticalAlignment="Top" Width="222" Text="{Binding VM_UserName}"
 					 materialDesign:HintAssist.Hint="User Name"/>
@@ -28,7 +26,6 @@
 			<TextBox Height="23" HorizontalAlignment="Left" Margin="183,80,0,0" Name="passwordBox1"
 					 VerticalAlignment="Top" Width="222" Text="{Binding VM_Password}"
 					 materialDesign:HintAssist.Hint="Password"/>
-			<!--<TextBox Height="23" HorizontalAlignment="Left" Margin="183,107,0,0" Name="passwordBoxConfirm" VerticalAlignment="Top" Width="222" />-->
 			<Button Content="Submit" Height="26" HorizontalAlignment="Left" Margin="183,140,0,0" 
 					Name="Submit" VerticalAlignment="Top" Width="80" Click="Submit_Click" ToolTip="Click here to register"/>
 			<Button Content="Cancel" Height="26" HorizontalAlignment="Right" Margin="0,140,60,0" Name="Cancel" VerticalAlignment="Top" Width="80" Click="Cancel_Click" 
