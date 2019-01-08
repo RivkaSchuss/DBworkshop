@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using Moodify.Containers;
+﻿using Moodify.Containers;
 using Moodify.DB;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel;
 
 namespace Moodify.Model.WelcomeScreen
 {
@@ -9,48 +9,48 @@ namespace Moodify.Model.WelcomeScreen
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-		private ConnectionStatus connection = ConnectionStatus.Instance;
-		private bool connectionFailed;
-		private string userName = "";
-		private string password = "";
-		private string email ="";
+        private ConnectionStatus connection = ConnectionStatus.Instance;
+        private bool connectionFailed;
+        private string userName = "";
+        private string password = "";
+        private string email = "";
 
-		public string UserName
-		{
-			get
-			{
-				return this.userName;
-			}
-			set
-			{
-				this.userName = value;
-				NotifyPropertyChanged("UserName");
-			}
-		}
-		public string Password
-		{
-			get
-			{
-				return this.password;
-			}
-			set
-			{
-				this.password = value;
-				NotifyPropertyChanged("Password");
-			}
-		}
-		public string Email
-		{
-			get
-			{
-				return this.email;
-			}
-			set
-			{
-				this.email = value;
-				NotifyPropertyChanged("Email");
-			}
-		}
+        public string UserName
+        {
+            get
+            {
+                return this.userName;
+            }
+            set
+            {
+                this.userName = value;
+                NotifyPropertyChanged("UserName");
+            }
+        }
+        public string Password
+        {
+            get
+            {
+                return this.password;
+            }
+            set
+            {
+                this.password = value;
+                NotifyPropertyChanged("Password");
+            }
+        }
+        public string Email
+        {
+            get
+            {
+                return this.email;
+            }
+            set
+            {
+                this.email = value;
+                NotifyPropertyChanged("Email");
+            }
+        }
 
         public bool IsConnected
         {
@@ -101,15 +101,16 @@ namespace Moodify.Model.WelcomeScreen
         /// <returns>true - if there is no user with the same username, otherwise false</returns>
         public bool TryRegister(string userName, string email, string password)
         {
-			DBHandler handler = DBHandler.Instance;
+            DBHandler handler = DBHandler.Instance;
             // Checks if the username already exists
             string query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlCheckIfUsernameExists"], userName);
-            if(handler.ExecuteWithResults(query) != null)
+            if (handler.ExecuteWithResults(query).Count != 0)
             {
+                // there is a user with this username
                 return false;
             }
 
-            // Try to register the user after checked if the username is not found.
+            // Registers the user after checked if the username is not found.
             query = string.Format(DBQueryManager.Instance.QueryDictionary["SqlRegisterQuery"], userName, email, password);
             JArray result = handler.ExecuteWithResults(query);
             if (result != null)
