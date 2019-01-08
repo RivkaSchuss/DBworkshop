@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 namespace Moodify.Helpers
 {
 	/// <summary>
-	/// Defines the Built in playlist in the program
+	/// Singleton class for the built-in mood playlists.
 	/// </summary>
 	public class BuiltInPlaylistsSingleton
     {

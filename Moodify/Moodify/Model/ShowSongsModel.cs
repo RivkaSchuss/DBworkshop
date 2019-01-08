@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
-	public class ShowSongsModel : INotifyPropertyChanged
+    /// <summary>
+    /// Model class for the Show Songs window. (Built-In and Custom playlist creation display 
+    /// before adding to MyPlaylists).
+    /// </summary>
+    public class ShowSongsModel
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 		private ObservableCollection<Song> songList;
@@ -26,13 +30,12 @@ namespace Moodify.Model
 
 		}
 
-		public void SetSongs()
-		{
-			this.PlaylistName = this.playlist.PlaylistName;
-			this.SongList = this.playlist.Songs;
-		}
 
-		public Playlist FindPlaylist()
+        /// <summary>
+        /// Finds the playlist.
+        /// </summary>
+        /// <returns>The Playlist corresponding to the playlist id property.</returns>
+        public Playlist FindPlaylist()
 		{
 			if (playlistID == -1)
 			{
@@ -57,7 +60,25 @@ namespace Moodify.Model
 			return null;
 		}
 
-		public void NotifyPropertyChanged(string propName)
+        /// <summary>
+        /// Adds to user playlists (inserts to DB).
+        /// </summary>
+        public void AddToUserPlaylists()
+        {
+            UserPlaylistsSingleton userPlaylists = UserPlaylistsSingleton.Instance;
+            bool result = userPlaylists.AddToPlaylists(this.playlist);
+            if (result)
+            {
+                this.AddingSuccesful = "SUCCESS";
+                ConnectionStatus.Instance.NotifyPropertyChanged("IsConnected");
+            }
+            else
+            {
+                this.AddingSuccesful = "FAIL";
+            }
+        }
+
+        public void NotifyPropertyChanged(string propName)
 		{
 			if (PropertyChanged != null)
 			{
@@ -81,21 +102,6 @@ namespace Moodify.Model
 			{
 				this.playlistID = value;
 				AddToUserPlaylists();
-			}
-		}
-
-		public void AddToUserPlaylists()
-		{
-			UserPlaylistsSingleton userPlaylists = UserPlaylistsSingleton.Instance;
-			bool result = userPlaylists.AddToPlaylists(this.playlist);
-			if (result)
-			{
-				this.AddingSuccesful = "SUCCESS";
-				ConnectionStatus.Instance.NotifyPropertyChanged("IsConnected");
-			}
-			else
-			{
-				this.AddingSuccesful = "FAIL";
 			}
 		}
 
@@ -138,5 +144,11 @@ namespace Moodify.Model
 				this.NotifyPropertyChanged("PlaylistName");
 			}
 		}
-	}
+
+        public void SetSongs()
+        {
+            this.PlaylistName = this.playlist.PlaylistName;
+            this.SongList = this.playlist.Songs;
+        }
+    }
 }

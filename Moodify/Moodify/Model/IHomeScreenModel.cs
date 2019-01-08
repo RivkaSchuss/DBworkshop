@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
+    /// <summary>
+    /// Model definition for the Home Screen view.
+    /// </summary>
+    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
     interface IHomeScreenModel : INotifyPropertyChanged
     {
-        //ObservableCollection<>
-        
+        bool UserConnected { get; set; }
     }
 }

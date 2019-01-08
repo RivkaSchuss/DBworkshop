@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
-	class MyPlaylistsModel : IMyPlaylistsModel
+    /// <summary>
+    /// Model class for the MyPlaylists window.
+    /// </summary>
+    /// <seealso cref="Moodify.Model.IMyPlaylistsModel" />
+    class MyPlaylistsModel : IMyPlaylistsModel
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 		private IDictionary<int, Playlist> playlistsDic;
 		private ObservableCollection<Playlist> playlists;
-		//private int userId;
 
 		public MyPlaylistsModel()
 		{
-			//this.UserId = userId;
 			if (ConnectionStatus.Instance.IsConnected)
 			{
 				UserPlaylistsSingleton userPlaylists = UserPlaylistsSingleton.Instance;

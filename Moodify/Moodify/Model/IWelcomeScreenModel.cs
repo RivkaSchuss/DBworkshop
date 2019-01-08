@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
+    /// <summary>
+    /// Model definition for the Welcome Screen window. (Regiser, LogIn).
+    /// </summary>
+    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
     interface IWelcomeScreenModel : INotifyPropertyChanged
 	{
 		string UserName { get; set; }

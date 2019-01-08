@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Moodify.Helpers
 {
 	/// <summary>
-	/// Parse Playlist ffrom JSON
+	/// Parse Playlist from JSON
 	/// </summary>
 	class PlaylistJSONParser
     {

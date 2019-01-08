@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Moodify.Model
 {
+    /// <summary>
+    /// Model definition for the MyPlaylists window.
+    /// </summary>
+    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
     interface IMyPlaylistsModel : INotifyPropertyChanged
     {
         IDictionary<int, Playlist> PlaylistsDic { get; set; }

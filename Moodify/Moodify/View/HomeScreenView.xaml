@@ -8,7 +8,7 @@
         xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
 		mc:Ignorable="d"
 		ResizeMode="NoResize"
-		Icon="pack://application:,,,/Resource/mood.jpg"
+		Icon="pack://application:,,,/ImageResources/mood.jpg"
         Title="Moodify" Height="460" Width="640">
 	<Grid Background ="LightBlue">
 		<dragablz:TabablzControl FixedHeaderCount="4">

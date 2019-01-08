@@ -105,7 +105,7 @@ namespace Moodify.Properties {
         ///                                GROUP BY song_id
         ///                                HAVING tempo &gt;= &apos;{0}&apos; and tempo &lt;= &apos;{1}&apos; and
         ///                                 loudness &gt;= &apos;{2}&apos; and loudness &lt;= &apos;{3}&apos;
-        ///    [rest of string was truncated]&quot;;.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         public static string SqlGenerateBuiltinPlaylist {
             get {
